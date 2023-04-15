@@ -10,4 +10,19 @@ header{
     background-color: var(--header-color);
     width: 100%;
     height: 5rem;
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.company-name{
+    --logo-color:#f8f4f9;
+    color: var(--logo-color);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.company-name span{
+    color: #91c0ec;
 }
