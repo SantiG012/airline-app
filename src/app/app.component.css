@@ -37,6 +37,11 @@ nav > a:nth-child(3){
     font-weight: 600;
     padding: 1rem;
     border-radius: 1rem;
+    transition: background-color ease-in-out .1s;
+}
+
+nav :nth-child(2):hover, nav :nth-child(3):hover{
+    background-color: #3f3371;
 }
 
 nav{
