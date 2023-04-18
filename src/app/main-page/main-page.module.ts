@@ -4,7 +4,7 @@ import { TuristicSitesComponent } from './turistic-sites/turistic-sites.componen
 import { TripInfoComponent } from './trip-info/trip-info.component';
 import { MainComponent } from './main/main.component';
 import { MainPageRoutingModule } from './main-page-routing.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +15,8 @@ import { MainPageRoutingModule } from './main-page-routing.module';
   ],
   imports: [
     CommonModule,
-    MainPageRoutingModule
+    MainPageRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class MainPageModule { }
