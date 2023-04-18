@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TuristicSitesComponent } from './turistic-sites/turistic-sites.component';
 import { TripInfoComponent } from './trip-info/trip-info.component';
 import { MainComponent } from './main/main.component';
+import { MainPageRoutingModule } from './main-page-routing.module';
 
 
 
@@ -13,7 +14,8 @@ import { MainComponent } from './main/main.component';
     MainComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MainPageRoutingModule
   ]
 })
 export class MainPageModule { }
