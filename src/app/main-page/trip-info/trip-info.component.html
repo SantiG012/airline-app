@@ -1,1 +1,14 @@
-<p>trip-info works!</p>
+<fieldset>
+    <div class="forum-container">
+        <label for="origin-city">Origen: </label>
+        <input id="origin-city" type="text" [formControl]="origin">
+    </div>
+    <div class="forum-container">
+        <label for="destination-city">Destino: </label>
+        <input id="destination-city" type="text" [formControl]="destination">
+    </div> 
+    <div class="forum-container">
+        <label for="passangers-number">Numero de pasajeros: </label>
+        <input id="passangers-number" type="number" [formControl]="passangersNumber">
+    </div>   
+</fieldset>
