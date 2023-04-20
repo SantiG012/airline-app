@@ -5,6 +5,8 @@ import { TripInfoComponent } from './trip-info/trip-info.component';
 import { MainComponent } from './main/main.component';
 import { MainPageRoutingModule } from './main-page-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MainPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class MainPageModule { }
