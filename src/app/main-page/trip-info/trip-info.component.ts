@@ -1,5 +1,10 @@
 import { Component} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
+import {
+  debounceTime, distinctUntilChanged, switchMap
+} from 'rxjs/operators';
+
 @Component({
   selector: 'app-trip-info',
   templateUrl: './trip-info.component.html',
@@ -10,6 +15,10 @@ export class TripInfoComponent {
   destination: string = "";
   passangersNumber: number = 0;
   cityForm!: FormGroup;
+
+  filteredOriginCities$!: Observable<string[]>;
+  filteredDestinationCities$!: Observable<string[]>;
+  private searchTerms = new Subject<string>();
 
 
   ngOnInit() {
@@ -33,6 +42,20 @@ export class TripInfoComponent {
         ]
       )
     });
+
+    // this.filteredOriginCities$ = this.searchTerms.pipe(
+    //   debounceTime(300),
+    //   distinctUntilChanged(),
+    //   switchMap((term: string) => this.searchTerms.next(term))
+    // );
+
+    // this.filteredDestinationCities$ = this.searchTerms.pipe(
+    //   debounceTime(300),
+    //   distinctUntilChanged(),
+    //   switchMap((term: string) => this.searchTerms.next(term))
+    // );
+
+    //Service creationg needed here
   }
 
   get originControl() { return this.cityForm.get('originControl');}
