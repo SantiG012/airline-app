@@ -1,0 +1,8 @@
+.mat-app-background {
+    position: absolute;
+    top:40%;
+    right: 50%;
+    transform: translateX(50%);
+    height: fit-content;
+    border-radius: 1rem;
+}

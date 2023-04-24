@@ -1,0 +1,8 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+fieldset{
+    display: flex;
+    border: none;
+}
+mat-form-field{
+    margin: 1rem;
+}
