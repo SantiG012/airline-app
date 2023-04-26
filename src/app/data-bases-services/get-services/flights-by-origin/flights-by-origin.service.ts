@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { DataBasesServicesModule } from '../../data-bases-services.module';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Vuelo } from 'src/app/interfaces/vuelo';
-import { Observable } from 'rxjs';
+import { catchError, tap} from 'rxjs/operators';
+import { Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: DataBasesServicesModule
@@ -20,6 +21,19 @@ export class FlightsByOriginService {
   };
 
   getFlightsByOrigin(origin: string):Observable<Vuelo[]>{
-    return this.http.get<Vuelo[]>(`${this.API_URL}/obtenerVuelosPorDestino/${origin}`);
+    return this.http.get<Vuelo[]>(`${this.API_URL}/obtenerVuelosPorDestino/${origin}`)
+    .pipe(
+      tap(_ => console.log(`fetched flights by origin=${origin}`)),
+      catchError(this.handleError<Vuelo[]>(`getFlightsByOrigin origin=${origin}`, []))
+    );
+  }
+
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => { 
+      console.error(error); 
+      console.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
   }
 }
