@@ -19,6 +19,7 @@ export class TripInfoComponent {
   cityForm!: FormGroup;
 
   filteredFlights$!: Observable<Vuelo[]>;
+  private searchTerms = new Subject<string>();
 
   constructor(private flightsByOriginService: FlightsByOriginService) {}
 
