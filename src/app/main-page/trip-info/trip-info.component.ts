@@ -46,6 +46,11 @@ export class TripInfoComponent {
       )
     });
 
+    this.filteredFlights$ = this.searchTerms.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap((term: string) => this.flightsByOriginService.getFlightsByOrigin(term)),
+    );
   }
 
   get originControl() { return this.cityForm.get('originControl');}
