@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import {
   debounceTime, distinctUntilChanged, switchMap
 } from 'rxjs/operators';
+import { Vuelo } from 'src/app/interfaces/vuelo';
 
 @Component({
   selector: 'app-trip-info',
@@ -16,9 +17,7 @@ export class TripInfoComponent {
   passangersNumber: number = 0;
   cityForm!: FormGroup;
 
-  filteredOriginCities$!: Observable<string[]>;
-  filteredDestinationCities$!: Observable<string[]>;
-  private searchTerms = new Subject<string>();
+  filteredFlights$!: Observable<Vuelo[]>;
 
 
   ngOnInit() {
