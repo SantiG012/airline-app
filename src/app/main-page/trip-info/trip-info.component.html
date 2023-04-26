@@ -6,7 +6,7 @@
         placeholder="Ej: Cali"
         [matAutocomplete]="auto">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let city of filteredOriginCities$ | async" [value]="city">
+            <mat-option *ngFor="let city of filteredOrigins$ | async" [value]="city">
               {{city}}
             </mat-option>
           </mat-autocomplete>
@@ -23,7 +23,7 @@
         placeholder="Ej: Bogotá"
         [matAutocomplete]="auto">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let city of filteredDestinationCities$ | async" [value]="city">
+            <mat-option *ngFor="let city of filteredDestinations$ | async" [value]="city">
               {{city}}
             </mat-option>
         </mat-autocomplete>
