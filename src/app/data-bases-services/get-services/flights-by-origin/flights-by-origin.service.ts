@@ -15,6 +15,10 @@ export class FlightsByOriginService {
 
   private API_URL = 'http://localhost:8080/vuelo';
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   getFlightsByOrigin(origin: string):Observable<Vuelo[]>{
     return this.http.get<Vuelo[]>(`${this.API_URL}/obtenerVuelosPorDestino/${origin}`);
   }
