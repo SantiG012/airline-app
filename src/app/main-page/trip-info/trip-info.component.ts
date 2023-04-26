@@ -5,6 +5,7 @@ import {
   debounceTime, distinctUntilChanged, switchMap
 } from 'rxjs/operators';
 import { Vuelo } from 'src/app/interfaces/vuelo';
+import { FlightsByOriginService } from 'src/app/data-bases-services/get-services/flights/flights.service';
 
 @Component({
   selector: 'app-trip-info',
@@ -18,6 +19,8 @@ export class TripInfoComponent {
   cityForm!: FormGroup;
 
   filteredFlights$!: Observable<Vuelo[]>;
+
+  constructor(private flightsByOriginService: FlightsByOriginService) {}
 
 
   ngOnInit() {
@@ -42,19 +45,6 @@ export class TripInfoComponent {
       )
     });
 
-    // this.filteredOriginCities$ = this.searchTerms.pipe(
-    //   debounceTime(300),
-    //   distinctUntilChanged(),
-    //   switchMap((term: string) => this.searchTerms.next(term))
-    // );
-
-    // this.filteredDestinationCities$ = this.searchTerms.pipe(
-    //   debounceTime(300),
-    //   distinctUntilChanged(),
-    //   switchMap((term: string) => this.searchTerms.next(term))
-    // );
-
-    //Service creationg needed here
   }
 
   get originControl() { return this.cityForm.get('originControl');}
