@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FlightsByOriginService } from './flights-by-origin.service';
+import { FlightsByOriginService } from './flights.service';
 
 describe('FlightsByOriginService', () => {
   let service: FlightsByOriginService;
