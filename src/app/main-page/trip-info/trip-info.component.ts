@@ -1,8 +1,8 @@
 import { Component} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, from,toArray} from 'rxjs';
 import {
-  debounceTime, distinctUntilChanged, switchMap
+  debounceTime, distinctUntilChanged, pluck, switchMap
 } from 'rxjs/operators';
 import { Vuelo } from 'src/app/interfaces/vuelo';
 import { FlightsByOriginService } from 'src/app/data-bases-services/get-services/flights/flights.service';
@@ -19,6 +19,8 @@ export class TripInfoComponent {
   cityForm!: FormGroup;
 
   filteredFlights$!: Observable<Vuelo[]>;
+  filteredOrigins$!: Observable<string[]>;
+  filteredDestinations$!: Observable<string[]>;
   private searchTerms = new Subject<string>();
 
   constructor(private flightsByOriginService: FlightsByOriginService) {}
@@ -50,6 +52,18 @@ export class TripInfoComponent {
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((term: string) => this.flightsByOriginService.getFlightsByOrigin(term)),
+    );
+
+    this.filteredOrigins$ = this.filteredFlights$.pipe(
+      switchMap((flights: Vuelo[]) => from(flights)
+      .pipe(pluck('origen'))),
+      toArray()
+    );
+
+    this.filteredDestinations$ = this.filteredFlights$.pipe(
+      switchMap((flights: Vuelo[]) => from(flights)
+      .pipe(pluck('destino'))),
+      toArray()
     );
   }
 
