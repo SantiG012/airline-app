@@ -52,6 +52,6 @@
         </mat-form-field>
     </fieldset>
     <div class="button-container">
-        <a mat-stroked-button href="https://www.google.com/" target="_blank">Consultar</a>
+        <a mat-stroked-button href="https://www.google.com/" [disabled]="!cityForm.valid" target="_blank">Consultar</a>
     </div>
 </div>
