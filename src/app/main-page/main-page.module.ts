@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatButtonModule} from '@angular/material/button';
+import { FlightConfirmationService } from './services/flight-confirmation.service';
 
 
 @NgModule({
@@ -25,6 +26,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     MatAutocompleteModule,
     MatButtonModule
+  ],
+  providers: [
+    FlightConfirmationService
   ]
 })
 export class MainPageModule { }
