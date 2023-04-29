@@ -1,8 +1,8 @@
 import { Component} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable, Subject, from,toArray} from 'rxjs';
+import { Observable, Subject, from,toArray } from 'rxjs';
 import {
-  debounceTime, distinctUntilChanged, pluck, switchMap
+  debounceTime, distinct, distinctUntilChanged, map, switchMap
 } from 'rxjs/operators';
 import { Vuelo } from 'src/app/interfaces/vuelo';
 import { FlightsByOriginService } from 'src/app/data-bases-services/get-services/flights/flights.service';
@@ -56,14 +56,20 @@ export class TripInfoComponent {
 
     this.filteredOrigins$ = this.filteredFlights$.pipe(
       switchMap((flights: Vuelo[]) => from(flights)
-      .pipe(pluck('origen'))),
-      toArray()
+      .pipe(
+              map((flight: Vuelo) => flight.origen),
+              distinct(),
+              toArray()
+           )),
     );
 
     this.filteredDestinations$ = this.filteredFlights$.pipe(
       switchMap((flights: Vuelo[]) => from(flights)
-      .pipe(pluck('destino'))),
-      toArray()
+      .pipe(
+             map((flight: Vuelo) => flight.destino),
+              distinct(),
+              toArray()
+           ))
     );
   }
 
