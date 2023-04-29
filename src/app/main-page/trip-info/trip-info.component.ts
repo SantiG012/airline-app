@@ -5,7 +5,7 @@ import {
   debounceTime, distinct, distinctUntilChanged, map, switchMap
 } from 'rxjs/operators';
 import { Vuelo } from 'src/app/interfaces/vuelo';
-import { FlightsByOriginService } from 'src/app/data-bases-services/get-services/flights/flights.service';
+import { FlightsByOriginService } from 'src/app/root-services/flights/get-services/flights.service';
 
 @Component({
   selector: 'app-trip-info',

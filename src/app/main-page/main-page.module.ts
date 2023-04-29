@@ -8,7 +8,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
 
 
 @NgModule({
@@ -23,8 +22,7 @@ import { DataBasesServicesModule } from '../data-bases-services/data-bases-servi
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatAutocompleteModule,
-    DataBasesServicesModule
+    MatAutocompleteModule
   ]
 })
 export class MainPageModule { }
