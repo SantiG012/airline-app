@@ -67,6 +67,10 @@ export class TripInfoComponent {
     );
   }
 
+  search(term: string): void {
+    this.searchTerms.next(term);
+  }
+
   get originControl() { return this.cityForm.get('originControl');}
   get destinationControl() { return this.cityForm.get('destinationControl');}
   get passangersNumberControl() { return this.cityForm.get('passangersNumberControl');}
