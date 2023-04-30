@@ -14,8 +14,6 @@ import { FlightConfirmationService } from '../../services/flight-confirmation.se
   styleUrls: ['./trip-info.component.css']
 })
 export class TripInfoComponent {
-  origin: string = "";
-  destination: string = "";
   passangersNumber: number = 0;
   cityForm!: FormGroup;
   flightsExist: boolean = false;
@@ -32,13 +30,13 @@ export class TripInfoComponent {
   ngOnInit() {
     this.cityForm = new FormGroup({
         originControl: new FormControl(
-        this.origin,[
+        null,[
           Validators.required,
           Validators.pattern('[a-zA-Z ]+')
         ]
       ),
       destinationControl: new FormControl(
-        this.destination,[
+        null,[
           Validators.required,
           Validators.pattern('[a-zA-Z ]+')
         ]
