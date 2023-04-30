@@ -16,7 +16,7 @@ import { FlightConfirmationService } from '../../services/flight-confirmation.se
 export class TripInfoComponent {
   passangersNumber: number = 1;
   cityForm!: FormGroup;
-  flightsExist: boolean = false;
+  flightsExist!: boolean;
 
   filteredFlights$!: Observable<Vuelo[]>;
   filteredOrigins$!: Observable<string[]>;
@@ -88,11 +88,16 @@ export class TripInfoComponent {
         flights);
     });
 
-    if (this.flightsExist){
-      console.log("Flights exist");
-      //TODO
-      //this.router.navigate(['/flights']);
+    if (!this.flightsExist){
+      setTimeout(() => {
+        this.flightsExist;
+      }, 3000);
+      return;
     }
+
+    console.log("Flights exist");
+    //TODO
+    //this.router.navigate(['/flights']);
   }
 
   get originControl() { return this.cityForm.get('originControl');}
