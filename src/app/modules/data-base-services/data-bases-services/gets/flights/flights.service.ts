@@ -4,9 +4,7 @@ import { Vuelo } from 'src/app/interfaces/vuelo';
 import { catchError, tap} from 'rxjs/operators';
 import { Observable, of} from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FlightsByOriginService {
 
   constructor(
