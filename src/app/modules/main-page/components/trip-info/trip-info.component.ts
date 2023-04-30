@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable, Subject, from,toArray } from 'rxjs';
+import { Observable, Subject, from,toArray,takeLast} from 'rxjs';
 import {
   debounceTime, distinct, distinctUntilChanged, map, switchMap
 } from 'rxjs/operators';
@@ -18,6 +18,7 @@ export class TripInfoComponent {
   destination: string = "";
   passangersNumber: number = 0;
   cityForm!: FormGroup;
+  flightsExist: boolean = false;
 
   filteredFlights$!: Observable<Vuelo[]>;
   filteredOrigins$!: Observable<string[]>;
@@ -77,6 +78,23 @@ export class TripInfoComponent {
 
   search(term: string): void {
     this.searchTerms.next(term);
+  }
+
+  onSubmit() {
+    this.filteredFlights$.pipe(
+      takeLast(1),
+    ).subscribe((flights:Vuelo[]) =>{
+        this.flightsExist = this.flightConfirmationService.
+        corroborateFlight(this.originControl!.value,
+        this.destinationControl!.value,
+        flights);
+    });
+
+    if (this.flightsExist){
+      console.log("Flights exist");
+      //TODO
+      //this.router.navigate(['/flights']);
+    }
   }
 
   get originControl() { return this.cityForm.get('originControl');}
