@@ -6,7 +6,7 @@ import {
 } from 'rxjs/operators';
 import { Vuelo } from 'src/app/interfaces/vuelo';
 import { FlightsByOriginService } from 'src/app/root-services/flights/get-services/flights.service';
-import { FlightConfirmationService } from '../services/flight-confirmation.service';
+import { FlightConfirmationService } from '../../services/flight-confirmation.service';
 
 @Component({
   selector: 'app-trip-info',
