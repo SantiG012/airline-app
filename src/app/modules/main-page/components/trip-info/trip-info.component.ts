@@ -14,7 +14,7 @@ import { FlightConfirmationService } from '../../services/flight-confirmation.se
   styleUrls: ['./trip-info.component.css']
 })
 export class TripInfoComponent {
-  passangersNumber: number = 0;
+  passangersNumber: number = 1;
   cityForm!: FormGroup;
   flightsExist: boolean = false;
 
