@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatButtonModule} from '@angular/material/button';
 import { FlightConfirmationService } from './services/flight-confirmation.service';
+import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { FlightConfirmationService } from './services/flight-confirmation.servic
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
-    MatButtonModule
+    MatButtonModule,
+    DataBasesServicesModule
   ],
   providers: [
     FlightConfirmationService
