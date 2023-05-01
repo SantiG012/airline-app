@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable, Subject, from,toArray,takeLast} from 'rxjs';
+import { Observable, Subject, from,toArray,takeLast,tap} from 'rxjs';
 import {
   debounceTime, distinct, distinctUntilChanged, map, switchMap
 } from 'rxjs/operators';
@@ -21,6 +21,7 @@ export class TripInfoComponent {
   filteredFlights$!: Observable<Vuelo[]>;
   filteredOrigins$!: Observable<string[]>;
   filteredDestinations$!: Observable<string[]>;
+  filteredFlights!: Vuelo[];
   private searchTerms = new Subject<string>();
 
   constructor(private flightsByOriginService: FlightsByOriginService,
@@ -53,7 +54,9 @@ export class TripInfoComponent {
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((term: string) => this.flightsByOriginService.getFlightsByOrigin(term)),
+      tap((flights: Vuelo[]) => this.filteredFlights = flights)
     );
+
 
     this.filteredOrigins$ = this.filteredFlights$.pipe(
       switchMap((flights: Vuelo[]) => from(flights)
@@ -79,15 +82,12 @@ export class TripInfoComponent {
   }
 
   onSubmit() {
-    this.filteredFlights$.pipe(
-      takeLast(1),
-    ).subscribe((flights:Vuelo[]) =>{
-        this.flightsExist = this.flightConfirmationService.
-        corroborateFlight(this.originControl!.value,
-        this.destinationControl!.value,
-        flights);
-    });
-
+    this.flightsExist = this.flightConfirmationService.corroborateFlight(
+      this.originControl!.value,
+      this.destinationControl!.value,
+      this.filteredFlights
+    );
+    
     if (!this.flightsExist){
       setTimeout(() => {
         this.flightsExist;
