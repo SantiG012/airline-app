@@ -22,6 +22,7 @@ export class TripInfoComponent {
   filteredOrigins$!: Observable<string[]>;
   filteredDestinations$!: Observable<string[]>;
   filteredFlights!: Vuelo[];
+  corroborationFlightsFlag!: boolean;
   private searchTerms = new Subject<string>();
 
   constructor(private flightsByOriginService: FlightsByOriginService,
@@ -87,11 +88,12 @@ export class TripInfoComponent {
       this.destinationControl!.value,
       this.filteredFlights
     );
-    
+
     if (!this.flightsExist){
+      this.corroborationFlightsFlag = true;
       setTimeout(() => {
-        this.flightsExist;
-      }, 3000);
+        this.corroborationFlightsFlag = false;
+      }, 5000);
       return;
     }
 

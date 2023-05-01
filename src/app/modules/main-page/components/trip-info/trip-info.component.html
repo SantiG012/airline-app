@@ -54,5 +54,5 @@
     <div class="button-container">
         <a mat-stroked-button [disabled]="!cityForm.valid" (click)="onSubmit()">Consultar</a>
     </div>
-    <mat-hint *ngIf="flightsExist">No existen vuelos disponiblen que satisfagan las condiciones de origen y destino</mat-hint>
+    <mat-hint *ngIf="corroborationFlightsFlag">No existen vuelos disponibles que satisfagan las condiciones de origen y destino</mat-hint>
 </div>
