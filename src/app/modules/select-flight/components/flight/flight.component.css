@@ -36,3 +36,7 @@
     align-items: center;
     gap: 1rem;
 }
+
+.mat-spinner-color::ng-deep circle{
+  stroke: #91c0ec!important;
+}
