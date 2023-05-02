@@ -4,6 +4,7 @@ import { Observable, Subject, from,toArray,takeLast,tap} from 'rxjs';
 import {
   debounceTime, distinct, distinctUntilChanged, map, switchMap
 } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { Vuelo } from 'src/app/interfaces/vuelo';
 import { FlightsByOriginService } from 'src/app/modules/data-bases-services/gets/flights/flights.service';
 import { FlightConfirmationService } from '../../services/flight-confirmation.service';
@@ -26,7 +27,8 @@ export class TripInfoComponent {
   private searchTerms = new Subject<string>();
 
   constructor(private flightsByOriginService: FlightsByOriginService,
-              private flightConfirmationService:FlightConfirmationService) {}
+              private flightConfirmationService:FlightConfirmationService,
+              private router:Router) {}
 
 
   ngOnInit() {
@@ -97,9 +99,11 @@ export class TripInfoComponent {
       return;
     }
 
-    console.log("Flights exist");
-    //TODO
-    //this.router.navigate(['/flights']);
+    this.router.navigate(['seleccinarVuelos'],
+        {queryParams:{
+          FROM: this.originControl!.value,
+          TO: this.destinationControl!.value,
+          SEATS: this.passangersNumberControl!.value}});
   }
 
   get originControl() { return this.cityForm.get('originControl');}
