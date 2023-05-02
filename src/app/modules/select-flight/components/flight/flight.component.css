@@ -1,0 +1,16 @@
+.flight-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 8rem;
+  max-width: 80%;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  transition: box-shadow 0.2s ease;
+}
+
+.flight-container:hover {
+  cursor: pointer;
+  box-shadow: 0 0 .7rem rgba(33, 33, 33, 0.2);
+}
