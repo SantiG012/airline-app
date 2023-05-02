@@ -14,3 +14,23 @@
   cursor: pointer;
   box-shadow: 0 0 .7rem rgba(33, 33, 33, 0.2);
 }
+
+.hour-city-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hour-city-container{
+   margin: 0.5rem;
+}
+
+.flight-duration-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
