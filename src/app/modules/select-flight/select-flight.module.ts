@@ -5,6 +5,7 @@ import { SelectFlightRoutingModule } from './select-flight-routing.module';
 import { MainComponent } from './components/main/main.component';
 import { BasicInfoComponent } from './components/basic-info/basic-info.component';
 import { FlightComponent } from './components/flight/flight.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FlightComponent } from './components/flight/flight.component';
   ],
   imports: [
     CommonModule,
-    SelectFlightRoutingModule
+    SelectFlightRoutingModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SelectFlightModule { }
