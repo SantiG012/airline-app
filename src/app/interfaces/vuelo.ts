@@ -1,8 +1,8 @@
 export interface Vuelo {
     id: string;
     avionId: string;
-    fechaHoraSalida: Date;
-    fechaHoraLlegada: Date;
+    fechaHoraSalida: String;
+    fechaHoraLlegada: String;
     origen: string;
     destino: string;
     estado: string;
