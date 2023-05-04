@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-basic-info',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./basic-info.component.css']
 })
 export class BasicInfoComponent {
-
+  @Input() origin!: string;
+  @Input() destination!: string;
 }
