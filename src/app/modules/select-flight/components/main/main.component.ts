@@ -17,8 +17,8 @@ export class MainComponent {
                private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    this.origin = this.route.snapshot.paramMap.get('FROM')!;
-    this.destiny =  this.route.snapshot.paramMap.get('TO')!;
+    this.origin = this.route.snapshot.queryParamMap.get('FROM')!;
+    this.destiny =  this.route.snapshot.queryParamMap.get('TO')!;
 
     this.flightsByOriginAndDestinyService.
     getFlightsByOriginAndDestiny(this.origin,this.destiny)
