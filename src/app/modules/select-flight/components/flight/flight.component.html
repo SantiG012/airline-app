@@ -1,15 +1,15 @@
 <mat-spinner class="mat-spinner-color" *ngIf="false"></mat-spinner>
-<div class="flight-container">
+<div class="flight-container" *ngIf="flight">
     <div class="hour-city-container">
         <div class="hour-container">
-            <span class="hour">7:05 a.m</span>
+            <span class="hour">{{getFormattedHour(flight.fechaHoraSalida)}} a.m</span>
         </div>
         <div class="city-container">
-            <span class="city">Cali</span>
+            <span class="city">{{flight.origen}}</span>
         </div>
     </div>
     <div class="flight-duration-container">
-        <span>12/06/2003</span>
+        <span>{{getFormattedDate(flight.fechaHoraSalida)}}</span>
         <span>Duración</span>
         <div class="time-container">
             <span class="flight-duration-hours">0 h</span>
@@ -18,10 +18,10 @@
     </div>
     <div class="hour-city-container">
         <div class="hour-container">
-            <span class="hour">8.09 a.m</span>
+            <span class="hour">{{getFormattedHour(flight.fechaHoraLlegada)}}</span>
         </div>
         <div class="city-container">
-            <span class="city">Bogotá</span>
+            <span class="city">{{flight.destino}}</span>
         </div>
     </div>
 </div>
