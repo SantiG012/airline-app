@@ -5,7 +5,7 @@
   align-items: center;
   min-height: 8rem;
   max-width: 80%;
-  margin: 0 auto;
+  margin: 1.5rem auto;
   background-color: #f5f5f5;
   transition: box-shadow 0.2s ease;
   border-radius: 1rem;
@@ -19,7 +19,7 @@
 
 .hour-city-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
