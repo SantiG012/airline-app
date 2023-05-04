@@ -2,4 +2,4 @@
 <div class="instruction">
     <p>¡Elige tu vuelo!</p>
 </div>
-<app-flight></app-flight>
+<app-flight *ngFor="let flight of flights" [flight]="flight"></app-flight>
