@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
 import { SelectFlightRoutingModule } from './select-flight-routing.module';
 import { MainComponent } from './components/main/main.component';
@@ -19,6 +19,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     SelectFlightRoutingModule,
     MatProgressSpinnerModule,
     DataBasesServicesModule
+  ],
+  providers: [
+    DatePipe
   ]
 })
 export class SelectFlightModule { }
