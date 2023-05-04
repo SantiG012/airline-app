@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-basic-info',
@@ -8,4 +9,11 @@ import { Component, Input } from '@angular/core';
 export class BasicInfoComponent {
   @Input() origin!: string;
   @Input() destination!: string;
+  passengers!:string;
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void{
+    this.passengers = this.route.snapshot.queryParamMap.get('SEATS')!;
+  }
 }
