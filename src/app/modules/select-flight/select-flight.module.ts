@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
 import { SelectFlightRoutingModule } from './select-flight-routing.module';
 import { MainComponent } from './components/main/main.component';
 import { BasicInfoComponent } from './components/basic-info/basic-info.component';
@@ -17,7 +17,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   imports: [
     CommonModule,
     SelectFlightRoutingModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    DataBasesServicesModule
   ]
 })
 export class SelectFlightModule { }
