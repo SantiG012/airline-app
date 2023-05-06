@@ -9,6 +9,12 @@ const routes: Routes = [
       TO: '',
       SEATS: ''}
     }
+  },{
+    path:'selccionarAsientos', loadChildren: () => import('src/app/modules/select-seats/select-seats.module').then(m => m.SelectSeatsModule),
+    data: {queryParams:{
+      ID: '',
+      SEATS: ''}
+    }
   }
 ];
 
