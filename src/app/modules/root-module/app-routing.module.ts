@@ -10,7 +10,7 @@ const routes: Routes = [
       SEATS: ''}
     }
   },{
-    path:'selccionarAsientos', loadChildren: () => import('src/app/modules/select-seats/select-seats.module').then(m => m.SelectSeatsModule),
+    path:'seleccionarAsientos', loadChildren: () => import('src/app/modules/select-seats/select-seats.module').then(m => m.SelectSeatsModule),
     data: {queryParams:{
       ID: '',
       SEATS: ''}
