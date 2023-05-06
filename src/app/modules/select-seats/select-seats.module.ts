@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { SelectSeatsRoutingModule } from './select-seats-routing.module';
 import { MainComponent } from './components/main/main.component';
+import { SeatComponent } from './components/seat/seat.component';
 
 
 @NgModule({
   declarations: [
-    MainComponent
+    MainComponent,
+    SeatComponent
   ],
   imports: [
     CommonModule,
