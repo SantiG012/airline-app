@@ -99,7 +99,7 @@ export class TripInfoComponent {
       return;
     }
 
-    this.router.navigate(['seleccinarVuelos'],
+    this.router.navigate(['seleccionarVuelos'],
         {queryParams:{
           FROM: this.originControl!.value,
           TO: this.destinationControl!.value,
