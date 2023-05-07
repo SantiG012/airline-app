@@ -1,0 +1,5 @@
+.plane{
+    background-color: gray;
+    max-width: 35rem;
+    min-height: fit-content;
+}
