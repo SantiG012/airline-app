@@ -1,0 +1,6 @@
+.plane-top{
+    background-color: gray;
+    max-width: 35rem;
+    min-height: 25rem;
+    border-radius: 50% 50% 0 0;
+}
