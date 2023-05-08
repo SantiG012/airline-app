@@ -6,6 +6,7 @@ import { MainComponent } from './components/main/main.component';
 import { SeatComponent } from './components/seat/seat.component';
 import { GridComponent } from './components/grid/grid.component';
 import { PlaneTopComponent } from './components/plane-top/plane-top.component';
+import { DefaultBackgroundImageDirective } from './directives/default-background-image.directive';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { PlaneTopComponent } from './components/plane-top/plane-top.component';
     MainComponent,
     SeatComponent,
     GridComponent,
-    PlaneTopComponent
+    PlaneTopComponent,
+    DefaultBackgroundImageDirective
   ],
   imports: [
     CommonModule,
