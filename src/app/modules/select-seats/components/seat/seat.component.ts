@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { DetalleAsiento } from 'src/app/interfaces/DetalleAsiento';
 
 @Component({
   selector: 'app-seat',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./seat.component.css']
 })
 export class SeatComponent {
-
+  @Input() seatInput!: DetalleAsiento;
 }
