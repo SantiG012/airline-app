@@ -6,7 +6,7 @@ import {
 } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Vuelo } from 'src/app/interfaces/vuelo';
-import { FlightsByOriginService } from 'src/app/modules/data-bases-services/gets/flights/flights-by-origin.service';
+import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights/flights.service';
 import { FlightConfirmationService } from '../../services/flight-confirmation.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class TripInfoComponent {
   corroborationFlightsFlag!: boolean;
   private searchTerms = new Subject<string>();
 
-  constructor(private flightsByOriginService: FlightsByOriginService,
+  constructor(private flightsService: FlightsService,
               private flightConfirmationService:FlightConfirmationService,
               private router:Router) {}
 
@@ -56,7 +56,7 @@ export class TripInfoComponent {
     this.filteredFlights$ = this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((term: string) => this.flightsByOriginService.getFlightsByOrigin(term)),
+      switchMap((term: string) => this.flightsService.getFlightsByOrigin(term)),
       tap((flights: Vuelo[]) => this.filteredFlights = flights)
     );
 
