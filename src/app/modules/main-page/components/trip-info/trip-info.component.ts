@@ -6,7 +6,7 @@ import {
 } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Vuelo } from 'src/app/interfaces/vuelo';
-import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights/flights.service';
+import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights.service';
 import { FlightConfirmationService } from '../../services/flight-confirmation.service';
 
 @Component({

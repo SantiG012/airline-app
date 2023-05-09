@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights/flights.service';
+import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights.service';
 import { ActivatedRoute } from '@angular/router';
 import { Vuelo } from 'src/app/interfaces/vuelo';
 

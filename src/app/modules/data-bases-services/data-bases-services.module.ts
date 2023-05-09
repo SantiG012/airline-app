@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FlightsService } from './gets/flights/flights.service';
-import { SeatsService } from './gets/seats/seats.service';
+import { FlightsService } from './gets/flights.service';
+import { SeatsService } from './gets/seats.service';
 
 
 
