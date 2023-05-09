@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlightsService } from './gets/flights/flights.service';
-import { GetSeatsByFlightIdService } from './gets/flights/get-seats-by-flight-id.service';
+import { SeatsService } from './gets/seats/seats.service';
 
 
 
@@ -12,7 +12,7 @@ import { GetSeatsByFlightIdService } from './gets/flights/get-seats-by-flight-id
   ],
   providers: [
     FlightsService,
-    GetSeatsByFlightIdService
+    SeatsService
   ]
 })
 export class DataBasesServicesModule { }
