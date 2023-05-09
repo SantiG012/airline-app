@@ -1,10 +1,10 @@
 export interface DetalleAsiento {
     idDetalleAsiento: string;
-    precio: number;
+    precio: string;
     tipo: string;
     vueloid: string;
-    columna: number;
-    fila: number;
+    columna: string;
+    fila: string;
     reservaid: string;
     estado: string;
 }
