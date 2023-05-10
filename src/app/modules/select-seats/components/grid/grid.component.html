@@ -1,6 +1,11 @@
 <div class="plane">
     <div class="plane__left-seats-column">
+        <app-seat 
+        *ngFor="let seat of seats.slice(0, seats.length/2)"
+        [seatInput]="seat"></app-seat>
     </div>
     <div class="plane__right-seats-column">
+        <app-seat *ngFor="let seat of seats.slice(seats.length/2, seats.length)"
+        [seatInput]="seat"></app-seat>
     </div>
 </div>
