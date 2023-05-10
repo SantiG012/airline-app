@@ -7,6 +7,7 @@ import { SeatComponent } from './components/seat/seat.component';
 import { GridComponent } from './components/grid/grid.component';
 import { PlaneTopComponent } from './components/plane-top/plane-top.component';
 import { DefaultBackgroundImageDirective } from './directives/default-background-image.directive';
+import { HoverBackgroundImageDirective } from './directives/hover-background-image.directive';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DefaultBackgroundImageDirective } from './directives/default-background
     SeatComponent,
     GridComponent,
     PlaneTopComponent,
-    DefaultBackgroundImageDirective
+    DefaultBackgroundImageDirective,
+    HoverBackgroundImageDirective
   ],
   imports: [
     CommonModule,
