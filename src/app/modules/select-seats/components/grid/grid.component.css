@@ -1,4 +1,22 @@
 .plane{
     background-color: gray;
-    min-height: fit-content;
+    height: 90rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1.5rem;
+    padding: 1rem 1.5rem;
+}
+
+.plane__left-seats-column,.plane__right-seats-column{
+    display: grid;
+    grid-template-columns: repeat(2, 4rem);
+    grid-template-rows: repeat(15, 4rem);
+    grid-gap: 1.5rem;
+    background-color: blue;
+}
+
+.plane__seat{
+    
 }
