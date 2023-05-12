@@ -9,6 +9,7 @@ import { PlaneTopComponent } from './components/plane-top/plane-top.component';
 import { DefaultBackgroundImageDirective } from './directives/default-background-image.directive';
 import { HoverBackgroundImageDirective } from './directives/hover-background-image.directive';
 import { CheckedBackgroundImageDirective } from './directives/checked-background-image.directive';
+import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CheckedBackgroundImageDirective } from './directives/checked-background
   ],
   imports: [
     CommonModule,
-    SelectSeatsRoutingModule
+    SelectSeatsRoutingModule,
+    DataBasesServicesModule
   ]
 })
 export class SelectSeatsModule { }
