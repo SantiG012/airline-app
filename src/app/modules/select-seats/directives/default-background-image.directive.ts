@@ -13,7 +13,7 @@ export class DefaultBackgroundImageDirective {
     const BOOKING = this.elementRef.nativeElement.getAttribute('data-reserva-id');
     const TYPE = this.elementRef.nativeElement.getAttribute('data-tipo-asiento');
 
-    if (!BOOKING) {
+    if (BOOKING) {
       this.elementRef.nativeElement.style.backgroundImage = `url(${this.DEFAULT_BACKGROUND})`;
       return;
     }
