@@ -15,6 +15,7 @@ export class DefaultBackgroundImageDirective {
 
     if (BOOKING) {
       this.elementRef.nativeElement.style.backgroundImage = `url(${this.DEFAULT_BACKGROUND})`;
+      this.elementRef.nativeElement.style.pointerEvents = 'none';
       return;
     }
 
