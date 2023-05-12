@@ -1,0 +1,7 @@
+button{
+    width: 4rem;
+    height: 4rem;
+    background-size: cover;
+    cursor: pointer;
+    transition: background-image 0.1s ease-in-out;
+}
