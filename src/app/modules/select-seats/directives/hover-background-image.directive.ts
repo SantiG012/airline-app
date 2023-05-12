@@ -1,5 +1,5 @@
 import { Directive,ElementRef, HostListener} from '@angular/core';
-import {SeatsHoverBackground} from 'src/app/constants/seatsHoverBackground';
+import { seatsHoverBackground } from 'src/app/constants/seatsHoverBackground';
 import {defaultSeatsBackground} from 'src/app/constants/defaultSeatsBackground';
 
 @Directive({
@@ -20,7 +20,7 @@ export class HoverBackgroundImageDirective {
   }
 
   @HostListener('mouseenter') onMouseEnter() {
-    const BACKGROUND = SeatsHoverBackground[this.Type];
+    const BACKGROUND = seatsHoverBackground[this.Type];
     this.elementRef.nativeElement.style.backgroundImage = `url(${BACKGROUND})`;
   }
 
