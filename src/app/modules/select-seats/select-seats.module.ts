@@ -8,6 +8,7 @@ import { GridComponent } from './components/grid/grid.component';
 import { PlaneTopComponent } from './components/plane-top/plane-top.component';
 import { DefaultBackgroundImageDirective } from './directives/default-background-image.directive';
 import { HoverBackgroundImageDirective } from './directives/hover-background-image.directive';
+import { CheckedBackgroundImageDirective } from './directives/checked-background-image.directive';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HoverBackgroundImageDirective } from './directives/hover-background-ima
     GridComponent,
     PlaneTopComponent,
     DefaultBackgroundImageDirective,
-    HoverBackgroundImageDirective
+    HoverBackgroundImageDirective,
+    CheckedBackgroundImageDirective
   ],
   imports: [
     CommonModule,
