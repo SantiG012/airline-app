@@ -10,8 +10,10 @@ export class CheckedBackgroundImageDirective {
   constructor(private elementRef:ElementRef,
               private seatConfirmedStatusService:SeatConfirmedStatusService) { }
   type!:string;
+  seatId!:string;
 
   ngOnInit() {
+    this.seatId = this.elementRef.nativeElement.getAttribute('id');
     this.type = this.elementRef.nativeElement.getAttribute('data-tipo-asiento');
   }
 
@@ -19,6 +21,6 @@ export class CheckedBackgroundImageDirective {
   @HostListener('click') onClick() {
     const BACKGROUND = seatsCheckedBackground[this.type];
     this.elementRef.nativeElement.style.backgroundImage = `url(${BACKGROUND})`;
-    this.seatConfirmedStatusService.setSeatStatus(true);
+    this.seatConfirmedStatusService.setSeatStatus(this.seatId,true);
   }
 }
