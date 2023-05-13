@@ -1,5 +1,4 @@
 .plane{
-    background-color: gray;
     height: 90rem;
     display: flex;
     flex-direction: row;
@@ -14,9 +13,4 @@
     grid-template-columns: repeat(2, 4rem);
     grid-template-rows: repeat(15, 4rem);
     grid-gap: 1.5rem;
-    background-color: blue;
-}
-
-.plane__seat{
-    
 }
