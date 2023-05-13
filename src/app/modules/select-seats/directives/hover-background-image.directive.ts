@@ -13,7 +13,6 @@ export class HoverBackgroundImageDirective {
               private seatConfirmedStatusService:SeatConfirmedStatusService) { }
 
   ngOnInit() {
-    const BOOKING = this.elementRef.nativeElement.getAttribute('data-reserva-id');
     this.Type = this.elementRef.nativeElement.getAttribute('data-tipo-asiento');
   }
 
