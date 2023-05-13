@@ -4,7 +4,9 @@ import { SeadConfirmedStatusDTO } from 'src/app/DTOs/SeadConfirmedStatusDTO';
 @Injectable()
 export class SeatConfirmedStatusService {
   seatConfirmedStatusDTO!: SeadConfirmedStatusDTO;
-  constructor() { }
+  constructor() { 
+    this.seatConfirmedStatusDTO = {};
+  }
 
   getSeatStatus(seatId:string): boolean {
     return this.seatConfirmedStatusDTO[seatId] || false; // if undefined, return false
