@@ -8,7 +8,6 @@ import { SeatConfirmedStatusService } from '../services/seat-status.service';
 })
 export class HoverBackgroundImageDirective {
   Type!: string;
-  seatStatus!:boolean;
 
   constructor(private elementRef:ElementRef,
               private seatConfirmedStatusService:SeatConfirmedStatusService) { }
@@ -16,12 +15,6 @@ export class HoverBackgroundImageDirective {
   ngOnInit() {
     const BOOKING = this.elementRef.nativeElement.getAttribute('data-reserva-id');
     this.Type = this.elementRef.nativeElement.getAttribute('data-tipo-asiento');
-    this.seatStatus = this.seatConfirmedStatusService.getSeatStatus();
-
-
-    if (!BOOKING || this.seatStatus) {
-      return;
-    }
   }
 
   @HostListener('mouseenter') onMouseEnter() {
