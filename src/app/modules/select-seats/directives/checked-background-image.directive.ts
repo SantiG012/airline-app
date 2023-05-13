@@ -21,6 +21,7 @@ export class CheckedBackgroundImageDirective {
   @HostListener('click') onClick() {
     const BACKGROUND = seatsCheckedBackground[this.type];
     this.elementRef.nativeElement.style.backgroundImage = `url(${BACKGROUND})`;
+    this.elementRef.nativeElement.style.pointerEvents = 'none';
     this.seatConfirmedStatusService.setSeatStatus(this.seatId,true);
   }
 }
