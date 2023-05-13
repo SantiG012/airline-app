@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
+import { SeadConfirmedStatusDTO } from 'src/app/DTOs/SeadConfirmedStatusDTO';
 
 @Injectable()
 export class SeatConfirmedStatusService {
-  setStatus!: boolean;
+  seatConfirmedStatusDTO!: SeadConfirmedStatusDTO;
   constructor() { }
 
-  getSeatStatus(): boolean {
-    return this.setStatus;
+  getSeatStatus(seatId:string): boolean {
+    return this.seatConfirmedStatusDTO[seatId] || false; // if undefined, return false
   }
 
-  setSeatStatus(status: boolean): void {
-    this.setStatus = status;
+  setSeatStatus(seatId:string,status: boolean): void {
+    this.seatConfirmedStatusDTO[seatId] = status;
   }
 }
