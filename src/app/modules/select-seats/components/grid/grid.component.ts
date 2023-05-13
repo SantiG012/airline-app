@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DetalleAsiento } from 'src/app/interfaces/DetalleAsiento';
 import {SeatsService} from 'src/app/modules/data-bases-services/gets/seats.service';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-grid',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./grid.component.css']
 })
 export class GridComponent {
-  seats!: DetalleAsiento[];
+  seats$!:Observable<DetalleAsiento[]>;
 
   constructor(private seatsService: SeatsService,
               private route: ActivatedRoute) {}
@@ -17,11 +18,7 @@ export class GridComponent {
   ngOnInit(){
     const flightId = this.route.snapshot.queryParamMap.get('ID')!;
 
-    this.seatsService.getSeatsByFlightId(flightId).subscribe(
-      (seats: DetalleAsiento[]) => {
-        this.seats = seats;
-      }
-    );
+    this.seats$ = this.seatsService.getSeatsByFlightId(flightId);
   }
 
 }
