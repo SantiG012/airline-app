@@ -16,24 +16,21 @@ export class HoverBackgroundImageDirective {
     this.Type = this.elementRef.nativeElement.getAttribute('data-tipo-asiento');
   }
 
-  validateSeatStatus() {
+  validateSeatStatus():boolean {
     const seatId = this.elementRef.nativeElement.getAttribute('id');
     const seatStatus = this.seatConfirmedStatusService.getSeatStatus(seatId);
-
-    if (seatStatus) {
-      return;
-    }
+    return seatStatus;
   }
       
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.validateSeatStatus();
+    if (this.validateSeatStatus()) return;
     const BACKGROUND = seatsHoverBackground[this.Type];
     this.elementRef.nativeElement.style.backgroundImage = `url(${BACKGROUND})`;
   }
 
   @HostListener('mouseleave') onMouseLeave() {
-    this.validateSeatStatus();
+    if (this.validateSeatStatus()) return;
     const BACKGROUND = defaultSeatsBackground[this.Type];
     this.elementRef.nativeElement.style.backgroundImage = `url(${BACKGROUND})`;
   }
