@@ -1,20 +1,25 @@
 import { Directive,ElementRef, HostListener} from '@angular/core';
 import { seatsHoverBackground } from 'src/app/constants/seatsHoverBackground';
 import {defaultSeatsBackground} from 'src/app/constants/defaultSeatsBackground';
+import { SeatConfirmedStatusService } from '../services/seat-status.service';
 
 @Directive({
   selector: '[appHoverBackgroundImage]'
 })
 export class HoverBackgroundImageDirective {
   Type!: string;
+  seatStatus!:boolean;
 
-  constructor(private elementRef:ElementRef) { }
+  constructor(private elementRef:ElementRef,
+              private seatConfirmedStatusService:SeatConfirmedStatusService) { }
 
   ngOnInit() {
     const BOOKING = this.elementRef.nativeElement.getAttribute('data-reserva-id');
     this.Type = this.elementRef.nativeElement.getAttribute('data-tipo-asiento');
+    this.seatStatus = this.seatConfirmedStatusService.getSeatStatus();
 
-    if (!BOOKING) {
+
+    if (!BOOKING || this.seatStatus) {
       return;
     }
   }
