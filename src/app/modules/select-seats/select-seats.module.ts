@@ -10,6 +10,7 @@ import { DefaultBackgroundImageDirective } from './directives/default-background
 import { HoverBackgroundImageDirective } from './directives/hover-background-image.directive';
 import { CheckedBackgroundImageDirective } from './directives/checked-background-image.directive';
 import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
+import { SeatStatusService } from './services/seat-status.service';
 
 
 @NgModule({
@@ -26,6 +27,9 @@ import { DataBasesServicesModule } from '../data-bases-services/data-bases-servi
     CommonModule,
     SelectSeatsRoutingModule,
     DataBasesServicesModule
+  ],
+  providers:[
+    SeatStatusService
   ]
 })
 export class SelectSeatsModule { }
