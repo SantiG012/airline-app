@@ -1,4 +1,5 @@
 .plane{
+    border: .2rem solid #e2e2e2;
     height: 90rem;
     display: flex;
     flex-direction: row;
