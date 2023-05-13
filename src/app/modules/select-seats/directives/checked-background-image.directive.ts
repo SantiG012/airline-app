@@ -1,12 +1,14 @@
 import { Directive,ElementRef,HostListener} from '@angular/core';
 import { seatsCheckedBackground } from 'src/app/constants/checkedSeatBackground';
+import { SeatConfirmedStatusService } from '../services/seat-status.service';
 
 @Directive({
   selector: '[appCheckedBackgroundImage]'
 })
 export class CheckedBackgroundImageDirective {
 
-  constructor(private elementRef:ElementRef) { }
+  constructor(private elementRef:ElementRef,
+              private seatConfirmedStatusService:SeatConfirmedStatusService) { }
   type!:string;
 
   ngOnInit() {
@@ -17,5 +19,6 @@ export class CheckedBackgroundImageDirective {
   @HostListener('click') onClick() {
     const BACKGROUND = seatsCheckedBackground[this.type];
     this.elementRef.nativeElement.style.backgroundImage = `url(${BACKGROUND})`;
+    this.seatConfirmedStatusService.setSeatStatus(true);
   }
 }
