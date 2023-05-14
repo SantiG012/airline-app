@@ -8,7 +8,7 @@ import { SeatStatusService } from '../services/seat-status.service';
 export class CheckedBackgroundImageDirective {
 
   constructor(private elementRef:ElementRef,
-              private SeatStatusService:SeatStatusService) { }
+              private seatStatusService:SeatStatusService) { }
   type!:string;
   seatId!:string;
 
@@ -22,13 +22,36 @@ export class CheckedBackgroundImageDirective {
     this.elementRef.nativeElement.style.backgroundImage = `url(${BACKGROUND})`;
   }
 
-  private unableSeat() {
+  private disableSeat() {
     this.elementRef.nativeElement.style.pointerEvents = 'none';
   }
 
+  private getRowAndColumn():{row:string,column:string} {
+    const row = this.elementRef.nativeElement.getAttribute('data-fila');
+    const column = this.elementRef.nativeElement.getAttribute('data-columna');
+    return {row,column};
+  }
+
+  private addNewSeat():void {
+    const {row,column} = this.getRowAndColumn();
+    this.seatStatusService.addSeat(this.seatId,row,column);
+  }
+
+  private checkSeat(index:number):void {
+    this.seatStatusService.setSeatStatus(index,true);
+  }
+
+
   @HostListener('click') onClick() {
     this.setSeatBackgroundImage();
-    this.unableSeat();
-    this.SeatStatusService.setSeatStatus(this.seatId,true);
+    this.disableSeat();
+    const index = this.seatStatusService.searchSeat(this.seatId);
+
+    if (index === -1) {
+      this.addNewSeat();
+    }
+    else {
+      this.checkSeat(index);
+    }
   }
 }
