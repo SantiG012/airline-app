@@ -14,8 +14,9 @@ export class SeatConfirmedStatusService {
     return this.seatConfirmedStatusDTO[index].status;
   }
 
-  setSeatStatus(seatId:string,status: boolean): void {
-    this.seatConfirmedStatusDTO[seatId] = status;
+  setSeatStatus(seatId:string,status:boolean) {
+    const index = this.searchSeat(seatId);
+    this.seatConfirmedStatusDTO[index].status = status;
   }
 
   private searchSeat(seatId:string): number {
