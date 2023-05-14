@@ -29,7 +29,7 @@ export class SeatConfirmedStatusService {
   }
   
 
-  private searchSeat(seatId:string): number {
+  searchSeat(seatId:string): number {
     return this.seatConfirmedStatusDTO.findIndex(seat => seat.seatId === seatId);
   }
 }
