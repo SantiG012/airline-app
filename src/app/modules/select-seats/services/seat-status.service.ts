@@ -1,35 +1,35 @@
 import { Injectable } from '@angular/core';
-import { SeatConfirmedStatusDTO } from 'src/app/DTOs/SeatConfirmedStatusDTO';
+import { SeatStatusDTO } from 'src/app/DTOs/SeatStatusDTO';
 
 @Injectable()
 export class SeatConfirmedStatusService {
-  seatConfirmedStatusDTO!: SeatConfirmedStatusDTO[];
+  seatStatusDTO!: SeatStatusDTO[];
   constructor() { 
-    this.seatConfirmedStatusDTO = [];
+    this.seatStatusDTO = [];
   }
 
   getSeatStatus(seatId:string): boolean {
     const index = this.searchSeat(seatId);
     if (index === -1) return false;
-    return this.seatConfirmedStatusDTO[index].status;
+    return this.seatStatusDTO[index].status;
   }
 
   setSeatStatus(index:number,status:boolean) {
-    this.seatConfirmedStatusDTO[index].status = status;
+    this.seatStatusDTO[index].status = status;
   }
 
   addSeat(seatId: string, row: string, column: string): void {
-    const seat: SeatConfirmedStatusDTO = {
+    const seat: SeatStatusDTO = {
       seatId,
       status: true,
       row,
       column
     };
-    this.seatConfirmedStatusDTO.push(seat);
+    this.seatStatusDTO.push(seat);
   }
   
 
   searchSeat(seatId:string): number {
-    return this.seatConfirmedStatusDTO.findIndex(seat => seat.seatId === seatId);
+    return this.seatStatusDTO.findIndex(seat => seat.seatId === seatId);
   }
 }
