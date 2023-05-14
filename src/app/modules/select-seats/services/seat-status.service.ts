@@ -3,7 +3,7 @@ import { SeatStatusDTO } from 'src/app/DTOs/SeatStatusDTO';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable()
-export class SeatConfirmedStatusService {
+export class SeatStatusService {
   private seatStatusDTO!: SeatStatusDTO[];
   private confirmedSeatsSubject = new Subject<SeatStatusDTO[]>();
   private nonConfirmedSeatsSubject = new Subject<SeatStatusDTO[]>();
