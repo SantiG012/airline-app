@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SeadConfirmedStatusDTO } from 'src/app/DTOs/SeadConfirmedStatusDTO';
+import { SeadConfirmedStatusDTO } from 'src/app/DTOs/SeatConfirmedStatusDTO';
 
 @Injectable()
 export class SeatConfirmedStatusService {
