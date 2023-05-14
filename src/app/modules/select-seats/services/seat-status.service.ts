@@ -19,6 +19,17 @@ export class SeatConfirmedStatusService {
     this.seatConfirmedStatusDTO[index].status = status;
   }
 
+  addSeat(seatId: string, row: string, column: string): void {
+    const seat: SeatConfirmedStatusDTO = {
+      seatId,
+      status: true,
+      row,
+      column
+    };
+    this.seatConfirmedStatusDTO.push(seat);
+  }
+  
+
   private searchSeat(seatId:string): number {
     return this.seatConfirmedStatusDTO.findIndex(seat => seat.seatId === seatId);
   }
