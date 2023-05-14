@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { SeatStatusDTO } from 'src/app/DTOs/SeatStatusDTO';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class SeatConfirmedStatusService {
-  seatStatusDTO!: SeatStatusDTO[];
+  private seatStatusDTO!: SeatStatusDTO[];
+  private confirmedSeatsSubject = new Subject<SeatStatusDTO[]>();
+  private nonConfirmedSeatsSubject = new Subject<SeatStatusDTO[]>();
+
   constructor() { 
     this.seatStatusDTO = [];
   }
@@ -16,6 +20,8 @@ export class SeatConfirmedStatusService {
 
   setSeatStatus(index:number,status:boolean) {
     this.seatStatusDTO[index].status = status;
+    this.updateConfirmedSeats();
+    this.updateNonConfirmedSeats();
   }
 
   addSeat(seatId: string, row: string, column: string): void {
@@ -26,10 +32,27 @@ export class SeatConfirmedStatusService {
       column
     };
     this.seatStatusDTO.push(seat);
+    this.updateConfirmedSeats();
   }
   
 
   searchSeat(seatId:string): number {
     return this.seatStatusDTO.findIndex(seat => seat.seatId === seatId);
+  }
+
+  private updateConfirmedSeats() {
+    this.confirmedSeatsSubject.next(this.seatStatusDTO.filter(seat => seat.status));
+  }
+
+  private updateNonConfirmedSeats() {
+    this.nonConfirmedSeatsSubject.next(this.seatStatusDTO.filter(seat => !seat.status));
+  }
+
+  getConfirmedSeatsObservable():Observable<SeatStatusDTO[]> {
+    return this.confirmedSeatsSubject.asObservable();
+  }
+
+  getNonConfirmedSeatsObservable():Observable<SeatStatusDTO[]> {
+    return this.nonConfirmedSeatsSubject.asObservable();
   }
 }
