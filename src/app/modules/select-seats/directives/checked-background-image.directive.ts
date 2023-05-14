@@ -17,11 +17,18 @@ export class CheckedBackgroundImageDirective {
     this.type = this.elementRef.nativeElement.getAttribute('data-tipo-asiento');
   }
 
-
-  @HostListener('click') onClick() {
+  private setSeatBackgroundImage() {
     const BACKGROUND = seatsCheckedBackground[this.type];
     this.elementRef.nativeElement.style.backgroundImage = `url(${BACKGROUND})`;
+  }
+
+  private unableSeat() {
     this.elementRef.nativeElement.style.pointerEvents = 'none';
+  }
+
+  @HostListener('click') onClick() {
+    this.setSeatBackgroundImage();
+    this.unableSeat();
     this.seatConfirmedStatusService.setSeatStatus(this.seatId,true);
   }
 }
