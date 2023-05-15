@@ -11,6 +11,7 @@ import { SeatHoverImageDirective } from './directives/seat-hover-image.directive
 import { SelectedSeatImageDirective } from './directives/selected-seat-image.directive';
 import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
 import { SeatStatusService } from './services/seat-status.service';
+import { EnableSeatDirective } from './directives/enable-seat.directive';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SeatStatusService } from './services/seat-status.service';
     PlaneTopComponent,
     SeatDefaultImageDirective,
     SeatHoverImageDirective,
-    SelectedSeatImageDirective
+    SelectedSeatImageDirective,
+    EnableSeatDirective
   ],
   imports: [
     CommonModule,
