@@ -1,6 +1,6 @@
 import { Directive,ElementRef, HostListener} from '@angular/core';
-import { seatsHoverBackground } from 'src/app/constants/seatsHoverBackground';
-import {defaultSeatsBackground} from 'src/app/constants/defaultSeatsBackground';
+import { seatsHoverImages} from 'src/app/constants/seats-hover-images';
+import {seatsDefaultImages} from 'src/app/constants/seats-default-images';
 import { SeatStatusService } from '../services/seat-status.service';
 
 @Directive({
@@ -25,13 +25,13 @@ export class SeatHoverImageDirective {
 
   @HostListener('mouseenter') onMouseEnter() {
     if (this.validateSeatStatus()) return;
-    const BACKGROUND = seatsHoverBackground[this.Type];
+    const BACKGROUND = seatsHoverImages[this.Type];
     this.elementRef.nativeElement.style.backgroundImage = `url(${BACKGROUND})`;
   }
 
   @HostListener('mouseleave') onMouseLeave() {
     if (this.validateSeatStatus()) return;
-    const BACKGROUND = defaultSeatsBackground[this.Type];
+    const BACKGROUND = seatsDefaultImages[this.Type];
     this.elementRef.nativeElement.style.backgroundImage = `url(${BACKGROUND})`;
   }
 }

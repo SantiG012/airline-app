@@ -1,5 +1,5 @@
 import { Directive,ElementRef,HostListener} from '@angular/core';
-import { seatsCheckedBackground } from 'src/app/constants/checkedSeatBackground';
+import { selectedSeatsImages } from 'src/app/constants/selected-seats-images';
 import { SeatStatusService } from '../services/seat-status.service';
 
 @Directive({
@@ -18,7 +18,7 @@ export class SelectedSeatImageDirective {
   }
 
   private setSeatBackgroundImage() {
-    const BACKGROUND = seatsCheckedBackground[this.type];
+    const BACKGROUND = selectedSeatsImages[this.type];
     this.elementRef.nativeElement.style.backgroundImage = `url(${BACKGROUND})`;
   }
 

@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input } from '@angular/core';
-import {defaultSeatsBackground} from 'src/app/constants/defaultSeatsBackground';
+import {seatsDefaultImages} from 'src/app/constants/seats-default-images';
 
 @Directive({
   selector: '[appSeatDefaultImage]'
@@ -19,7 +19,7 @@ export class SeatDefaultImageDirective {
       return;
     }
 
-    const BACKGROUND = defaultSeatsBackground[TYPE];
+    const BACKGROUND = seatsDefaultImages[TYPE];
     this.elementRef.nativeElement.style.backgroundImage = `url(${BACKGROUND})`;
   }
 }
