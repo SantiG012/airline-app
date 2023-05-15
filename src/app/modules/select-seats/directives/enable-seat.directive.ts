@@ -1,7 +1,6 @@
 import { Directive,ElementRef} from '@angular/core';
 import{SeatStatusService} from '../services/seat-status.service';
 import { SeatStatusDTO } from 'src/app/DTOs/SeatStatusDTO';
-import { Observable,catchError,of, switchMap} from 'rxjs';
 
 @Directive({
   selector: '[appEnableSeat]'
