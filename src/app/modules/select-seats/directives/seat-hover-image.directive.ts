@@ -4,9 +4,9 @@ import {defaultSeatsBackground} from 'src/app/constants/defaultSeatsBackground';
 import { SeatStatusService } from '../services/seat-status.service';
 
 @Directive({
-  selector: '[appHoverBackgroundImage]'
+  selector: '[appSeatHoverImage]'
 })
-export class HoverBackgroundImageDirective {
+export class SeatHoverImageDirective {
   Type!: string;
 
   constructor(private elementRef:ElementRef,

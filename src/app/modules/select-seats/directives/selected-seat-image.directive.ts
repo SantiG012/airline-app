@@ -3,9 +3,9 @@ import { seatsCheckedBackground } from 'src/app/constants/checkedSeatBackground'
 import { SeatStatusService } from '../services/seat-status.service';
 
 @Directive({
-  selector: '[appCheckedBackgroundImage]'
+  selector: '[appSelectedSeatImage]'
 })
-export class CheckedBackgroundImageDirective {
+export class SelectedSeatImageDirective {
 
   constructor(private elementRef:ElementRef,
               private seatStatusService:SeatStatusService) { }

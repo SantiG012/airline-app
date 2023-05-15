@@ -6,11 +6,11 @@ import { MainComponent } from './components/main/main.component';
 import { SeatComponent } from './components/seat/seat.component';
 import { GridComponent } from './components/grid/grid.component';
 import { PlaneTopComponent } from './components/plane-top/plane-top.component';
-import { DefaultBackgroundImageDirective } from './directives/default-background-image.directive';
-import { HoverBackgroundImageDirective } from './directives/hover-background-image.directive';
-import { CheckedBackgroundImageDirective } from './directives/checked-background-image.directive';
+import { SeatDefaultImageDirective } from './directives/seat-default-image.directive';
+import { SeatHoverImageDirective } from './directives/seat-hover-image.directive';
+import { SelectedSeatImageDirective } from './directives/selected-seat-image.directive';
 import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
-import { SeatConfirmedStatusService } from './services/seat-status.service';
+import { SeatStatusService } from './services/seat-status.service';
 
 
 @NgModule({
@@ -19,9 +19,9 @@ import { SeatConfirmedStatusService } from './services/seat-status.service';
     SeatComponent,
     GridComponent,
     PlaneTopComponent,
-    DefaultBackgroundImageDirective,
-    HoverBackgroundImageDirective,
-    CheckedBackgroundImageDirective
+    SeatDefaultImageDirective,
+    SeatHoverImageDirective,
+    SelectedSeatImageDirective
   ],
   imports: [
     CommonModule,
@@ -29,7 +29,7 @@ import { SeatConfirmedStatusService } from './services/seat-status.service';
     DataBasesServicesModule
   ],
   providers:[
-    SeatConfirmedStatusService
+    SeatStatusService
   ]
 })
 export class SelectSeatsModule { }

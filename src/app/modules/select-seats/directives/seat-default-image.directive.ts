@@ -2,9 +2,9 @@ import { Directive, ElementRef, Input } from '@angular/core';
 import {defaultSeatsBackground} from 'src/app/constants/defaultSeatsBackground';
 
 @Directive({
-  selector: '[appDefaultBackgroundImage]'
+  selector: '[appSeatDefaultImage]'
 })
-export class DefaultBackgroundImageDirective {
+export class SeatDefaultImageDirective {
 
   constructor(private elementRef:ElementRef) { }
   readonly DEFAULT_BACKGROUND = 'https://s.latamairlines.com/images/web-ancillaries/seat-map-icons/disabled.svg';
