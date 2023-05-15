@@ -37,7 +37,7 @@ export class SelectedSeatImageDirective {
     this.seatStatusService.addSeat(this.seatId,row,column);
   }
 
-  private checkSeat(index:number):void {
+  private setSeatCheckedStatus(index:number):void {
     this.seatStatusService.setSeatStatus(index,true);
   }
 
@@ -51,7 +51,7 @@ export class SelectedSeatImageDirective {
       this.addNewSeat();
     }
     else {
-      this.checkSeat(index);
+      this.setSeatCheckedStatus(index);
     }
   }
 }
