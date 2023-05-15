@@ -12,6 +12,14 @@
 .plane__left-seats-column,.plane__right-seats-column{
     display: grid;
     grid-template-columns: repeat(2, 4rem);
-    grid-template-rows: repeat(15, 4rem);
+    grid-template-rows: repeat(16, 4rem);
     grid-gap: 1.5rem;
+}
+
+.plane__column-indicator{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
