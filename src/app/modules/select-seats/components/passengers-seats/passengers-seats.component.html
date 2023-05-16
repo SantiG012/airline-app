@@ -1,6 +1,7 @@
 <div class="passenger-seats">
     <h1 class="passenger-seats__title">Pasajeros</h1>
     <div class="passenger-seats__seats-info-container">
-        <app-seat-info class="passenger-seats__seat-info"></app-seat-info>
+        <app-seat-info class="passenger-seats__seat-info"
+        *ngFor="let seatDTO of confirmedSeats$ |async"></app-seat-info>
     </div>
 </div>
