@@ -9,13 +9,15 @@ export class SelectedSeatImageDirective {
 
   constructor(private elementRef:ElementRef,
               private seatStatusService:SeatStatusService) { }
-  private type!:string;
-  private seatId!:string;
-  
 
-  ngOnInit() {
-    this.seatId = this.elementRef.nativeElement.getAttribute('id');
-    this.type = this.elementRef.nativeElement.getAttribute('data-tipo-asiento');
+  private getType():string {
+    const type = this.elementRef.nativeElement.getAttribute('data-tipo');
+    return type;
+  }
+
+  private getSeatId():string {
+    const seatId = this.elementRef.nativeElement.getAttribute('data-id');
+    return seatId;
   }
 
   private getPrice():string {
@@ -24,7 +26,8 @@ export class SelectedSeatImageDirective {
   }
 
   private setSeatBackgroundImage() {
-    const BACKGROUND = selectedSeatsImages[this.type];
+    const type = this.getType();
+    const BACKGROUND = selectedSeatsImages[type];
     this.elementRef.nativeElement.style.backgroundImage = `url(${BACKGROUND})`;
   }
 
@@ -39,9 +42,10 @@ export class SelectedSeatImageDirective {
   }
 
   private addNewSeat():void {
+    const seatId = this.getSeatId();
     const {row,column} = this.getRowAndColumn();
     const price = this.getPrice();
-    this.seatStatusService.addSeat(this.seatId,price,row,column);
+    this.seatStatusService.addSeat(seatId,price,row,column);
   }
 
   private setSeatCheckedStatus(index:number):void {
@@ -52,7 +56,8 @@ export class SelectedSeatImageDirective {
   @HostListener('click') onClick() {
     this.setSeatBackgroundImage();
     this.disableSeat();
-    const index = this.seatStatusService.searchSeat(this.seatId);
+    const seatId = this.getSeatId();
+    const index = this.seatStatusService.searchSeat(seatId);
 
     if (index === -1) {
       this.addNewSeat();
