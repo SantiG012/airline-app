@@ -32,7 +32,7 @@ export class SeatStatusService {
       row,
       column
     };
-    this.seatStatusDTO.push(seat);
+    this.seatStatusDTO.unshift(seat);
     this.updateConfirmedSeats();
   }
   
