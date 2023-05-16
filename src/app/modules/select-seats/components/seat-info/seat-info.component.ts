@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,Input} from '@angular/core';
+import { SeatStatusDTO } from 'src/app/DTOs/SeatStatusDTO';
 
 @Component({
   selector: 'app-seat-info',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./seat-info.component.css']
 })
 export class SeatInfoComponent {
-
+  @Input() seatDTO!: SeatStatusDTO;
 }
