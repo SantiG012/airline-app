@@ -24,9 +24,10 @@ export class SeatStatusService {
     this.updateNonConfirmedSeats();
   }
 
-  addSeat(seatId: string, row: string, column: string): void {
+  addSeat(seatId: string, price:string, row: string, column: string): void {
     const seat: SeatStatusDTO = {
       seatId,
+      price,
       status: true,
       row,
       column
