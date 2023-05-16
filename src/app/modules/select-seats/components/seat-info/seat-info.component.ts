@@ -7,5 +7,5 @@ import { SeatStatusDTO } from 'src/app/DTOs/SeatStatusDTO';
   styleUrls: ['./seat-info.component.css']
 })
 export class SeatInfoComponent {
-  @Input() seatDTO!: SeatStatusDTO;
+  @Input() seatDTOInput!: SeatStatusDTO;
 }
