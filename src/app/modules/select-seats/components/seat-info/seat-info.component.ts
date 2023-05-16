@@ -1,5 +1,6 @@
 import { Component,Input} from '@angular/core';
 import { SeatStatusDTO } from 'src/app/DTOs/SeatStatusDTO';
+import { SeatStatusService } from '../../services/seat-status.service';
 
 @Component({
   selector: 'app-seat-info',
@@ -8,4 +9,11 @@ import { SeatStatusDTO } from 'src/app/DTOs/SeatStatusDTO';
 })
 export class SeatInfoComponent {
   @Input() seatDTOInput!: SeatStatusDTO;
+
+  constructor(private seatStatusService:SeatStatusService) { }
+
+  setSeatUncheckedStatus(seatId:string):void {
+    const index = this.seatStatusService.searchSeat(seatId);
+    this.seatStatusService.setSeatStatus(index,false);
+  }
 }

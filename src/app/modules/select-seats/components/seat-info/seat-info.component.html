@@ -6,7 +6,7 @@
         </div>
         <p class="seat-info__passenger">Pasajero 1</p>
         <p class="seat-info__price">COP {{seatDTOInput.price}}</p>
-        <button class="seat-info__delete-seat-button">
+        <button class="seat-info__delete-seat-button" (click)="setSeatUncheckedStatus(seatDTOInput.seatId)">
             <mat-icon>close</mat-icon>
         </button>
     </li>
