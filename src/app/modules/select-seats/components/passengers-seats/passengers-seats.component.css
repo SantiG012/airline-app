@@ -1,0 +1,26 @@
+.passenger-seats{
+    width: 20vw;
+    height: 80vh;
+    border: .2rem solid black;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: first baseline;
+    align-items: center;
+}
+
+.passenger-seats__title{
+    font-size: 2rem;
+    color: #210885;
+    margin: .5rem;
+}
+
+.passenger-seats__seats-info-container{
+    width: 100%;
+    height: 80%;
+    margin-top: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: first baseline;
+    align-items: center;
+}

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import {MatIconModule} from '@angular/material/icon';
 import { SelectSeatsRoutingModule } from './select-seats-routing.module';
 import { MainComponent } from './components/main/main.component';
 import { SeatComponent } from './components/seat/seat.component';
@@ -32,7 +32,8 @@ import { SeatInfoComponent } from './components/seat-info/seat-info.component';
   imports: [
     CommonModule,
     SelectSeatsRoutingModule,
-    DataBasesServicesModule
+    DataBasesServicesModule,
+    MatIconModule
   ],
   providers:[
     SeatStatusService
