@@ -18,7 +18,7 @@
 }
 
 app-passengers-seats{
-    position: absolute;
+    position: fixed;
     top: 5.5rem;
     right: 0.5rem;
 }
