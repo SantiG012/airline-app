@@ -9,12 +9,18 @@ export class SelectedSeatImageDirective {
 
   constructor(private elementRef:ElementRef,
               private seatStatusService:SeatStatusService) { }
-  type!:string;
-  seatId!:string;
+  private type!:string;
+  private seatId!:string;
+  
 
   ngOnInit() {
     this.seatId = this.elementRef.nativeElement.getAttribute('id');
     this.type = this.elementRef.nativeElement.getAttribute('data-tipo-asiento');
+  }
+
+  private getPrice():string {
+    const price = this.elementRef.nativeElement.getAttribute('data-precio');
+    return price;
   }
 
   private setSeatBackgroundImage() {
@@ -34,7 +40,8 @@ export class SelectedSeatImageDirective {
 
   private addNewSeat():void {
     const {row,column} = this.getRowAndColumn();
-    this.seatStatusService.addSeat(this.seatId,row,column);
+    const price = this.getPrice();
+    this.seatStatusService.addSeat(this.seatId,price,row,column);
   }
 
   private setSeatCheckedStatus(index:number):void {
