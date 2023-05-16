@@ -7,9 +7,18 @@ export class SeatStatusService {
   private seatStatusDTO!: SeatStatusDTO[];
   private confirmedSeatsSubject = new Subject<SeatStatusDTO[]>();
   private nonConfirmedSeatsSubject = new Subject<SeatStatusDTO[]>();
+  private maxSeats!: number;
 
   constructor() { 
     this.seatStatusDTO = [];
+  }
+
+  setMaxSeats(maxSeats:number) {
+    this.maxSeats = maxSeats;
+  }
+
+  checkIfMaxSeatsReached():boolean {
+    return this.seatStatusDTO.filter(seat => seat.status).length === this.maxSeats;
   }
 
   getSeatStatus(seatId:string): boolean {

@@ -48,6 +48,7 @@ export class SelectedSeatImageDirective {
 
 
   @HostListener('click') onClick() {
+    if (this.seatStatusService.checkIfMaxSeatsReached()) return;
     this.setSeatBackgroundImage();
     this.disableSeat();
     const index = this.seatStatusService.searchSeat(this.seatId);
