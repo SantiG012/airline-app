@@ -16,3 +16,9 @@
 .plane-container .plane{
     min-width: 30rem;
 }
+
+app-passengers-seats{
+    position: absolute;
+    top: 5.5rem;
+    right: 0.5rem;
+}
