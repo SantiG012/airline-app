@@ -25,3 +25,14 @@
     justify-content: first baseline;
     align-items: center;
 }
+
+.passenger-seats__continue-button{
+    width: 80%;
+    height: 3rem;
+    border: none;
+    border-radius: .5rem;
+    background-color: #e8114b;
+    color: #fff;
+    font-size: 1.3rem;
+    font-family: "LATAM Sans", "Trebuchet MS", sans-serif;
+}

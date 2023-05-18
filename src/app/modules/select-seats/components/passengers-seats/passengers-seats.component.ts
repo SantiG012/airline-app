@@ -21,4 +21,8 @@ export class PassengersSeatsComponent {
     this.seatStatusService.setMaxSeats(maxSeats);
   }
 
+  onConfirmSeats(){
+    //TODO
+  }
+
 }
