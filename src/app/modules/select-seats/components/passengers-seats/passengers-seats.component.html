@@ -7,4 +7,5 @@
         [passengerNumber]="i+1"></app-seat-info>
     </div>
     <button class="passenger-seats__continue-button" (click)="onConfirmSeats()">Confirmar</button>
+    <div class="passenger-seats__hint" *ngIf="seatsLimitReached">Seleccione {{maxSeats}} asientos</div>
 </div>

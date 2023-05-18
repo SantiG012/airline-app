@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PassengersSeatsComponent {
   confirmedSeats$!:Observable<SeatStatusDTO[]>;
   maxSeats!:number;
+  seatsLimitReached:boolean=false;
 
   constructor(private seatStatusService:SeatStatusService,
               private route:ActivatedRoute) { }
@@ -22,8 +23,16 @@ export class PassengersSeatsComponent {
     this.seatStatusService.setMaxSeats(this.maxSeats);
   }
 
+  private checkIfMaxSeatsReached():void{
+    this.seatsLimitReached=this.seatStatusService.checkIfMaxSeatsReached();
+  }
+
   onConfirmSeats(){
-    //TODO
+    this.checkIfMaxSeatsReached();
+
+    if (!this.seatsLimitReached) return;
+
+    //TODO: Navigate to next page
   }
 
 }
