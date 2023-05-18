@@ -11,14 +11,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PassengersSeatsComponent {
   confirmedSeats$!:Observable<SeatStatusDTO[]>;
+  maxSeats!:number;
 
   constructor(private seatStatusService:SeatStatusService,
               private route:ActivatedRoute) { }
 
   ngOnInit(){
     this.confirmedSeats$=this.seatStatusService.getConfirmedSeatsObservable();
-    const maxSeats=parseInt(this.route.snapshot.queryParamMap.get('SEATS')!);
-    this.seatStatusService.setMaxSeats(maxSeats);
+    this.maxSeats=parseInt(this.route.snapshot.queryParamMap.get('SEATS')!);
+    this.seatStatusService.setMaxSeats(this.maxSeats);
   }
 
   onConfirmSeats(){
