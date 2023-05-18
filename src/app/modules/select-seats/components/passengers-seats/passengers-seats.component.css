@@ -34,5 +34,16 @@
     background-color: #e8114b;
     color: #fff;
     font-size: 1.3rem;
-    font-family: "LATAM Sans", "Trebuchet MS", sans-serif;
+    font-family: "Trebuchet MS", sans-serif;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+}
+
+.passenger-seats__continue-button:hover{
+    opacity: .9;
+    color: #fff;
+}
+
+.passenger-seats__continue-button:active{
+    transform: scale(.99);
 }
