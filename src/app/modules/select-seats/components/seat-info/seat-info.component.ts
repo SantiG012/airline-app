@@ -9,7 +9,7 @@ import { SeatStatusService } from '../../services/seat-status.service';
 })
 export class SeatInfoComponent {
   @Input() seatDTOInput!: SeatStatusDTO;
-  @Input() passengerNumber!:string;
+  @Input() passengerNumber!:number;
 
   constructor(private seatStatusService:SeatStatusService) { }
 
