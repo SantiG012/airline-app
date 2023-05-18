@@ -24,13 +24,13 @@ export class PassengersSeatsComponent {
   }
 
   private checkIfMaxSeatsReached():void{
-    this.seatsLimitReached=this.seatStatusService.checkIfMaxSeatsReached();
+    this.seatsLimitReached=!this.seatStatusService.checkIfMaxSeatsReached();
   }
 
   onConfirmSeats(){
     this.checkIfMaxSeatsReached();
 
-    if (!this.seatsLimitReached) return;
+    if (this.seatsLimitReached) return;
 
     //TODO: Navigate to next page
   }
