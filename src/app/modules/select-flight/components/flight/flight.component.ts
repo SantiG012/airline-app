@@ -3,6 +3,7 @@ import { Input } from '@angular/core';
 import { Vuelo } from 'src/app/interfaces/vuelo';
 import { DatePipe } from '@angular/common'; 
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-flight',
@@ -14,7 +15,8 @@ export class FlightComponent {
   SEATS!:string;
 
   constructor(private datePipe: DatePipe,
-            private route: ActivatedRoute) { }
+            private route: ActivatedRoute,
+            private router:Router) { }
 
   ngOnInit(): void {
     this.SEATS = this.route.snapshot.queryParamMap.get('SEATS')!;
@@ -26,5 +28,9 @@ export class FlightComponent {
 
   getFormattedDate(date:string): string {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
+  }
+
+  onClick() {
+    this.router.navigate(['seleccionarAsientos'], { queryParams: { ID:this.flight.id,SEATS:this.SEATS} });
   }
 }

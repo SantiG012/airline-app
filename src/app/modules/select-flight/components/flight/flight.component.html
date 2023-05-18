@@ -1,7 +1,5 @@
 <mat-spinner class="mat-spinner-color" *ngIf="false"></mat-spinner>
-<a class="flight-container" *ngIf="flight"
-    [routerLink]="['seleccionarAsientos']"
-    [queryParams]="{ID:flight.id, SEATS:SEATS}">
+<a class="flight-container" *ngIf="flight" (click)="onClick()">
     <div class="hour-city-container">
         <div class="hour-container">
             <span class="hour">{{getFormattedHour(flight.fechaHoraSalida)}}</span>
