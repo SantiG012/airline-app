@@ -5,6 +5,7 @@ import { SelectedSeatDTO } from 'src/app/DTOs/seatDTOs/selectedSeatDTO';
 import { Observable, tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import{ SelectedSeatsTransferService } from 'src/app/root-level-services/shared-services/selected-seats-transfer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-passengers-seats',
@@ -19,7 +20,8 @@ export class PassengersSeatsComponent {
 
   constructor(private seatStatusService:SeatStatusService,
               private selectedSeatsTransferService:SelectedSeatsTransferService,
-              private route:ActivatedRoute) { }
+              private route:ActivatedRoute,
+              private router:Router ) { }
 
   ngOnInit(){
     this.confirmedSeats$=this.seatStatusService.getConfirmedSeatsObservable().pipe(
@@ -47,7 +49,7 @@ export class PassengersSeatsComponent {
 
     if (this.seatsLimitReached) return;
 
-    //TODO: Navigate to next page
+    this.router.navigate(['pasajeros'], { queryParams: { FLIGHTID:this.route.snapshot.queryParamMap.get('ID')} });
   }
 
 }
