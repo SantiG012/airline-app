@@ -4,7 +4,7 @@ import { SelectedSeatDTO } from 'src/app/DTOs/seatDTOs/selectedSeatDTO';
 @Injectable({
   providedIn: 'root'
 })
-export class SelectedSeatTransferService {
+export class SelectedSeatsTransferService {
   private selectedSeats!: SelectedSeatDTO[];
   constructor() { }
 
