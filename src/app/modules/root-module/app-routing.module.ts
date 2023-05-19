@@ -15,6 +15,11 @@ const routes: Routes = [
       ID: '',
       SEATS: ''}
     }
+  },{
+    path:'pasajeros', loadChildren: () => import('src/app/modules/passengers-info/passengers-info.module').then(m => m.PassengersInfoModule),
+    data: {queryParams:{
+      FLIGHTID: ''}
+    }
   }
 ];
 
