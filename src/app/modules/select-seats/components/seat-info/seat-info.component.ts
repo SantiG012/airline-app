@@ -1,5 +1,5 @@
 import { Component,Input} from '@angular/core';
-import { SeatStatusDTO } from 'src/app/DTOs/SeatStatusDTO';
+import { SeatStatusDTO } from 'src/app/DTOs/seatDTOs/SeatStatusDTO';
 import { SeatStatusService } from '../../services/seat-status.service';
 
 @Component({

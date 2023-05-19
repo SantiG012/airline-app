@@ -1,6 +1,6 @@
 import { Directive,ElementRef} from '@angular/core';
 import{SeatStatusService} from '../services/seat-status.service';
-import { SeatStatusDTO } from 'src/app/DTOs/SeatStatusDTO';
+import { SeatStatusDTO } from 'src/app/DTOs/seatDTOs/SeatStatusDTO';
 import { seatsDefaultImages } from 'src/app/constants/seats-default-images';
 
 @Directive({

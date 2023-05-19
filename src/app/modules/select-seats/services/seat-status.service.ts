@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SeatStatusDTO } from 'src/app/DTOs/SeatStatusDTO';
+import { SeatStatusDTO } from 'src/app/DTOs/seatDTOs/SeatStatusDTO';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable()
