@@ -65,4 +65,8 @@ export class SeatStatusService {
   getNonConfirmedSeatsObservable():Observable<SeatStatusDTO[]> {
     return this.nonConfirmedSeatsSubject.asObservable();
   }
+
+  getSeatStatusDTOArray():SeatStatusDTO[] {
+    return this.seatStatusDTO.filter(seat => seat.status);
+  }
 }

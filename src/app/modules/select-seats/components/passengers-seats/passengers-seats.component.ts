@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class PassengersSeatsComponent {
   confirmedSeats$!:Observable<SeatStatusDTO[]>;
-  selectedSeats!:SelectedSeatDTO[];
+  selectedSeats:SelectedSeatDTO[]=[];
   maxSeats!:number;
   seatsLimitReached:boolean=false;
 
@@ -24,14 +24,7 @@ export class PassengersSeatsComponent {
               private router:Router ) { }
 
   ngOnInit(){
-    this.confirmedSeats$=this.seatStatusService.getConfirmedSeatsObservable().pipe(
-      tap((seats:SeatStatusDTO[])=>{
-        seats.forEach((seat:SeatStatusDTO)=>{
-          this.selectedSeats=[];
-          this.selectedSeats.push({seatId:seat.seatId,price:seat.price});
-        });
-      })
-    );
+    this.confirmedSeats$=this.seatStatusService.getConfirmedSeatsObservable();
     this.maxSeats=parseInt(this.route.snapshot.queryParamMap.get('SEATS')!);
     this.seatStatusService.setMaxSeats(this.maxSeats);
   }
@@ -40,7 +33,17 @@ export class PassengersSeatsComponent {
     this.seatsLimitReached=!this.seatStatusService.checkIfMaxSeatsReached();
   }
 
+  private setSelectedSeats():void{
+    this.seatStatusService.getSeatStatusDTOArray().forEach(seat=>{
+      this.selectedSeats.push({
+        seatId:seat.seatId,
+        price:seat.price,
+      })
+    }
+  );
+  }
   ngOnDestroy(){
+    this.setSelectedSeats();
     this.selectedSeatsTransferService.setSelectedSeats(this.selectedSeats);
   }
 
