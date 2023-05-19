@@ -45,6 +45,7 @@ export class PassengersSeatsComponent {
   ngOnDestroy(){
     this.setSelectedSeats();
     this.selectedSeatsTransferService.setSelectedSeats(this.confirmedSeats);
+    this.seatStatusService.resetSeatsStatusDTO();
   }
 
   onConfirmSeats(){

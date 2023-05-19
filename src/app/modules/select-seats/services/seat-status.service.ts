@@ -69,4 +69,9 @@ export class SeatStatusService {
   getSeatStatusDTOArray():SeatStatusDTO[] {
     return this.seatStatusDTO.filter(seat => seat.status);
   }
+
+  resetSeatsStatusDTO():void {
+    this.seatStatusDTO = [];
+  }
+
 }
