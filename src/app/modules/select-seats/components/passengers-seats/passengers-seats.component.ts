@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { SeatStatusService } from '../../services/seat-status.service';
 import { SeatStatusDTO } from 'src/app/DTOs/seatDTOs/SeatStatusDTO';
-import { SelectedSeatDTO } from 'src/app/DTOs/seatDTOs/selectedSeatDTO';
-import { Observable, tap } from 'rxjs';
+import { ConfirmedSeatDTO } from 'src/app/DTOs/seatDTOs/confirmedSeatDTO';
+import { Observable} from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import{ SelectedSeatsTransferService } from 'src/app/root-level-services/shared-services/selected-seats-transfer.service';
 import { Router } from '@angular/router';
@@ -13,8 +13,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./passengers-seats.component.css']
 })
 export class PassengersSeatsComponent {
-  confirmedSeats$!:Observable<SeatStatusDTO[]>;
-  selectedSeats:SelectedSeatDTO[]=[];
+  selectedSeats$!:Observable<SeatStatusDTO[]>;
+  confirmedSeats:ConfirmedSeatDTO[]=[];
   maxSeats!:number;
   seatsLimitReached:boolean=false;
 
@@ -24,7 +24,7 @@ export class PassengersSeatsComponent {
               private router:Router ) { }
 
   ngOnInit(){
-    this.confirmedSeats$=this.seatStatusService.getConfirmedSeatsObservable();
+    this.selectedSeats$=this.seatStatusService.getConfirmedSeatsObservable();
     this.maxSeats=parseInt(this.route.snapshot.queryParamMap.get('SEATS')!);
     this.seatStatusService.setMaxSeats(this.maxSeats);
   }
@@ -35,7 +35,7 @@ export class PassengersSeatsComponent {
 
   private setSelectedSeats():void{
     this.seatStatusService.getSeatStatusDTOArray().forEach(seat=>{
-      this.selectedSeats.push({
+      this.confirmedSeats.push({
         seatId:seat.seatId,
         price:seat.price,
       })
@@ -44,7 +44,7 @@ export class PassengersSeatsComponent {
   }
   ngOnDestroy(){
     this.setSelectedSeats();
-    this.selectedSeatsTransferService.setSelectedSeats(this.selectedSeats);
+    this.selectedSeatsTransferService.setSelectedSeats(this.confirmedSeats);
   }
 
   onConfirmSeats(){

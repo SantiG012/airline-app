@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { SelectedSeatDTO } from 'src/app/DTOs/seatDTOs/selectedSeatDTO';
+import { ConfirmedSeatDTO } from 'src/app/DTOs/seatDTOs/confirmedSeatDTO';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SelectedSeatsTransferService {
-  private selectedSeats!: SelectedSeatDTO[];
+  private selectedSeats!: ConfirmedSeatDTO[];
   constructor() { }
 
-  public setSelectedSeats(selectedSeats: SelectedSeatDTO[]): void {
+  public setSelectedSeats(selectedSeats: ConfirmedSeatDTO[]): void {
     this.selectedSeats = selectedSeats;
   }
 
-  public getSelectedSeats(): SelectedSeatDTO[] {
+  public getSelectedSeats(): ConfirmedSeatDTO[] {
     return this.selectedSeats;
   }
 }

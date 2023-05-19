@@ -1,4 +1,4 @@
-export interface SelectedSeatDTO {
+export interface ConfirmedSeatDTO {
     seatId: string;
     price: string;
 }
