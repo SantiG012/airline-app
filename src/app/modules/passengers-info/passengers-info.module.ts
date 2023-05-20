@@ -5,6 +5,8 @@ import { PassengersInfoRoutingModule } from './passengers-info-routing.module';
 import { MainComponent } from './components/main/main.component';
 import { BasicInfoComponent } from './components/basic-info/basic-info.component';
 import { PassengerForumComponent } from './components/passenger-forum/passenger-forum.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { PassengerForumComponent } from './components/passenger-forum/passenger-
   ],
   imports: [
     CommonModule,
-    PassengersInfoRoutingModule
+    PassengersInfoRoutingModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers:[
     PriceCalculationService
