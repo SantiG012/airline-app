@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {SelectedSeatsTransferService} from 'src/app/root-level-services/shared-services/selected-seats-transfer.service';
+import {PriceCalculationService} from 'src/app/modules/passengers-info/services/price-calculation.service';
 import{ConfirmedSeatDTO} from 'src/app/DTOs/seatDTOs/confirmedSeatDTO';
 @Component({
   selector: 'app-basic-info',
@@ -8,10 +9,14 @@ import{ConfirmedSeatDTO} from 'src/app/DTOs/seatDTOs/confirmedSeatDTO';
 })
 export class BasicInfoComponent {
   seats!:ConfirmedSeatDTO[];
-  constructor(private selectedSeatsTransferService: SelectedSeatsTransferService) { }
+  totalPrice!:number;
+
+  constructor(private selectedSeatsTransferService: SelectedSeatsTransferService,
+              private priceCalculationService: PriceCalculationService) { }
 
   ngOnInit(){
     this.seats=this.selectedSeatsTransferService.getSelectedSeats();
+    this.totalPrice=this.priceCalculationService.calculateTotalPrice(this.seats);
   }
 
 }
