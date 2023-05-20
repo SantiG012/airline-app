@@ -28,7 +28,10 @@ li{
 }
 
 .basic-info__item{
-    width: 80%;
+    width: 70%;
+    border: .12rem solid #eeedf9;
+    border-radius: .5rem;
+    padding: .2rem;
 }
 
 .item__title{
@@ -38,13 +41,11 @@ li{
 .column-type{
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .row-type{
     display: flex;
     flex-direction: row;
-    align-items: center;
 }
 
 .space-evenly{
@@ -58,4 +59,12 @@ p,h1,h2,h3{
 .flex-center{
    align-items: center;
    justify-content: center; 
+}
+
+.align-center{
+    align-items: center;
+}
+
+.justify-center{
+    justify-content: center;
 }
