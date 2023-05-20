@@ -5,7 +5,7 @@ import {ConfirmedSeatDTO} from 'src/app/DTOs/seatDTOs/confirmedSeatDTO';
 export class PriceCalculationService {
   constructor() { }
 
-  calculatePrice(seats:ConfirmedSeatDTO[]):number{
+  calculateTotalPrice(seats:ConfirmedSeatDTO[]):number{
     let price=0;
     seats.forEach(seat => {
       price+=this.stringToNumber(seat.price);
