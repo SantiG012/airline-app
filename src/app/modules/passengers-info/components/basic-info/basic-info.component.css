@@ -27,6 +27,14 @@ li{
     border-radius: 50%;
 }
 
+.item__icon_container--shoping-cart{
+    background-color: #4658df;
+}
+
+.item__icon--shoping-cart path{
+    fill: #fff;
+}
+
 .basic-info__item{
     width: 70%;
     border: .12rem solid #eeedf9;
@@ -67,4 +75,8 @@ p,h1,h2,h3{
 
 .justify-center{
     justify-content: center;
+}
+
+.gap-1{
+    gap: 1rem;
 }
