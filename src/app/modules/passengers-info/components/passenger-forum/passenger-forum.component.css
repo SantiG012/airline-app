@@ -1,0 +1,6 @@
+.forms-container{
+    display: grid;
+    grid-template-columns: repeat(2,25rem);
+    column-gap: 3rem;
+}
+
