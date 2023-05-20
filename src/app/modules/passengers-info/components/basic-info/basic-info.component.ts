@@ -9,6 +9,7 @@ import{ConfirmedSeatDTO} from 'src/app/DTOs/seatDTOs/confirmedSeatDTO';
 })
 export class BasicInfoComponent {
   seats!:ConfirmedSeatDTO[];
+  seatsQuantity!:number;
   totalPrice!:number;
 
   constructor(private selectedSeatsTransferService: SelectedSeatsTransferService,
@@ -16,6 +17,7 @@ export class BasicInfoComponent {
 
   ngOnInit(){
     this.seats=this.selectedSeatsTransferService.getSelectedSeats();
+    this.seatsQuantity=this.seats.length;
     this.totalPrice=this.priceCalculationService.calculateTotalPrice(this.seats);
   }
 
