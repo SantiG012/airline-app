@@ -37,6 +37,9 @@ export class PassengerForumComponent {
       ),
     });
   }
-
+  get namesControl() { return this.passengerForm.get('namesControl'); }
+  get lastNamesControl() { return this.passengerForm.get('lastNamesControl'); }
+  get emailControl() { return this.passengerForm.get('emailControl'); }
+  get idControl() { return this.passengerForm.get('idControl'); }
 
 }
