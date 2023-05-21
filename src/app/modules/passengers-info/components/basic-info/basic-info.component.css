@@ -2,11 +2,6 @@ li{
     list-style: none;
 }
 
-.basic-info{
-    background-color: #fff;
-    width: 25rem;
-    height: 50rem;
-}
 
 .basic-info__title{
     width: 100%;

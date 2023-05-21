@@ -1,0 +1,63 @@
+main{
+    width: 100%;
+    height: 55rem;
+}
+
+.basic-info-container{
+    min-width: 15rem;
+    background-color: #fff;
+}
+app-basic-info{
+    width: 20rem;
+    height: 90%;
+    border-bottom: solid 1px rgb(231, 231, 231);
+}
+button{
+    margin-top: .5rem;
+    width: 80%;
+    height: 3rem;
+    background-color: #e8114b;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: "Trebuchet MS", sans-serif;
+    border-radius: .5rem;
+    transition: all .08s ease-in-out;
+}
+
+.forms-container__title{
+    font-size: 1.5rem;
+    font-family: "Trebuchet MS", sans-serif;
+    color: #1b0088;
+}
+
+button:hover{
+    background-color: #e95879;
+}
+
+button:active{
+    background-color: #b20f3a;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-gap{
+    gap: 10rem;
+}
+
+.flex-row-horizontally-centered{
+    justify-content: center;
+}
+
+.flex-column-horizontally-centered{
+    align-items: center;
+}
