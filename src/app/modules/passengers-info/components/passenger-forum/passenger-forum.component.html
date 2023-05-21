@@ -6,25 +6,37 @@
             <mat-label>Nombre</mat-label>
             <input matInput type="text"
             formControlName="namesControl">
-            <!-- <mat-hint>Hint</mat-hint> -->
+            <mat-hint *ngIf="namesControl!.invalid && (namesControl!.dirty || namesControl!.touched)">
+                <mat-hint *ngIf="namesControl!.errors?.['pattern']" >Solo digite letras</mat-hint>   
+                <mat-hint *ngIf="namesControl!.errors?.['required']" >Campo obligatorio</mat-hint>
+            </mat-hint>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Apellido</mat-label>
             <input matInput type="text"
             formControlName="lastNamesControl">
-            <!-- <mat-hint>Hint</mat-hint> -->
+            <mat-hint *ngIf="lastNamesControl!.invalid && (lastNamesControl!.dirty || lastNamesControl!.touched)">
+                <mat-hint *ngIf="lastNamesControl!.errors?.['pattern']" >Solo digite letras</mat-hint>   
+                <mat-hint *ngIf="lastNamesControl!.errors?.['required']" >Campo obligatorio</mat-hint>
+            </mat-hint>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Correo</mat-label>
             <input matInput type="text"
             formControlName="emailControl">
-            <!-- <mat-hint>Hint</mat-hint> -->
+            <mat-hint *ngIf="emailControl!.invalid && (emailControl!.dirty || emailControl!.touched)">
+                <mat-hint *ngIf="emailControl!.errors?.['pattern']" >Correo inválido</mat-hint>   
+                <mat-hint *ngIf="emailControl!.errors?.['required']" >Campo obligatorio</mat-hint>
+            </mat-hint>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>No. Cédula</mat-label>
             <input matInput type="text"
             formControlName="idControl">
-            <!-- <mat-hint>Hint</mat-hint> -->
+            <mat-hint *ngIf="idControl!.invalid && (idControl!.dirty || idControl!.touched)">
+                <mat-hint *ngIf="idControl!.errors?.['pattern']" >Solo digite números</mat-hint>   
+                <mat-hint *ngIf="idControl!.errors?.['required']" >Campo obligatorio</mat-hint>
+            </mat-hint>
         </mat-form-field>
     </div>
     <button mat-raised-button color="primary">Guardar</button>
