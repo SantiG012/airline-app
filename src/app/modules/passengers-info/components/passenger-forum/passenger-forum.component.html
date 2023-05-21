@@ -1,24 +1,29 @@
-<fieldset class="flex-column flex-column-horizontally-centered">
+<fieldset class="flex-column flex-column-horizontally-centered"
+[formGroup]="passengerForm">
     <legend>Pasajero</legend>
     <div class="forms-container">
         <mat-form-field appearance="outline">
             <mat-label>Nombre</mat-label>
-            <input matInput>
+            <input matInput type="text"
+            formControlName="namesControl">
             <!-- <mat-hint>Hint</mat-hint> -->
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Apellido</mat-label>
-            <input matInput>
+            <input matInput type="text"
+            formControlName="lastNamesControl">
             <!-- <mat-hint>Hint</mat-hint> -->
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Correo</mat-label>
-            <input matInput>
+            <input matInput type="text"
+            formControlName="emailControl">
             <!-- <mat-hint>Hint</mat-hint> -->
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>No. Cédula</mat-label>
-            <input matInput>
+            <input matInput type="text"
+            formControlName="idControl">
             <!-- <mat-hint>Hint</mat-hint> -->
         </mat-form-field>
     </div>
