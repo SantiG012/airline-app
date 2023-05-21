@@ -17,6 +17,7 @@ legend{
     display: grid;
     grid-template-columns: repeat(2,18rem);
     column-gap: 3rem;
+    row-gap: 1rem;
 }
 
 button{
