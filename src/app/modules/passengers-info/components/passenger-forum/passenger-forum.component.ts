@@ -8,6 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class PassengerForumComponent {
   passengerForm!: FormGroup;
+  forumCompleted!: boolean;
+  
   ngOnInit() {
     this.passengerForm = new FormGroup({
       namesControl: new FormControl(
@@ -36,6 +38,8 @@ export class PassengerForumComponent {
         ]
       ),
     });
+
+    this.forumCompleted = false;
   }
   get namesControl() { return this.passengerForm.get('namesControl'); }
   get lastNamesControl() { return this.passengerForm.get('lastNamesControl'); }

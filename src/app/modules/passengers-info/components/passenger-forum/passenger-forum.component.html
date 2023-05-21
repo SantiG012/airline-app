@@ -34,10 +34,10 @@
             <input matInput type="email"
             formControlName="idControl">
             <mat-hint *ngIf="idControl!.invalid && (idControl!.dirty || idControl!.touched)">
-                <mat-hint *ngIf="idControl!.errors?.['pattern']" >Solo digite números</mat-hint>   
+                <mat-hint *ngIf="idControl!.errors?.['pattern']" >Digite entre 7 y 10 números</mat-hint>   
                 <mat-hint *ngIf="idControl!.errors?.['required']" >Campo obligatorio</mat-hint>
             </mat-hint>
         </mat-form-field>
     </div>
-    <button mat-raised-button color="primary">Guardar</button>
+    <button mat-raised-button color="primary" [disabled]="!forumCompleted">Guardar</button>
 </fieldset>
