@@ -31,7 +31,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>No. Cédula</mat-label>
-            <input matInput type="text"
+            <input matInput type="email"
             formControlName="idControl">
             <mat-hint *ngIf="idControl!.invalid && (idControl!.dirty || idControl!.touched)">
                 <mat-hint *ngIf="idControl!.errors?.['pattern']" >Solo digite números</mat-hint>   
