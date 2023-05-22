@@ -54,6 +54,10 @@ button:active{
     gap: 10rem;
 }
 
+.flex-short-gap{
+    gap: 1.5rem;
+}
+
 .flex-row-horizontally-centered{
     justify-content: center;
 }
