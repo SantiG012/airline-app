@@ -1,7 +1,8 @@
 <main class="flex-row flex-gap flex-row-horizontally-centered">
     <div class="forms-container">
         <h1 class="forms-container__title">Pasajeros</h1>
-        <app-passenger-forum></app-passenger-forum>
+        <app-passenger-forum *ngFor="let selectedSeat of selectedSeats;index as i"
+        [index]="i"></app-passenger-forum>
     </div>
     <div class="basic-info-container flex-column flex-column-horizontally-centered">
         <app-basic-info></app-basic-info>
