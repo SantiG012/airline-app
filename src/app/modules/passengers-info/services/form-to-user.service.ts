@@ -13,12 +13,13 @@ export class FormToUserService {
     const email:string = form.get('emailControl')?.value;
     const id:string = form.get('idControl')?.value;
 
-    let user!:User;
-
-    user.nombre = names;
-    user.apellido = lastNames;
-    user.correo = email;
-    user.id = id;
+    const user: User = {
+      id: id,
+      nombre: names,
+      apellido: lastNames,
+      correo: email,
+      estado: 'Activo'
+    }
 
     return user;
   }
