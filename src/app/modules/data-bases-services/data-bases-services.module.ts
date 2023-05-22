@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlightsService } from './gets/flights.service';
 import { SeatsService } from './gets/seats.service';
+import { UserPostService } from './posts/user-post.service';
 
 
 
@@ -12,7 +13,8 @@ import { SeatsService } from './gets/seats.service';
   ],
   providers: [
     FlightsService,
-    SeatsService
+    SeatsService,
+    UserPostService
   ]
 })
 export class DataBasesServicesModule { }
