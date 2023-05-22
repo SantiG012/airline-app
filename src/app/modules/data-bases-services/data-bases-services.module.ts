@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FlightsService } from './gets/flights.service';
 import { SeatsService } from './gets/seats.service';
 import { UserPostService } from './posts/user-post.service';
+import { BookingPostService } from './posts/booking-post.service';
 
 
 
@@ -14,7 +15,8 @@ import { UserPostService } from './posts/user-post.service';
   providers: [
     FlightsService,
     SeatsService,
-    UserPostService
+    UserPostService,
+    BookingPostService
   ]
 })
 export class DataBasesServicesModule { }

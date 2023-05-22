@@ -1,26 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { Observable,of,catchError,tap} from 'rxjs';
-import { User } from 'src/app/interfaces/user';
-
+import { Booking } from 'src/app/interfaces/booking';
 
 @Injectable()
-export class UserPostService {
-
+export class BookingPostService {
   constructor(
     private http: HttpClient
   ) { }
 
-  private API_URL = 'http://localhost:8080/usuario';
+  private API_URL = 'http://localhost:8080/reserva';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  postUser(user: User):Observable<User>{
-    return this.http.post<User>(`${this.API_URL}/guardarUsuario`, user).pipe(
-       tap((newUser: User) => console.log(`added user w/ id=${newUser.id}`)),
-       catchError(this.handleError<User>('postUser'))
+  postBooking(booking: Booking):Observable<Booking>{	
+    return this.http.post<Booking>(`${this.API_URL}/guardarReserva`, booking).pipe(
+       tap((newBooking: Booking) => console.log(`added booking w/ id=${newBooking.reservaId}`)),
+       catchError(this.handleError<Booking>('postBooking'))
       );
   }
 
