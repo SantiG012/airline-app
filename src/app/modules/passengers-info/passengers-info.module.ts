@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PriceCalculationService } from './services/price-calculation.service';
+import { FormsStateTransferService } from './services/forms-state-transfer.service';
 import { PassengersInfoRoutingModule } from './passengers-info-routing.module';
 import { MainComponent } from './components/main/main.component';
 import { BasicInfoComponent } from './components/basic-info/basic-info.component';
@@ -24,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   providers:[
-    PriceCalculationService
+    PriceCalculationService,
+    FormsStateTransferService
   ]
 })
 export class PassengersInfoModule { }
