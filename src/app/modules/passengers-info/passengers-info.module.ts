@@ -10,6 +10,7 @@ import { PassengerForumComponent } from './components/passenger-forum/passenger-
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
 
 
 @NgModule({
@@ -23,12 +24,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     PassengersInfoRoutingModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataBasesServicesModule
   ],
   providers:[
     PriceCalculationService,
     FormsStateTransferService,
-    IdPassengerTransferService
+    IdPassengerTransferService,
+    FormsStateTransferService
   ]
 })
 export class PassengersInfoModule { }
