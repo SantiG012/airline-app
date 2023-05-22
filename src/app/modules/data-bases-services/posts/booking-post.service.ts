@@ -15,10 +15,10 @@ export class BookingPostService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  postBooking(booking: Booking):Observable<Booking>{	
-    return this.http.post<Booking>(`${this.API_URL}/guardarReserva`, booking).pipe(
-       tap((newBooking: Booking) => console.log(`added booking w/ id=${newBooking.reservaId}`)),
-       catchError(this.handleError<Booking>('postBooking'))
+  postBooking(booking: Booking[]):Observable<Booking[]>{	
+    return this.http.post<Booking[]>(`${this.API_URL}/guardarReserva`, booking).pipe(
+       tap((newBooking: Booking[]) => console.log(`added booking w/ id=${newBooking[0].reservaId}`)),
+       catchError(this.handleError<Booking[]>('postBooking'))
       );
   }
 
