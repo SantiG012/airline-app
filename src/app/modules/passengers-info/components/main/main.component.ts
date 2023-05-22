@@ -6,6 +6,7 @@ import { IdPassengerTransferService } from '../../services/id-passenger-transfer
 import { ActivatedRoute } from '@angular/router';
 import { BookingCreationService } from '../../services/booking-creation.service';
 import { Booking } from 'src/app/interfaces/booking';
+import { BookingPostService } from 'src/app/modules/data-bases-services/posts/booking-post.service';
 
 @Component({
   selector: 'app-main',
@@ -23,6 +24,7 @@ export class MainComponent {
               private formsStateTransferService: FormsStateTransferService,
               private idPassengerTransferService:IdPassengerTransferService,
               private bookingCreationService:BookingCreationService,
+              private bookingPostService:BookingPostService,
               private route:ActivatedRoute) { }
 
   ngOnInit() {
@@ -71,7 +73,7 @@ export class MainComponent {
       this.bookingsArray.push(booking);
     }
 
-    
+    this.bookingPostService.postBooking(this.bookingsArray).subscribe();
   }
 
 
