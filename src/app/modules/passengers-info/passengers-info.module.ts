@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
 import { FormToUserService } from './services/form-to-user.service';
+import { BookingCreationService } from './services/booking-creation.service';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { FormToUserService } from './services/form-to-user.service';
     FormsStateTransferService,
     IdPassengerTransferService,
     FormsStateTransferService,
-    FormToUserService
+    FormToUserService,
+    BookingCreationService
   ]
 })
 export class PassengersInfoModule { }
