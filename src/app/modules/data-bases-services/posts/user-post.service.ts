@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { Observable,of,catchError,tap} from 'rxjs';
 import { User } from 'src/app/interfaces/user';
 
@@ -11,7 +11,11 @@ export class UserPostService {
     private http: HttpClient
   ) { }
 
-  private API_URL = 'http://localhost:8080/usuario';
+  private API_URL = 'localhost:8080/usuario';
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   postUser(user: User):Observable<User>{
     return this.http.post<User>(`${this.API_URL}/guardarUsuario`, user).pipe(

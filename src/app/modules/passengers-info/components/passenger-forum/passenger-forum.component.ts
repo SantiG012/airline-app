@@ -80,7 +80,8 @@ export class PassengerForumComponent {
     this.disableForm();
     this.formsStateTransferService.setFormState(this.index, true);
     this.idPassengerTransferService.setPassengerId(this.index, this.idControl!.value);
-    this.userPostService.postUser(this.formToUserService.createUserFromForm(this.passengerForm));
+    this.userPostService.postUser(this.formToUserService.createUserFromForm(this.passengerForm)).
+    subscribe();
   }
 
   get namesControl() { return this.passengerForm.get('namesControl'); }
