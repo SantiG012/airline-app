@@ -13,4 +13,8 @@ export class FormsStateTransferService {
   public setFormState(index: number, state: boolean): void {
     this.formsState[index] = state;
   }
+
+  public getFormsState(): boolean{
+    return this.formsState.every((state) => state);
+  }
 }
