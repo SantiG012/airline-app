@@ -3,6 +3,9 @@ import { SelectedSeatsTransferService } from 'src/app/root-level-services/shared
 import { ConfirmedSeatDTO } from 'src/app/DTOs/seatDTOs/confirmedSeatDTO';
 import { FormsStateTransferService } from '../../services/forms-state-transfer.service';
 import { IdPassengerTransferService } from '../../services/id-passenger-transfer.service';
+import { ActivatedRoute } from '@angular/router';
+import { BookingCreationService } from '../../services/booking-creation.service';
+import { Booking } from 'src/app/interfaces/booking';
 
 @Component({
   selector: 'app-main',
@@ -11,16 +14,22 @@ import { IdPassengerTransferService } from '../../services/id-passenger-transfer
 })
 export class MainComponent {
   selectedSeats!: ConfirmedSeatDTO[];
+  flightId!: string;
+  passengersIds!: string[];
+  bookingsArray!: Booking[];
   hint:Boolean = false;
   
   constructor(private selectedSeatsTransferService: SelectedSeatsTransferService,
               private formsStateTransferService: FormsStateTransferService,
-              private idPassengerTransferService:IdPassengerTransferService) { }
+              private idPassengerTransferService:IdPassengerTransferService,
+              private bookingCreationService:BookingCreationService,
+              private route:ActivatedRoute) { }
 
   ngOnInit() {
     this.selectedSeats = this.selectedSeatsTransferService.getSelectedSeats();
     this.formsStateTransferService.initializeFormsState(this.selectedSeats.length);
     this.idPassengerTransferService.initializePassengersIds(this.selectedSeats.length);
+    this.flightId = this.route.snapshot.queryParamMap.get('FLIGHTID')!;
   }
 
   private checkFormsState(): boolean {
@@ -52,6 +61,17 @@ export class MainComponent {
       this.activateHint();
       return;
     }
+
+    this.passengersIds = this.getPassengersIds();
+
+    for (let i = 0; i < this.selectedSeats.length; i++) {
+      const booking = this.bookingCreationService
+      .createBooking(this.passengersIds[i], this.flightId, this.selectedSeats[i].seatId);
+
+      this.bookingsArray.push(booking);
+    }
+
+    
   }
 
 
