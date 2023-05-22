@@ -6,6 +6,7 @@
     </div>
     <div class="basic-info-container flex-column flex-column-horizontally-centered">
         <app-basic-info></app-basic-info>
-        <button>Continuar</button>
+        <button (click)="onClick()">Continuar</button>
+        <mat-hint *ngIf="hint">Formularios incompletos o incorrectos</mat-hint>
     </div>
 </main>

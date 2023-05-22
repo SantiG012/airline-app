@@ -17,4 +17,8 @@ export class IdPassengerTransferService {
   public getPassengersIds(): string[]{
     return this.passengersIds;
   }
+
+  public getPassengerIdsState(): boolean {
+    return this.passengersIds.every(id => id !== '');
+  }
 }
