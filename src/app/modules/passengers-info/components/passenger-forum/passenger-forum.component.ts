@@ -8,7 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class PassengerForumComponent {
   passengerForm!: FormGroup;
-  forumCompleted!: boolean;
+  formCompleted!: boolean;
+  wrongForm!: boolean;
   
   ngOnInit() {
     this.passengerForm = new FormGroup({
@@ -39,8 +40,38 @@ export class PassengerForumComponent {
       ),
     });
 
-    this.forumCompleted = false;
+    this.formCompleted = false;
+    this.wrongForm = false;
   }
+
+  private checkFormsCompletion() {
+    if (!this.passengerForm.valid){this.formCompleted = false; return;};
+    this.formCompleted = true;
+  }
+
+  private disableForm() {
+    this.passengerForm.disable();
+  }
+
+  private displayWrongForm() {
+    this.wrongForm = true;
+
+    setTimeout(() => {
+      this.wrongForm = false;
+    }
+    , 5000);
+  }
+
+  onSubmit() {
+    this.checkFormsCompletion();
+    
+    if (!this.formCompleted){this.displayWrongForm(); return;};
+
+    this.disableForm();
+    console.log("Hecho");
+    //TODO: Send data to backend
+  }
+
   get namesControl() { return this.passengerForm.get('namesControl'); }
   get lastNamesControl() { return this.passengerForm.get('lastNamesControl'); }
   get emailControl() { return this.passengerForm.get('emailControl'); }

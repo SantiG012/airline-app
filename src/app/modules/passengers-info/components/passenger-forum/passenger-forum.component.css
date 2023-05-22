@@ -23,6 +23,7 @@ legend{
 button{
     width: 20rem;
     height: 3rem;
+    margin: .5rem 0;
     border: solid 1.5px #e8114b;
     border-radius: .5rem;
     background-color: #fff;

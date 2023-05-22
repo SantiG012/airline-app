@@ -39,5 +39,6 @@
             </mat-hint>
         </mat-form-field>
     </div>
-    <button mat-raised-button color="primary" [disabled]="!forumCompleted">Guardar</button>
+    <button mat-raised-button color="primary" [disabled]="formCompleted" (click)="onSubmit()">Guardar</button>
+    <mat-hint *ngIf="wrongForm">Por favor, rellene todos los campos correctamente</mat-hint>
 </fieldset>
