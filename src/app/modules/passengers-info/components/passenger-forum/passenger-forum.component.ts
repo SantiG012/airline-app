@@ -1,5 +1,6 @@
 import { Component,Input} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import{ FormsStateTransferService } from '../../services/forms-state-transfer.service';
 
 @Component({
   selector: 'app-passenger-forum',
@@ -11,6 +12,8 @@ export class PassengerForumComponent {
   passengerForm!: FormGroup;
   formCompleted!: boolean;
   wrongForm!: boolean;
+
+  constructor(private formsStateTransferService: FormsStateTransferService) { }
   
   ngOnInit() {
     this.passengerForm = new FormGroup({
@@ -69,6 +72,7 @@ export class PassengerForumComponent {
     if (!this.formCompleted){this.displayWrongForm(); return;};
 
     this.disableForm();
+    this.formsStateTransferService.setFormState(this.index, true);
     console.log("Hecho");
     //TODO: Send data to backend
   }
