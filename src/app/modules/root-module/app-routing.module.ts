@@ -25,7 +25,12 @@ const routes: Routes = [
     data: {queryParams:{
       booking: ''}
     }
-  },
+  },{
+    path:'consultarReservas',loadChildren:()=> import('src/app/modules/search-flights/search-flights.module').then(m => m.SearchFlightsModule),
+    data: {queryParams:{
+      userId: ''}
+    }
+  }
 ];
 
 @NgModule({
