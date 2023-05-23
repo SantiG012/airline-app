@@ -20,7 +20,12 @@ const routes: Routes = [
     data: {queryParams:{
       FLIGHTID: ''}
     }
-  }
+  },{
+    path:'pagos',loadChildren:()=> import('src/app/modules/payments/payments.module').then(m => m.PaymentsModule),
+    data: {queryParams:{
+      booking: ''}
+    }
+  },
 ];
 
 @NgModule({
