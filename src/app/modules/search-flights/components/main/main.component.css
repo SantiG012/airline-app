@@ -2,6 +2,12 @@
     width: 60%;
 }
 
+legend{
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1b0088;
+}
 
 button{
     margin-top: .5rem;

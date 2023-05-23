@@ -1,8 +1,13 @@
-<fieldset class="form flex-column flex-center">
+<fieldset class="form flex-column flex-center" [formGroup]="searchForm">
+    <legend>Consultar vuelos</legend>
     <mat-form-field appearance="outline" class="form__input">
         <mat-label>No. de identificación</mat-label>
-        <input matInput>
-        <mat-hint>Hint</mat-hint>
+        <input matInput
+        formControlName="idControl">
+        <mat-hint *ngIf="idControl!.invalid && (idControl!.dirty || idControl!.touched)">
+            <mat-hint *ngIf="idControl!.errors?.['pattern']" >Digite entre 7 y 10 números</mat-hint>   
+            <mat-hint *ngIf="idControl!.errors?.['required']" >Campo obligatorio</mat-hint>
+        </mat-hint>
     </mat-form-field>
     <button>
         <span>Consultar</span>
