@@ -17,7 +17,7 @@ export class MainComponent {
   selectedSeats!: ConfirmedSeatDTO[];
   flightId!: string;
   passengersIds!: string[];
-  bookingsArray!: Booking[];
+  bookingsArray: Booking[] = [];
   hint:Boolean = false;
   
   constructor(private selectedSeatsTransferService: SelectedSeatsTransferService,
