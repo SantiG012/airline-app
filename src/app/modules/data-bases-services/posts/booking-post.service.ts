@@ -16,7 +16,7 @@ export class BookingPostService {
   };
 
   postBooking(booking: Booking[]):Observable<Booking[]>{	
-    return this.http.post<Booking[]>(`${this.API_URL}/guardarReserva`, booking).pipe(
+    return this.http.post<Booking[]>(`${this.API_URL}/guardarReservas`, booking).pipe(
        tap((newBooking: Booking[]) => console.log(`added booking w/ id=${newBooking[0].reservaId}`)),
        catchError(this.handleError<Booking[]>('postBooking'))
       );
