@@ -5,6 +5,7 @@ import { SeatsService } from './gets/seats.service';
 import { UserPostService } from './posts/user-post.service';
 import { BookingPostService } from './posts/booking-post.service';
 import { InvoiceGetService } from './gets/invoice-get.service';
+import { BookingPutService } from './puts/booking-put.service';
 
 
 
@@ -18,7 +19,8 @@ import { InvoiceGetService } from './gets/invoice-get.service';
     SeatsService,
     UserPostService,
     BookingPostService,
-    InvoiceGetService
+    InvoiceGetService,
+    BookingPutService
   ]
 })
 export class DataBasesServicesModule { }
