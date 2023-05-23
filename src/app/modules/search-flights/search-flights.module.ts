@@ -5,6 +5,7 @@ import { SearchFlightsRoutingModule } from './search-flights-routing.module';
 import { MainComponent } from './components/main/main.component';
 import { FlightComponent } from './components/flight/flight.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SearchFlightsRoutingModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataBasesServicesModule
   ]
 })
 export class SearchFlightsModule { }

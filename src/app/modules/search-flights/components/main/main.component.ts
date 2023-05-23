@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup,FormControl,Validators} from '@angular/forms';
+import { Booking } from 'src/app/interfaces/booking'; 
+import { Observable,tap} from 'rxjs';
+import { BookingGetsService } from 'src/app/modules/data-bases-services/gets/booking-gets.service';
+
 
 @Component({
   selector: 'app-main',
@@ -8,8 +12,11 @@ import { FormGroup,FormControl,Validators} from '@angular/forms';
 })
 export class MainComponent {
   searchForm!: FormGroup;
+  bookings$!: Observable<Booking[]>;
 
-  constructor() { }
+  constructor(
+    private bookingGetsService: BookingGetsService
+  ) { }
 
   ngOnInit(){
     this.searchForm = new FormGroup({
@@ -20,6 +27,12 @@ export class MainComponent {
         ]
       )
     });
+  }
+  
+  makeBookingRequest(){
+    this.bookings$ = this.bookingGetsService.getUserBookings(this.idControl!.value).pipe(
+       tap((bookings:Booking[]) => console.log("bookings",bookings))
+      );
   }
 
   onSubmit(){
