@@ -6,6 +6,7 @@ import { UserPostService } from './posts/user-post.service';
 import { BookingPostService } from './posts/booking-post.service';
 import { InvoiceGetService } from './gets/invoice-get.service';
 import { BookingPutService } from './puts/booking-put.service';
+import { BookingGetsService } from './gets/booking-gets.service';
 
 
 
@@ -20,7 +21,8 @@ import { BookingPutService } from './puts/booking-put.service';
     UserPostService,
     BookingPostService,
     InvoiceGetService,
-    BookingPutService
+    BookingPutService,
+    BookingGetsService
   ]
 })
 export class DataBasesServicesModule { }

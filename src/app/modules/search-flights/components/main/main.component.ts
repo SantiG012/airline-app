@@ -22,5 +22,10 @@ export class MainComponent {
     });
   }
 
+  onSubmit(){
+    if (!this.searchForm.valid)return;
+    
+  }
+
   get idControl() { return this.searchForm.get('idControl');}
 }
