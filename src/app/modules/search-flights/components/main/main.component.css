@@ -1,0 +1,41 @@
+.form{
+    width: 60%;
+}
+
+
+button{
+    margin-top: .5rem;
+    width: 15rem;
+    height: 3rem;
+    background-color: #e8114b;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: "Trebuchet MS", sans-serif;
+    border-radius: .5rem;
+    transition: all .08s ease-in-out;
+}
+
+button:hover{
+    background-color: #e95879;
+}
+
+button:active{
+    background-color: #b20f3a;
+}
+
+.form__input{
+    width: 30rem;
+}
+
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center{
+    justify-content: center;
+    align-items: center;
+}
