@@ -29,7 +29,7 @@ export class MainComponent {
   }
 
   onClick(){
-    
+
     this.bookingPutService.payBooking(this.bookingId).subscribe(
       () => {
         this.redirect = true;
@@ -37,7 +37,7 @@ export class MainComponent {
         setTimeout(() => {
           this.router.navigate(['']);
         }
-        , 4000);
+        , 5000);
       }
     );
   }

@@ -18,8 +18,9 @@
         </p>
     </section>
     <div class="button-container flex-column flex-center">
-        <button>
+        <button (click)="onClick()" >
             Pagar
         </button>
+        <div *ngIf="redirect">Pago completado con éxito. Volviendo a inicio...</div>
     </div>
 </main>
