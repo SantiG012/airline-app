@@ -7,6 +7,9 @@ import { ActivatedRoute } from '@angular/router';
 import { BookingCreationService } from '../../services/booking-creation.service';
 import { Booking } from 'src/app/interfaces/booking';
 import { BookingPostService } from 'src/app/modules/data-bases-services/posts/booking-post.service';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-main',
@@ -19,19 +22,27 @@ export class MainComponent {
   passengersIds!: string[];
   bookingsArray: Booking[] = [];
   hint:Boolean = false;
+  bookingSubscription!: Subscription;
   
   constructor(private selectedSeatsTransferService: SelectedSeatsTransferService,
               private formsStateTransferService: FormsStateTransferService,
               private idPassengerTransferService:IdPassengerTransferService,
               private bookingCreationService:BookingCreationService,
               private bookingPostService:BookingPostService,
-              private route:ActivatedRoute) { }
+              private route:ActivatedRoute,
+              private router:Router) { }
 
   ngOnInit() {
     this.selectedSeats = this.selectedSeatsTransferService.getSelectedSeats();
     this.formsStateTransferService.initializeFormsState(this.selectedSeats.length);
     this.idPassengerTransferService.initializePassengersIds(this.selectedSeats.length);
     this.flightId = this.route.snapshot.queryParamMap.get('FLIGHTID')!;
+  }
+
+  ngOnDestroy(){
+    if(this.bookingSubscription){
+      this.bookingSubscription.unsubscribe();
+    }
   }
 
   private checkFormsState(): boolean {
@@ -73,7 +84,11 @@ export class MainComponent {
       this.bookingsArray.push(booking);
     }
 
-    this.bookingPostService.postBooking(this.bookingsArray).subscribe();
+    this.bookingSubscription = this.bookingPostService.postBooking(this.bookingsArray).subscribe(
+      () => {
+        this.router.navigate(['pagos'], {queryParams:{booking:this.bookingsArray[0].reservaId}});
+      }
+    )
   }
 
 
