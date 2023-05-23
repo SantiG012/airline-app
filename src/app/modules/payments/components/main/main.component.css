@@ -1,0 +1,57 @@
+main{
+    width: 70%;
+    height: 70%;
+    margin: 1rem auto;
+}
+
+h1{
+    font-size: 2rem;
+    color: #1B0088;
+    font-family:sans-serif;
+}
+p{
+    font-size: 1.2rem;
+    text-align: justify;
+    font-family:sans-serif;
+}
+h2{
+    font-size: 1.5rem;
+    color: #1B0088;
+    font-family:sans-serif;
+}
+
+.button-container{
+    width: 100%;
+}
+
+button{
+    margin-top: .5rem;
+    width: 15rem;
+    height: 3rem;
+    background-color: #e8114b;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: "Trebuchet MS", sans-serif;
+    border-radius: .5rem;
+    transition: all .08s ease-in-out;
+}
+button:hover{
+    background-color: #e95879;
+}
+
+button:active{
+    background-color: #b20f3a;
+}
+
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center{
+    justify-content: center;
+    align-items: center;
+}
