@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { InvoiceGetService } from 'src/app/modules/data-bases-services/gets/invoice-get.service';
+import { BookingPutService } from 'src/app/modules/data-bases-services/puts/booking-put.service';
 import { Invoice } from 'src/app/interfaces/invoice';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router} from '@angular/router';
 import { Observable,tap} from 'rxjs';
 
 @Component({
@@ -12,9 +13,12 @@ import { Observable,tap} from 'rxjs';
 export class MainComponent {
   bookingId: string = '';
   invoice$!: Observable<Invoice>;
+  redirect: boolean = false;
 
   constructor(private invoiceGetService: InvoiceGetService,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private router: Router,
+              private bookingPutService:BookingPutService) {}
 
   ngOnInit(){
     this.bookingId = this.route.snapshot.queryParamMap.get('booking')!;
@@ -22,6 +26,20 @@ export class MainComponent {
        //Logs the fact that the invoice has been fetched
         tap(invoice => console.log('Factura',invoice.facturaId))
     )
+  }
+
+  onClick(){
+    
+    this.bookingPutService.payBooking(this.bookingId).subscribe(
+      () => {
+        this.redirect = true;
+
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }
+        , 4000);
+      }
+    );
   }
 
 }
