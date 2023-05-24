@@ -37,6 +37,7 @@ export class MainComponent {
 
   onSubmit(){
     if (!this.searchForm.valid)return;
+    this.makeBookingRequest();
     
   }
 

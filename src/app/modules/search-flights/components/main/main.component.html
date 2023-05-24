@@ -10,12 +10,12 @@
                 <mat-hint *ngIf="idControl!.errors?.['required']" >Campo obligatorio</mat-hint>
             </mat-hint>
         </mat-form-field>
-        <button>
+        <button (click)="onSubmit()">
             <span>Consultar</span>
         </button>
     </fieldset>
     <div class="flights-container">
         <app-flight *ngFor="let booking of bookings$ |async"
-        ></app-flight>
+        [flightId]="booking.vueloId"></app-flight>
     </div>
 </main>
