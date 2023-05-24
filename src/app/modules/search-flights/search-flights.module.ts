@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule,DatePipe} from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { SearchFlightsRoutingModule } from './search-flights-routing.module';
 import { MainComponent } from './components/main/main.component';
@@ -19,6 +19,7 @@ import { DataBasesServicesModule } from '../data-bases-services/data-bases-servi
     MatInputModule,
     ReactiveFormsModule,
     DataBasesServicesModule
-  ]
+  ],
+  providers:[DatePipe]
 })
 export class SearchFlightsModule { }
