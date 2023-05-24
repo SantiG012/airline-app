@@ -1,1 +1,18 @@
-<p>flight works!</p>
+<a class="flight-container" *ngIf="flight" (click)="onClick()">
+    <div class="hour-city-container">
+        <div class="hour-container">
+            <span class="hour">{{getFormattedHour(flight.fechaHoraSalida)}}</span>
+        </div>
+        <div class="city-container">
+            <span class="city">{{flight.origen}}</span>
+        </div>
+    </div>
+    <div class="hour-city-container">
+        <div class="hour-container">
+            <span class="hour">{{getFormattedHour(flight.fechaHoraLlegada)}}</span>
+        </div>
+        <div class="city-container">
+            <span class="city">{{flight.destino}}</span>
+        </div>
+    </div>
+</a>
