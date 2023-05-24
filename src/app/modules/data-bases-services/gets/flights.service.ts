@@ -33,6 +33,14 @@ export class FlightsService {
       );
   }
 
+  getFlightById(id: string):Observable<Vuelo>{
+    return this.http.get<Vuelo>(`${this.API_URL}/obtenerVuelo/${id}`)
+    .pipe(
+      tap(_ => console.log(`fetched flight by id=${id}`)),
+      catchError(this.handleError<Vuelo>(`getFlightById id=${id}`))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => { 
       console.error(error); 
