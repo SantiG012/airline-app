@@ -5,6 +5,7 @@ import { BookingGetsService } from 'src/app/modules/data-bases-services/gets/boo
 import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights.service';
 import { Vuelo } from 'src/app/interfaces/vuelo';
 import { forkJoin } from 'rxjs';
+import { Observable,tap} from 'rxjs';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { forkJoin } from 'rxjs';
 export class MainComponent {
   searchForm!: FormGroup;
   bookings!: Booking[];
+  bookings$!: Observable <Booking[]>;
   flights: Vuelo[] = [];
 
   constructor(
@@ -34,12 +36,14 @@ export class MainComponent {
   }
   
   makeBookingRequest(){
-    this.bookingGetsService.getUserBookings(this.idControl?.value).subscribe(
-      (bookings: Booking[]) => {
-        this.bookings = bookings;
-        this.requestFlights();
-      }
-    );
+    this.bookings$ = this.bookingGetsService.getUserBookings(this.idControl!.value).pipe(
+      tap(
+        (bookings:Booking[]) => {
+          this.bookings = bookings;
+          this.requestFlights();
+        }
+      )
+    )
   }
 
   requestFlights() {
