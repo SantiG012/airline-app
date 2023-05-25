@@ -26,10 +26,7 @@ const routes: Routes = [
       booking: ''}
     }
   },{
-    path:'consultarReservas',loadChildren:()=> import('src/app/modules/search-flights/search-flights.module').then(m => m.SearchFlightsModule),
-    data: {queryParams:{
-      userId: ''}
-    }
+    path:'consultarReservas',loadChildren:()=> import('src/app/modules/search-flights/search-flights.module').then(m => m.SearchFlightsModule)
   }
 ];
 
