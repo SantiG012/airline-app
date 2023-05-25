@@ -1,3 +1,15 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+}
+
+.flights-container{
+    width: 80%;
+}
 .form{
     width: 60%;
 }
