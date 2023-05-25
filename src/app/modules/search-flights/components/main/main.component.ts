@@ -49,9 +49,9 @@ export class MainComponent {
       this.flightsService.getFlightById(booking.vueloId)
     );
   
-    forkJoin(flightRequests).subscribe((flights: Vuelo[]) => {
-      this.flights = flights;
-    });
+    this.flights$ = forkJoin(flightRequests).pipe(
+      tap(flights => this.flights = flights)
+    )
   }
 
   onSubmit(){
