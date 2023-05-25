@@ -6,12 +6,14 @@ import { MainComponent } from './components/main/main.component';
 import { FlightComponent } from './components/flight/flight.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
+import { PaidFlightDirective } from './directives/paid-flight.directive';
 
 
 @NgModule({
   declarations: [
     MainComponent,
-    FlightComponent
+    FlightComponent,
+    PaidFlightDirective
   ],
   imports: [
     CommonModule,
