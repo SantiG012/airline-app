@@ -7,6 +7,16 @@
             <span class="city">{{flightInput.origen}}</span>
         </div>
     </div>
+    <div class="dates">
+        <div class="departure-date">
+            <p>Fecha de salida</p>
+            <span class="date">{{getFormattedDate(flightInput.fechaHoraSalida)}}</span>
+        </div>
+        <div class="arrival-date">
+            <p>Fecha de llegada</p>
+            <span class="date">{{getFormattedDate(flightInput.fechaHoraLlegada)}}</span>
+        </div>
+    </div>
     <div class="hour-city-container">
         <div class="hour-container">
             <span class="hour">{{getFormattedHour(flightInput.fechaHoraLlegada)}}</span>
