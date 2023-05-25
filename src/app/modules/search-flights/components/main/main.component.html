@@ -15,7 +15,8 @@
         </button>
     </fieldset>
     <div class="flights-container">
-        <app-flight *ngFor="let booking of bookings$ |async"
-        [flightId]="booking.vueloId"></app-flight>
+        <ng-container *ngIf="bookings.length === flights.length">
+            <app-flight *ngFor="let flight of flights"></app-flight>
+        </ng-container>
     </div>
 </main>

@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 import { DatePipe } from '@angular/common'; 
 import { Router } from '@angular/router';
 import { Vuelo } from 'src/app/interfaces/vuelo';
-import {FlightsService} from 'src/app/modules/data-bases-services/gets/flights.service';
-import { Observable,tap} from 'rxjs';
+
+
 
 @Component({
   selector: 'app-flight',
@@ -12,19 +12,12 @@ import { Observable,tap} from 'rxjs';
 })
 export class FlightComponent {
 
-  @Input() flightId!: string;
-  flight!: Vuelo;
+  @Input()flightInput!: Vuelo;
 
   constructor (private datePipe: DatePipe,
-              private router:Router,
-              private flightsService:FlightsService
+              private router:Router
     ) {}
 
-  ngOnInit(){
-    this.flightsService.getFlightById(this.flightId).subscribe(
-      flight => this.flight = flight
-    );
-  }
 
   getFormattedHour(date:string): string {
     return this.datePipe.transform(date, 'HH:mm') || '';

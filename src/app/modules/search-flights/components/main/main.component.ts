@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup,FormControl,Validators} from '@angular/forms';
 import { Booking } from 'src/app/interfaces/booking'; 
-import { Observable,tap} from 'rxjs';
 import { BookingGetsService } from 'src/app/modules/data-bases-services/gets/booking-gets.service';
+import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights.service';
+import { Vuelo } from 'src/app/interfaces/vuelo';
+import { forkJoin } from 'rxjs';
 
 
 @Component({
@@ -12,10 +14,12 @@ import { BookingGetsService } from 'src/app/modules/data-bases-services/gets/boo
 })
 export class MainComponent {
   searchForm!: FormGroup;
-  bookings$!: Observable<Booking[]>;
+  bookings!: Booking[];
+  flights: Vuelo[] = [];
 
   constructor(
-    private bookingGetsService: BookingGetsService
+    private bookingGetsService: BookingGetsService,
+    private flightsService: FlightsService
   ) { }
 
   ngOnInit(){
@@ -30,9 +34,22 @@ export class MainComponent {
   }
   
   makeBookingRequest(){
-    this.bookings$ = this.bookingGetsService.getUserBookings(this.idControl!.value).pipe(
-       tap((bookings:Booking[]) => console.log("bookings",bookings))
-      );
+    this.bookingGetsService.getUserBookings(this.idControl?.value).subscribe(
+      (bookings: Booking[]) => {
+        this.bookings = bookings;
+        this.requestFlights();
+      }
+    );
+  }
+
+  requestFlights() {
+    const flightRequests = this.bookings.map(booking =>
+      this.flightsService.getFlightById(booking.vueloId)
+    );
+  
+    forkJoin(flightRequests).subscribe((flights: Vuelo[]) => {
+      this.flights = flights;
+    });
   }
 
   onSubmit(){

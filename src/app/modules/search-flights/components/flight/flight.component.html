@@ -1,18 +1,18 @@
-<a class="flight-container" *ngIf="flight" (click)="onClick()">
+<a class="flight-container" *ngIf="flightInput" (click)="onClick()">
     <div class="hour-city-container">
         <div class="hour-container">
-            <span class="hour">{{getFormattedHour(flight.fechaHoraSalida)}}</span>
+            <span class="hour">{{getFormattedHour(flightInput.fechaHoraSalida)}}</span>
         </div>
         <div class="city-container">
-            <span class="city">{{flight.origen}}</span>
+            <span class="city">{{flightInput.origen}}</span>
         </div>
     </div>
     <div class="hour-city-container">
         <div class="hour-container">
-            <span class="hour">{{getFormattedHour(flight.fechaHoraLlegada)}}</span>
+            <span class="hour">{{getFormattedHour(flightInput.fechaHoraLlegada)}}</span>
         </div>
         <div class="city-container">
-            <span class="city">{{flight.destino}}</span>
+            <span class="city">{{flightInput.destino}}</span>
         </div>
     </div>
 </a>
