@@ -16,7 +16,7 @@ import { Observable,tap} from 'rxjs';
 export class MainComponent {
   searchForm!: FormGroup;
   bookings!: Booking[];
-  bookings$!: Observable <Booking[]>;
+  flights$!: Observable<Vuelo[]>;
   flights: Vuelo[] = [];
 
   constructor(
@@ -36,14 +36,12 @@ export class MainComponent {
   }
   
   makeBookingRequest(){
-    this.bookings$ = this.bookingGetsService.getUserBookings(this.idControl!.value).pipe(
-      tap(
-        (bookings:Booking[]) => {
-          this.bookings = bookings;
-          this.requestFlights();
-        }
-      )
-    )
+    this.bookingGetsService.getUserBookings(this.idControl!.value).subscribe(
+      (bookings:Booking[]) => {
+        this.bookings = bookings;
+        this.requestFlights();
+      }
+    );
   }
 
   requestFlights() {
