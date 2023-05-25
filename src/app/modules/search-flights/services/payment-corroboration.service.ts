@@ -9,7 +9,7 @@ export class PaymentCorroborationService {
   determineFlightPaymentStatus(flightId: string, bookings: Booking[]): boolean {
     const flightBooking = bookings.filter(booking => booking.vueloId === flightId);
     const flightPaymentStatus = flightBooking[0].estadoPago;
-    if (flightPaymentStatus)return true;
-    return false;
+    if (flightPaymentStatus === "f")return false;
+    return true;
   }
 }
