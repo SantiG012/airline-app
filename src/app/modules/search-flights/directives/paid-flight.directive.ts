@@ -5,14 +5,14 @@ import { Directive,ElementRef,Input} from '@angular/core';
 })
 export class PaidFlightDirective {
 
-  @Input() paymentStatus!: string;
+  @Input() paymentStatus!: boolean;
 
   constructor(
     private elementRef:ElementRef
   ) { }
 
   ngAfterViewInit(){
-    if(this.paymentStatus)return;
+    if(!this.paymentStatus)return;
     this.elementRef.nativeElement.style.pointerEvents = 'none';
     this.elementRef.nativeElement.style.opacity = '0.5';
   }

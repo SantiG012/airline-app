@@ -15,6 +15,7 @@
         </button>
     </fieldset>
     <div class="flights-container">
-        <app-flight *ngFor="let flight of flights$ | async" [flightInput]="flight"></app-flight>
+        <app-flight *ngFor="let flight of flights$ | async" [flightInput]="flight" appPaidFlight 
+        [paymentStatus]="paymentCorroboration(flight.id)"></app-flight>
     </div>
 </main>

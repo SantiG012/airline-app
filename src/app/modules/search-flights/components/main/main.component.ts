@@ -47,6 +47,12 @@ export class MainComponent {
     );
   }
 
+  paymentCorroboration(flightId: string): boolean {
+    const status = this.paymentCorroborationService.determineFlightPaymentStatus(flightId, this.bookings);
+    return status;
+  }
+
+
   requestFlights() {
     const flightRequests = this.bookings.map(booking =>
       this.flightsService.getFlightById(booking.vueloId)
