@@ -19,6 +19,9 @@
                 <mat-hint *ngIf="passwordControl!.errors?.['required']" >Campo obligatorio</mat-hint>
             </mat-hint>
         </mat-form-field>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()" >Login</button>
+        <mat-hint *ngIf="adminLogInStatus$ | async">
+           {{requestStatusMessage}}
+        </mat-hint>
     </form>
 </fieldset>
