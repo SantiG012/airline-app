@@ -63,6 +63,10 @@ export class MainComponent {
     )
   }
 
+  getBookingIdFromFlightId(flightId: string): string {
+    return this.paymentCorroborationService.getBookingId(flightId);
+  }
+  
   onSubmit(){
     if (!this.searchForm.valid)return;
     this.makeBookingRequest();
