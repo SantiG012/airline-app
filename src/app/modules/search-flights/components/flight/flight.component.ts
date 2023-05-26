@@ -13,6 +13,7 @@ import { Vuelo } from 'src/app/interfaces/vuelo';
 export class FlightComponent {
 
   @Input()flightInput!: Vuelo;
+  @Input()bookingIdInput!: string;
 
   constructor (private datePipe: DatePipe,
               private router:Router
@@ -28,6 +29,6 @@ export class FlightComponent {
   }
 
   onClick() {
-    //this.router.navigate(['seleccionarAsientos'], { queryParams: { ID:this.flight.id,SEATS:this.SEATS} });
+    this.router.navigate(['pagos'], { queryParams: { booking:this.bookingIdInput} });
   }
 }
