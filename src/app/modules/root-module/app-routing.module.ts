@@ -27,6 +27,8 @@ const routes: Routes = [
     }
   },{
     path:'consultarReservas',loadChildren:()=> import('src/app/modules/search-flights/search-flights.module').then(m => m.SearchFlightsModule)
+  },{
+    path:'administrador',loadChildren:()=> import('src/app/modules/administrator/administrator.module').then(m => m.AdministratorModule)
   }
 ];
 
