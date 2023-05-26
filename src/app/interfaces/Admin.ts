@@ -1,4 +1,4 @@
 export interface Admin {
-    identification: string;
-    password: string;
+    adminId: string;
+    pass: string;
 }
