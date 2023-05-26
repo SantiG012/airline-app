@@ -39,7 +39,7 @@ export class AuthorizationService {
 
   private handleError<T>(operation = 'Log In') {
     return (error: any): Observable<T> => { 
-      const message = error.message;
+      const message = error.error.mensaje;
 
       const adminLogInStatusDTO: AdminLogInStatusDTO = {
         status: false,
