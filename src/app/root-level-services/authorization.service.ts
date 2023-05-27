@@ -32,6 +32,11 @@ export class AuthorizationService {
           statusMessage: 'Log In Successful'
         };
         this.adminLogInStatusSubject.next(adminLogInStatusDTO);
+
+        const expirationTime = new Date().getTime() + (60 * 1000); 
+
+        localStorage.setItem('admin', JSON.stringify(_));
+        localStorage.setItem('expirationTime', expirationTime.toString());
       }),
       catchError(this.handleError<Token>())
     );
