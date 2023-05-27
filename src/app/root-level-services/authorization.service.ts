@@ -35,7 +35,7 @@ export class AuthorizationService {
 
         const expirationTime = new Date().getTime() + (60 * 1000); 
 
-        localStorage.setItem('admin', JSON.stringify(_));
+        localStorage.setItem('token', _.token);
         localStorage.setItem('expirationTime', expirationTime.toString());
       }),
       catchError(this.handleError<Token>())
@@ -60,4 +60,21 @@ export class AuthorizationService {
   getAdminLogInStatus(): Observable<AdminLogInStatusDTO> {
     return this.adminLogInStatus$;
   }
+
+  isLogIn(): boolean {
+    const admin = localStorage.getItem('token');
+    const expirationTime = localStorage.getItem('expirationTime');
+  
+    if (admin && expirationTime) {
+      const currentTime = Date.now();
+      const expirationTimeNumber = parseInt(expirationTime);
+  
+      if (expirationTimeNumber > currentTime) {
+        return true;
+      }
+    }
+  
+    return false;
+  }
+  
 }
