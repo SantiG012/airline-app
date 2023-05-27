@@ -6,11 +6,13 @@ import { MatIconModule} from '@angular/material/icon';
 import { AdministratorRoutingModule } from './administrator-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
