@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
+import { AdminAuthenticationGuard } from 'src/app/root-level-guards/admin-authentication.guard';
 
 const routes: Routes = [
   {path: '', loadChildren: () => import('src/app/modules/main-page/main-page.module').then(m => m.MainPageModule)},
@@ -28,7 +29,8 @@ const routes: Routes = [
   },{
     path:'consultarReservas',loadChildren:()=> import('src/app/modules/search-flights/search-flights.module').then(m => m.SearchFlightsModule)
   },{
-    path:'administrador',loadChildren:()=> import('src/app/modules/administrator/administrator.module').then(m => m.AdministratorModule)
+    path:'administrador',loadChildren:()=> import('src/app/modules/administrator/administrator.module').then(m => m.AdministratorModule),
+    canActivateChild: [AdminAuthenticationGuard]
   }
 ];
 
