@@ -29,7 +29,7 @@ export class CreatePlaneComponent {
     
   }
 
-  private createFromForm(){
+  private createPlaneFromForm(){
     this.plane = new Plane (
       this.planeTypeControl!.value,
       "Activo"
