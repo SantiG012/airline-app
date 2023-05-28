@@ -38,6 +38,10 @@ export class CreatePlaneComponent {
 
 
   onButtonClicked(){
+    if (this.planeForm.invalid) return;
+    this.createPlaneFromForm();
+    this.planePostsService.postPlane(this.plane).subscribe();
+    this.planeForm.reset();
   }
 
   get planeTypeControl() { return this.planeForm.get('planeTypeControl'); }

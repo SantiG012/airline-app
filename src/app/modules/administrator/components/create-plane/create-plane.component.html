@@ -11,7 +11,7 @@
                 <mat-hint *ngIf="planeTypeControl!.errors?.['required']" >Campo obligatorio</mat-hint>
             </mat-hint>
         </mat-form-field>
-        <button [disabled]="true" >Crear Avión</button>
+        <button [disabled]="!planeForm.valid" (click)="onButtonClicked()">Crear Avión</button>
     </form>
 </fieldset>
 
