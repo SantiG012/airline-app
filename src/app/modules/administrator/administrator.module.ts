@@ -12,6 +12,7 @@ import { CreateFlightComponent } from './components/create-flight/create-flight.
 import { ManageSeatsComponent } from './components/manage-seats/manage-seats.component';
 import { ManageFlightsComponent } from './components/manage-flights/manage-flights.component';
 import { CreatePlaneComponent } from './components/create-plane/create-plane.component';
+import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CreatePlaneComponent } from './components/create-plane/create-plane.com
     MatInputModule,
     MatIconModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    DataBasesServicesModule
   ]
 })
 export class AdministratorModule { }
