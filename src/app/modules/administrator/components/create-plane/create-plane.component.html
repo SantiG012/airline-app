@@ -1,9 +1,15 @@
-<fieldset class="flex-column flex-center">
+<fieldset class="flex-column flex-center" 
+ [formGroup]="planeForm">
     <legend>Crear Avión</legend>
     <form class="flex-column flex-center">
         <mat-form-field appearance="fill">
             <mat-label>Modelo del avión</mat-label>
-            <input matInput type="text">
+            <input matInput type="text"
+            formControlName="planeTypeControl">
+            <mat-hint *ngIf="planeTypeControl!.invalid && (planeTypeControl!.dirty || planeTypeControl!.touched)">
+                <mat-hint *ngIf="planeTypeControl!.errors?.['pattern']" >Solo digite letras</mat-hint>   
+                <mat-hint *ngIf="planeTypeControl!.errors?.['required']" >Campo obligatorio</mat-hint>
+            </mat-hint>
         </mat-form-field>
         <button [disabled]="true" >Crear Avión</button>
     </form>
