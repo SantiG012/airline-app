@@ -1,4 +1,4 @@
-export interface Plane {
+export interface IPlane {
     avionId: string;
     modelo: string;
     estado: string;

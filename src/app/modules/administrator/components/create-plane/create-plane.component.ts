@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { PlanePostsService } from 'src/app/modules/data-bases-services/posts/plane-posts.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Plane } from 'src/app/Classes/Plane';
+import { IPlane } from 'src/app/interfaces/IPlane';
 
 @Component({
   selector: 'app-create-plane',
@@ -9,6 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CreatePlaneComponent {
   planeForm!: FormGroup;
+  plane!: IPlane;
 
   constructor(
     private planePostsService: PlanePostsService
@@ -25,6 +28,14 @@ export class CreatePlaneComponent {
     });
     
   }
+
+  private createFromForm(){
+    this.plane = new Plane (
+      this.planeTypeControl!.value,
+      "Activo"
+    );
+  }
+
 
   onButtonClicked(){
   }
