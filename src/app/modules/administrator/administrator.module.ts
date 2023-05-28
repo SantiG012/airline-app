@@ -7,12 +7,21 @@ import { AdministratorRoutingModule } from './administrator-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { CreateFlightComponent } from './components/create-flight/create-flight.component';
+import { ManageSeatsComponent } from './components/manage-seats/manage-seats.component';
+import { ManageFlightsComponent } from './components/manage-flights/manage-flights.component';
+import { CreatePlaneComponent } from './components/create-plane/create-plane.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    CreateFlightComponent,
+    ManageSeatsComponent,
+    ManageFlightsComponent,
+    CreatePlaneComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +29,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTabsModule
   ]
 })
 export class AdministratorModule { }
