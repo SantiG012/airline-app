@@ -3,6 +3,7 @@ import { PlanePostsService } from 'src/app/modules/data-bases-services/posts/pla
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Plane } from 'src/app/Classes/Plane';
 import { IPlane } from 'src/app/interfaces/IPlane';
+import { Observable,tap } from 'rxjs';
 
 @Component({
   selector: 'app-create-plane',
@@ -12,6 +13,8 @@ import { IPlane } from 'src/app/interfaces/IPlane';
 export class CreatePlaneComponent {
   planeForm!: FormGroup;
   plane!: IPlane;
+  serverResponse$!: Observable<any>;
+  planeCreated!: boolean;
 
   constructor(
     private planePostsService: PlanePostsService
@@ -40,7 +43,18 @@ export class CreatePlaneComponent {
   onButtonClicked(){
     if (this.planeForm.invalid) return;
     this.createPlaneFromForm();
-    this.planePostsService.postPlane(this.plane).subscribe();
+    this.serverResponse$ = this.planePostsService.postPlane(this.plane).pipe(
+      tap((_) => {
+        if (_) return;
+
+        this.planeCreated = true
+
+        setTimeout(() => {
+          this.planeCreated = false
+        }
+        , 3000);
+      })
+    );
     this.planeForm.reset();
   }
 

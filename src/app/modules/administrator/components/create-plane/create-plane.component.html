@@ -12,6 +12,12 @@
             </mat-hint>
         </mat-form-field>
         <button [disabled]="!planeForm.valid" (click)="onButtonClicked()">Crear Avión</button>
+        <mat-hint *ngIf="planeCreated">
+            Avión creado con éxito
+        </mat-hint>
+        <mat-error *ngIf="serverResponse$ | async as message">
+            {{message}}
+        </mat-error>
     </form>
 </fieldset>
 
