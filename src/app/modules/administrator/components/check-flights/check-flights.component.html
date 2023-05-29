@@ -1,0 +1,45 @@
+<fieldset class="flex-column flex-column-center-horizontally">
+    <legend>
+        <h1>Check Flights</h1>
+    </legend>
+    <div class="flex-row flex-center">
+        <mat-form-field appearance="fill">
+            <mat-label>Ciudad de Origen</mat-label>
+            <input matInput type="text"
+            id="originCity"
+            #originCity
+            formControlName="originControl" 
+            placeholder="Ej: Cali"
+            [matAutocomplete]="originAuto">
+            <mat-autocomplete autoActiveFirstOption #originAuto="matAutocomplete">
+                <mat-option *ngFor="" [value]="">
+                  <!-- {{city}} -->
+                </mat-option>
+              </mat-autocomplete>
+            <mat-hint *ngIf="">
+                <mat-hint *ngIf="" >Solo digite letras</mat-hint>   
+                <mat-hint *ngIf="" >Campo obligatorio</mat-hint>   
+            </mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Ciudad de Destino</mat-label>
+            <input matInput type="text"
+            #originCity
+            formControlName="originControl" 
+            placeholder="Ej: Bogotá">
+            <mat-autocomplete autoActiveFirstOption #originAuto="matAutocomplete">
+                <mat-option *ngFor="" [value]="">
+                  <!-- {{city}} -->
+                </mat-option>
+              </mat-autocomplete>
+            <mat-hint *ngIf="">
+                <mat-hint *ngIf="" >Solo digite letras</mat-hint>   
+                <mat-hint *ngIf="" >Campo obligatorio</mat-hint>   
+            </mat-hint>
+        </mat-form-field>
+    </div>
+    <button>
+        Consultar
+    </button>
+
+</fieldset>

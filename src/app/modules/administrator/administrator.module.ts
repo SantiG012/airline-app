@@ -13,6 +13,8 @@ import { ManageSeatsComponent } from './components/manage-seats/manage-seats.com
 import { ManageFlightsComponent } from './components/manage-flights/manage-flights.component';
 import { CreatePlaneComponent } from './components/create-plane/create-plane.component';
 import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
+import { CheckFlightsComponent } from './components/check-flights/check-flights.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { DataBasesServicesModule } from '../data-bases-services/data-bases-servi
     CreateFlightComponent,
     ManageSeatsComponent,
     ManageFlightsComponent,
-    CreatePlaneComponent
+    CreatePlaneComponent,
+    CheckFlightsComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +35,8 @@ import { DataBasesServicesModule } from '../data-bases-services/data-bases-servi
     MatIconModule,
     ReactiveFormsModule,
     MatTabsModule,
-    DataBasesServicesModule
+    DataBasesServicesModule,
+    MatAutocompleteModule
   ]
 })
 export class AdministratorModule { }
