@@ -26,9 +26,9 @@
         <mat-form-field appearance="fill">
             <mat-label>Ciudad de Destino</mat-label>
             <input matInput type="text"
-            #originCity
             formControlName="arrivalCityControl" 
-            placeholder="Ej: Bogotá">
+            placeholder="Ej: Bogotá"
+            [matAutocomplete]="arrivalAuto">
             <mat-autocomplete autoActiveFirstOption #arrivalAuto="matAutocomplete">
                 <mat-option *ngFor="let city of arrivalCities$ | async" [value]="city">
                   {{city}}

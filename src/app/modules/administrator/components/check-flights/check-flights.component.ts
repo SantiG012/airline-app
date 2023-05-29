@@ -50,17 +50,23 @@ export class CheckFlightsComponent {
     );
 
     this.departureCities$ = this.filteredFlights$.pipe(
-      switchMap((flights: Vuelo[]) => from(flights)),
-      map((flight: Vuelo) => flight.origen),
-      distinct(),
-      toArray()
+      switchMap((flights: Vuelo[]) => from(flights)
+        .pipe(
+          map((flight: Vuelo) => flight.origen),
+          distinct(),
+          toArray()
+        )
+      )
     );
 
     this.arrivalCities$ = this.filteredFlights$.pipe(
-      switchMap((flights: Vuelo[]) => from(flights)),
-      map((flight: Vuelo) => flight.destino),
-      distinct(),
-      toArray()
+      switchMap((flights: Vuelo[]) => from(flights)
+        .pipe(
+          map((flight: Vuelo) => flight.destino),
+          distinct(),
+          toArray()
+        )
+      )
     );
 
   }
