@@ -18,7 +18,7 @@ export class FlightsService {
   };
 
   getFlightsByOrigin(origin: string):Observable<Vuelo[]>{
-    return this.http.get<Vuelo[]>(`${this.API_URL}/obtenerVuelosPorDestino/${origin}`)
+    return this.http.get<Vuelo[]>(`${this.API_URL}/obtenerVuelosPorOrigen/${origin}`)
     .pipe(
       tap(_ => console.log(`fetched flights by origin=${origin}`)),
       catchError(this.handleError<Vuelo[]>(`getFlightsByOrigin origin=${origin}`, []))
