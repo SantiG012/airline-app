@@ -73,6 +73,7 @@ export class CheckFlightsComponent {
   }
 
   search(term: string): void {
+    this.displayFlights = false;
     this.searchTerms.next(term);
   }
 
