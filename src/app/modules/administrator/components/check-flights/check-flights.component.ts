@@ -97,6 +97,8 @@ export class CheckFlightsComponent {
       return;
     };
 
+    this.filteredFlights = this.filteredFlights.filter(flight => flight.origen === this.departureCityControl?.value && flight.destino === this.arrivalCityControl?.value);
+
     this.displayFlights = true;
 
   }
