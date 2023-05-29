@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule,DatePipe } from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule} from '@angular/material/icon';
@@ -39,6 +39,9 @@ import { FlightComponent } from './components/flight/flight.component';
     MatTabsModule,
     DataBasesServicesModule,
     MatAutocompleteModule
+  ],
+  providers: [
+    DatePipe
   ]
 })
 export class AdministratorModule { }
