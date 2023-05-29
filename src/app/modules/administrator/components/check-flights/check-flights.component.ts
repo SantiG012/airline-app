@@ -21,6 +21,7 @@ export class CheckFlightsComponent {
   arrivalCities$!: Observable<string[]>;
   atLeastOneFlight!: boolean;
   displayNoFlightsFound!: boolean;
+  displayFlights!: boolean;
 
   constructor(
     private flightsService: FlightsService
@@ -95,6 +96,7 @@ export class CheckFlightsComponent {
       return;
     };
 
+    this.displayFlights = true;
 
   }
 
