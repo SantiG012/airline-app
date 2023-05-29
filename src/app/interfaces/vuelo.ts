@@ -1,5 +1,5 @@
 export interface Vuelo {
-    id: string;
+    vueloId: string;
     avionId: string;
     fechaHoraSalida: string;
     fechaHoraLlegada: string;

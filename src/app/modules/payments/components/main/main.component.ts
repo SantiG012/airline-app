@@ -13,6 +13,7 @@ import { Observable,tap} from 'rxjs';
 export class MainComponent {
   bookingId: string = '';
   invoice$!: Observable<Invoice>;
+  invoicePrice!:string;
   redirect: boolean = false;
 
   constructor(private invoiceGetService: InvoiceGetService,
@@ -24,7 +25,9 @@ export class MainComponent {
     this.bookingId = this.route.snapshot.queryParamMap.get('booking')!;
     this.invoice$ = this.invoiceGetService.getInvoiceByBookingId(this.bookingId).pipe(
        //Logs the fact that the invoice has been fetched
-        tap(invoice => console.log('Factura',invoice.facturaId))
+        tap(invoice => {
+          this.invoicePrice = invoice.precio;
+        })
     )
   }
 

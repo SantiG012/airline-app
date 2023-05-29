@@ -19,7 +19,7 @@ export class UserPostService {
 
   postUser(user: User):Observable<User>{
     return this.http.post<User>(`${this.API_URL}/guardarUsuario`, user).pipe(
-       tap((newUser: User) => console.log(`added user w/ id=${newUser.id}`)),
+       tap((newUser: User) => console.log(`added user w/ id=${newUser.usuarioId}`)),
        catchError(this.handleError<User>('postUser'))
       );
   }

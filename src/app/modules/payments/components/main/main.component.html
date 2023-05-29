@@ -13,8 +13,8 @@
     </section>
     <section>
         <h2>Precio total</h2>
-        <p>
-            El precio total de la reserva es de <strong>{{ invoice$ | async }}</strong> COP.
+        <p *ngIf="invoice$ | async">
+            El precio total de la reserva es de <strong>{{ invoicePrice}}</strong> COP.
         </p>
     </section>
     <div class="button-container flex-column flex-center">

@@ -11,7 +11,7 @@ export class SeatsService {
     private http: HttpClient
   ) { }
 
-  private API_URL = 'http://localhost:8080/vuelo';
+  private API_URL = 'http://172.16.20.185:8080/vuelo';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

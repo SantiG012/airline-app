@@ -83,7 +83,7 @@ export class MainComponent {
 
       this.bookingsArray.push(booking);
     }
-
+    console.log(this.bookingsArray)
     this.bookingSubscription = this.bookingPostService.postBooking(this.bookingsArray).subscribe(
       () => {
         this.router.navigate(['pagos'], {queryParams:{booking:this.bookingsArray[0].reservaId}});

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./flight.component.css']
 })
 export class FlightComponent {
-  @Input() flight!: Vuelo;
+  @Input() flightInput!: Vuelo;
   SEATS!:string;
 
   constructor(private datePipe: DatePipe,
@@ -31,6 +31,6 @@ export class FlightComponent {
   }
 
   onClick() {
-    this.router.navigate(['seleccionarAsientos'], { queryParams: { ID:this.flight.id,SEATS:this.SEATS} });
+    this.router.navigate(['seleccionarAsientos'], { queryParams: { ID:this.flightInput.vueloId,SEATS:this.SEATS} });
   }
 }

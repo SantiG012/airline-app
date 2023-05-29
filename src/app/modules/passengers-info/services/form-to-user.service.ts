@@ -14,7 +14,7 @@ export class FormToUserService {
     const id:string = form.get('idControl')?.value;
 
     const user: User = {
-      id: id,
+      usuarioId: id,
       nombre: names,
       apellido: lastNames,
       correo: email,
