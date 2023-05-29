@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 import { FormGroup,FormControl,Validators} from '@angular/forms';
+import { Observable, Subject, from,toArray,tap} from 'rxjs';
+import {
+  debounceTime, distinct, distinctUntilChanged, map, switchMap
+} from 'rxjs/operators';
+import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights.service';
+import { Vuelo } from 'src/app/interfaces/vuelo';
 
 @Component({
   selector: 'app-check-flights',
@@ -8,6 +14,17 @@ import { FormGroup,FormControl,Validators} from '@angular/forms';
 })
 export class CheckFlightsComponent {
   checkFlightsForm!: FormGroup;
+  private searchTerms = new Subject<string>();
+  filteredFlights$!: Observable<Vuelo[]>;
+  filteredFlights!: Vuelo[];
+  departureCities$!: Observable<string[]>;
+  arrivalCities$!: Observable<string[]>;
+  atLeastOneFlight!: boolean;
+  displayNoFlightsFound!: boolean;
+
+  constructor(
+    private flightsService: FlightsService
+  ){}
 
   ngOnInit() {
     this.checkFlightsForm = new FormGroup({
@@ -24,6 +41,55 @@ export class CheckFlightsComponent {
         ]
       )
     });
+
+    this.filteredFlights$ = this.searchTerms.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap((term: string) => this.flightsService.getFlightsByOrigin(term)),
+      tap((flights: Vuelo[]) => this.filteredFlights = flights)
+    );
+
+    this.departureCities$ = this.filteredFlights$.pipe(
+      switchMap((flights: Vuelo[]) => from(flights)),
+      map((flight: Vuelo) => flight.origen),
+      distinct(),
+      toArray()
+    );
+
+    this.arrivalCities$ = this.filteredFlights$.pipe(
+      switchMap((flights: Vuelo[]) => from(flights)),
+      map((flight: Vuelo) => flight.destino),
+      distinct(),
+      toArray()
+    );
+
+  }
+
+  search(term: string): void {
+    this.searchTerms.next(term);
+  }
+
+  checkFlightsExistence(){
+    this.atLeastOneFlight = this.filteredFlights.some(flight => flight.origen === this.departureCityControl?.value && flight.destino === this.arrivalCityControl?.value);
+  }
+
+  onButtonClicked(){
+    if (this.checkFlightsForm.invalid) return;
+
+    this.checkFlightsExistence();
+
+    if (!this.atLeastOneFlight) {
+      this.displayNoFlightsFound = true;
+
+      setTimeout(() => {
+        this.displayNoFlightsFound = false;
+      }
+      , 3000);
+
+      return;
+    };
+
+
   }
 
   get departureCityControl() { return this.checkFlightsForm.get('departureCityControl'); }
