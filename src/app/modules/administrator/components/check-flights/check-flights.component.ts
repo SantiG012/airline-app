@@ -77,6 +77,10 @@ export class CheckFlightsComponent {
     this.searchTerms.next(term);
   }
 
+  hideFlights(){
+    this.displayFlights = false;
+  }
+
   checkFlightsExistence(){
     this.atLeastOneFlight = this.filteredFlights.some(flight => flight.origen === this.departureCityControl?.value && flight.destino === this.arrivalCityControl?.value);
   }

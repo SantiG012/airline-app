@@ -28,8 +28,9 @@
             <input matInput type="text"
             formControlName="arrivalCityControl" 
             placeholder="Ej: Bogotá"
-            [matAutocomplete]="arrivalAuto">
-            <mat-autocomplete autoActiveFirstOption #arrivalAuto="matAutocomplete">
+            [matAutocomplete]="arrivalAuto"
+            (input)="hideFlights()">
+            <mat-autocomplete autoActiveFirstOption #arrivalAuto="matAutocomplete" (optionSelected)="hideFlights()">
                 <mat-option *ngFor="let city of arrivalCities$ | async" [value]="city">
                   {{city}}
                 </mat-option>
