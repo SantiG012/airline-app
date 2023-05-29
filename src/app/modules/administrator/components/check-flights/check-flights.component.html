@@ -11,10 +11,11 @@
             #departureCity
             formControlName="departureCityControl" 
             placeholder="Ej: Cali"
-            [matAutocomplete]="departureAuto">
+            [matAutocomplete]="departureAuto"
+            (input)="search(departureCity.value)">
             <mat-autocomplete autoActiveFirstOption #departureAuto="matAutocomplete">
-                <mat-option *ngFor="" [value]="">
-                  <!-- {{city}} -->
+                <mat-option *ngFor="let city of departureCities$ | async" [value]="city">
+                  {{city}}
                 </mat-option>
               </mat-autocomplete>
             <mat-hint *ngIf="departureCityControl!.invalid &&(departureCityControl!.dirty || departureCityControl!.touched)">
@@ -29,8 +30,8 @@
             formControlName="arrivalCityControl" 
             placeholder="Ej: Bogotá">
             <mat-autocomplete autoActiveFirstOption #arrivalAuto="matAutocomplete">
-                <mat-option *ngFor="" [value]="">
-                  <!-- {{city}} -->
+                <mat-option *ngFor="let city of arrivalCities$ | async" [value]="city">
+                  {{city}}
                 </mat-option>
               </mat-autocomplete>
             <mat-hint *ngIf="arrivalCityControl!.invalid && (arrivalCityControl!.dirty || arrivalCityControl!.touched)">
@@ -39,7 +40,7 @@
             </mat-hint>
         </mat-form-field>
     </div>
-    <button>
+    <button (click)="onButtonClicked()">
         Consultar
     </button>
 
