@@ -15,6 +15,7 @@ import { CreatePlaneComponent } from './components/create-plane/create-plane.com
 import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
 import { CheckFlightsComponent } from './components/check-flights/check-flights.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FlightComponent } from './components/flight/flight.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     ManageSeatsComponent,
     ManageFlightsComponent,
     CreatePlaneComponent,
-    CheckFlightsComponent
+    CheckFlightsComponent,
+    FlightComponent
   ],
   imports: [
     CommonModule,
