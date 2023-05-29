@@ -17,6 +17,7 @@ export class CheckFlightsComponent {
   private searchTerms = new Subject<string>();
   filteredFlights$!: Observable<Vuelo[]>;
   filteredFlights!: Vuelo[];
+  flightsToDisplay!: Vuelo[];
   departureCities$!: Observable<string[]>;
   arrivalCities$!: Observable<string[]>;
   atLeastOneFlight!: boolean;
@@ -101,7 +102,7 @@ export class CheckFlightsComponent {
       return;
     };
 
-    this.filteredFlights = this.filteredFlights.filter(flight => flight.origen === this.departureCityControl?.value && flight.destino === this.arrivalCityControl?.value);
+    this.flightsToDisplay = this.filteredFlights.filter(flight => flight.origen === this.departureCityControl?.value && flight.destino === this.arrivalCityControl?.value);
 
     this.displayFlights = true;
 

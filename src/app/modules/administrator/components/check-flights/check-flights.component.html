@@ -45,7 +45,7 @@
         Consultar
     </button>
 </fieldset>
-<div class="flights-container" *ngIf="filteredFlights && displayFlights">
-    <app-flight *ngFor="let flight of filteredFlights" [flightInput]="flight" ></app-flight>
+<div class="flights-container" *ngIf="flightsToDisplay && displayFlights">
+    <app-flight *ngFor="let flight of flightsToDisplay" [flightInput]="flight" ></app-flight>
 </div>
 
