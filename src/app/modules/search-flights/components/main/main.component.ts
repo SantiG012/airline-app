@@ -67,8 +67,9 @@ export class MainComponent {
     ));
   }
 
-  getBookingIdFromFlightId(flightId: string): string {
-    return this.paymentCorroborationService.getBookingId(flightId);
+  paymentStatus(estadoPago: string): boolean {
+    if (estadoPago === "f")return false;
+    return true;
   }
   
   onSubmit(){

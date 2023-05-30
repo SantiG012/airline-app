@@ -15,9 +15,9 @@
         </button>
     </fieldset>
     <div class="flights-container">
-        <app-flight *ngFor="let flight of flights$ | async" [flightInput]="flight" 
-        [bookingIdInput]="getBookingIdFromFlightId(flight.vueloId)"
+        <app-flight *ngFor="let flight of flights$ | async;index as i" [flightInput]="flight" 
+        [bookingIdInput]="bookings[i].reservaId"
         appPaidFlight 
-        [paymentStatus]="paymentCorroboration(flight.vueloId)"></app-flight>
+        [paymentStatus]="paymentStatus(bookings[i].estadoPago)"></app-flight>
     </div>
 </main>
