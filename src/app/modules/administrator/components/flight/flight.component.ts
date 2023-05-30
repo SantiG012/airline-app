@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { DatePipe } from '@angular/common'; 
-import { Router } from '@angular/router';
 import { Vuelo } from 'src/app/interfaces/vuelo';
+import { Clipboard } from '@angular/cdk/clipboard';
+
 
 @Component({
   selector: 'app-flight',
@@ -11,9 +12,10 @@ import { Vuelo } from 'src/app/interfaces/vuelo';
 export class FlightComponent {
 
   @Input()flightInput!: Vuelo;
+  idCopied: boolean = false;
 
   constructor (private datePipe: DatePipe,
-              private router:Router
+              private clipboard: Clipboard
     ) {}
 
 
@@ -26,7 +28,11 @@ export class FlightComponent {
   }
 
   onClick() {
-    console.log("Click en el vuelo");
-    //TODO - Copiar el ID del vuelo en el portapapeles
+    this.clipboard.copy(this.flightInput.vueloId);
+    this.idCopied = true;
+    setTimeout(() => {
+      this.idCopied = false;
+    } 
+    , 3000);
   }
 }

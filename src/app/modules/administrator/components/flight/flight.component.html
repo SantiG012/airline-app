@@ -25,5 +25,8 @@
             <span class="city">{{flightInput.destino}}</span>
         </div>
     </div>
+    <mat-hint *ngIf="idCopied">
+        Id: {{flightInput.vueloId}} copiado al portapapeles 
+    </mat-hint>
 </a>
 
