@@ -6,14 +6,12 @@ import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights
 import { Vuelo } from 'src/app/interfaces/vuelo';
 import { forkJoin } from 'rxjs';
 import { Observable,tap} from 'rxjs';
-import { PaymentCorroborationService } from '../../services/payment-corroboration.service';
 
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'],
-  providers: [PaymentCorroborationService]
+  styleUrls: ['./main.component.css']
 })
 export class MainComponent {
   searchForm!: FormGroup;
@@ -23,8 +21,7 @@ export class MainComponent {
 
   constructor(
     private bookingGetsService: BookingGetsService,
-    private flightsService: FlightsService,
-    private paymentCorroborationService: PaymentCorroborationService
+    private flightsService: FlightsService
   ) { }
 
   ngOnInit(){
@@ -46,12 +43,6 @@ export class MainComponent {
       }
     );
   }
-
-  paymentCorroboration(flightId: string): boolean {
-    const status = this.paymentCorroborationService.determineFlightPaymentStatus(flightId, this.bookings);
-    return status;
-  }
-
 
   requestFlights() {
     const flightRequests = this.bookings.map(booking =>
