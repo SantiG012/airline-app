@@ -54,7 +54,13 @@ button:disabled{
     opacity: 0.5;
 }
 
+.flights-container{
+    width: 100%;
+}
 
+app-flight{
+    width: 50rem;
+}
 
 .flex-row{
     display: flex;

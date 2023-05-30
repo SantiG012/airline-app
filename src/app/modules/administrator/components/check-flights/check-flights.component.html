@@ -45,7 +45,7 @@
         Consultar
     </button>
 </fieldset>
-<div class="flights-container" *ngIf="flightsToDisplay && displayFlights">
+<div class="flights-container flex-column flex-center" *ngIf="flightsToDisplay && displayFlights">
     <app-flight *ngFor="let flight of flightsToDisplay" [flightInput]="flight" ></app-flight>
 </div>
 
