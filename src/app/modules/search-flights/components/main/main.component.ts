@@ -41,7 +41,7 @@ export class MainComponent {
   makeBookingRequest(){
     this.bookingGetsService.getUserBookings(this.idControl!.value).subscribe(
       (bookings:Booking[]) => {
-        this.bookings = bookings;
+        this.bookings = bookings.sort((a:Booking, b:Booking) => a.vueloId.localeCompare(b.vueloId)) 
         this.requestFlights();
       }
     );
@@ -59,8 +59,12 @@ export class MainComponent {
     );
   
     this.flights$ = forkJoin(flightRequests).pipe(
-      tap(flights => this.flights = flights)
-    )
+      tap((flights: Vuelo[]) => {
+        this.flights = flights.sort((a:Vuelo, b:Vuelo) =>
+          a.vueloId.localeCompare(b.vueloId)
+        );
+      }
+    ));
   }
 
   getBookingIdFromFlightId(flightId: string): string {
