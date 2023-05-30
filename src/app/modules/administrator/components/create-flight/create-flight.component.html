@@ -1,0 +1,45 @@
+<fieldset>
+    <legend>Flight Information</legend>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>
+                Origen
+            </mat-label>
+
+            <input matInput type="text">
+            <mat-icon matSuffix>flight_takeoff</mat-icon>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Destino</mat-label>
+
+            <input matInput type="text">
+            <mat-icon matSuffix>flight_land</mat-icon>
+
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>
+                Fecha de salida
+            </mat-label>
+
+            <input matInput [matDatepicker]="departureDate">
+
+            <mat-datepicker-toggle matIconSuffix [for]="departureDate"></mat-datepicker-toggle>
+            <mat-datepicker #departureDate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>
+                Fecha de llegada
+            </mat-label>
+
+            <input matInput [matDatepicker]="arrivalDate">
+
+            <mat-datepicker-toggle matIconSuffix [for]="arrivalDate"></mat-datepicker-toggle>
+            <mat-datepicker #arrivalDate></mat-datepicker>
+        </mat-form-field>
+    </div>
+</fieldset>

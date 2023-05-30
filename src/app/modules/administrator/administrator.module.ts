@@ -16,6 +16,8 @@ import { DataBasesServicesModule } from '../data-bases-services/data-bases-servi
 import { CheckFlightsComponent } from './components/check-flights/check-flights.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FlightComponent } from './components/flight/flight.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { FlightComponent } from './components/flight/flight.component';
     ReactiveFormsModule,
     MatTabsModule,
     DataBasesServicesModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     DatePipe
