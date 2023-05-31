@@ -1,4 +1,4 @@
-<fieldset  class="flex-column flex-center"  >
+<fieldset  class="flex-column flex-center" [formGroup]="flightForm" >
     <legend>Flight Information</legend>
     <div>
         <mat-form-field appearance="fill">
@@ -6,7 +6,10 @@
                 Origen
             </mat-label>
 
-            <input matInput type="text">
+            <input matInput type="text"
+            formControlName="departureCityControl"
+            >
+
             <mat-icon matSuffix>flight_takeoff</mat-icon>
 
         </mat-form-field>
@@ -14,7 +17,10 @@
         <mat-form-field appearance="fill">
             <mat-label>Destino</mat-label>
 
-            <input matInput type="text">
+            <input matInput type="text"
+            formControlName="arrivalCityControl"
+            >
+
             <mat-icon matSuffix>flight_land</mat-icon>
 
         </mat-form-field>
@@ -25,7 +31,9 @@
                 Fecha de salida
             </mat-label>
 
-            <input matInput [matDatepicker]="departureDate">
+            <input matInput [matDatepicker]="departureDate"
+            formControlName="departureDateControl"
+            >
 
             <mat-datepicker-toggle matIconSuffix [for]="departureDate"></mat-datepicker-toggle>
             <mat-datepicker #departureDate></mat-datepicker>
@@ -36,7 +44,9 @@
                 Fecha de llegada
             </mat-label>
 
-            <input matInput [matDatepicker]="arrivalDate">
+            <input matInput [matDatepicker]="arrivalDate"
+            formControlName="arrivalDateControl"
+            >
 
             <mat-datepicker-toggle matIconSuffix [for]="arrivalDate"></mat-datepicker-toggle>
             <mat-datepicker #arrivalDate></mat-datepicker>
@@ -53,7 +63,9 @@
                     HH
                 </mat-label>
 
-                <input matInput type="number" placeholder="Ej:14">
+                <input matInput type="number" placeholder="Ej:14"
+                formControlName="departureHoursControl"
+                >
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -61,7 +73,9 @@
                     MM
                 </mat-label>
 
-                <input matInput type="number" placeholder="Ej:35">
+                <input matInput type="number" placeholder="Ej:35"
+                formControlName="departureMinutesControl"
+                >
             </mat-form-field>
         </div>
     </div>
@@ -76,7 +90,9 @@
                     HH
                 </mat-label>
 
-                <input matInput type="number" placeholder="Ej:15">
+                <input matInput type="number" placeholder="Ej:15"
+                formControlName="arrivalHoursControl"
+                >
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -84,7 +100,9 @@
                     MM
                 </mat-label>
 
-                <input matInput type="number" placeholder="Ej:50">
+                <input matInput type="number" placeholder="Ej:50"
+                formControlName="arrivalMinutesControl"
+                >
             </mat-form-field>
         </div>
     </div>
@@ -95,7 +113,9 @@
                 Avion Id
             </mat-label>
 
-            <input matInput type="text" placeholder="Ej:1">
+            <input matInput type="text" placeholder="Ej:1"
+            formControlName="planeIdControl"
+            >
         </mat-form-field>
     </div>
 
