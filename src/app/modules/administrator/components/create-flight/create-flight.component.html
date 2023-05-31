@@ -1,4 +1,4 @@
-<fieldset>
+<fieldset  class="flex-column flex-center"  >
     <legend>Flight Information</legend>
     <div>
         <mat-form-field appearance="fill">
@@ -42,4 +42,63 @@
             <mat-datepicker #arrivalDate></mat-datepicker>
         </mat-form-field>
     </div>
+
+    <div>
+        <mat-hint>
+            Hora de salida
+        </mat-hint>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>
+                    HH
+                </mat-label>
+
+                <input matInput type="number" placeholder="Ej:14">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>
+                    MM
+                </mat-label>
+
+                <input matInput type="number" placeholder="Ej:35">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div>
+        <mat-hint>
+            Hora de llegada
+        </mat-hint>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>
+                    HH
+                </mat-label>
+
+                <input matInput type="number" placeholder="Ej:15">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>
+                    MM
+                </mat-label>
+
+                <input matInput type="number" placeholder="Ej:50">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>
+                Avion Id
+            </mat-label>
+
+            <input matInput type="text" placeholder="Ej:1">
+        </mat-form-field>
+    </div>
+
+    <button >Crear Vuelo</button>
+
 </fieldset>
