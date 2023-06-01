@@ -36,9 +36,15 @@
             [min]="minDate"
             [max]="maxDate"
             >
-
+            
             <mat-datepicker-toggle matIconSuffix [for]="departureDate"></mat-datepicker-toggle>
             <mat-datepicker #departureDate></mat-datepicker>
+
+            <mat-error *ngIf="departureDateControl!.invalid && (departureDateControl!.dirty || departureDateControl!.touched)">
+                <mat-error *ngIf="departureDateControl!.errors?.['matDatepickerMin']">La fecha debe ser mayor a {{minDate | date}}</mat-error>
+                <mat-error *ngIf="departureDateControl!.errors?.['matDatepickerMax']">La fecha debe ser menor a {{maxDate | date}}</mat-error>
+                <mat-error *ngIf="departureDateControl!.errors?.['required']">Campo obligatorio</mat-error>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -54,6 +60,12 @@
 
             <mat-datepicker-toggle matIconSuffix [for]="arrivalDate"></mat-datepicker-toggle>
             <mat-datepicker #arrivalDate></mat-datepicker>
+
+            <mat-error *ngIf="arrivalDateControl!.errors && (arrivalDateControl?.dirty || arrivalDateControl?.touched)">
+                <mat-error *ngIf="arrivalDateControl!.errors?.['matDatepickerMin']">La fecha debe ser mayor a {{minDate | date}}</mat-error>
+                <mat-error *ngIf="arrivalDateControl!.errors?.['matDatepickerMax']">La fecha debe ser menor a {{maxDate | date}}</mat-error>
+                <mat-error *ngIf="arrivalDateControl!.errors?.['required']">Campo obligatorio</mat-error>
+            </mat-error>
         </mat-form-field>
     </div>
 

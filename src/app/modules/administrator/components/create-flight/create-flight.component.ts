@@ -91,4 +91,14 @@ export class CreateFlightComponent {
     this.maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, currentDate.getDate());
   }
 
+
+  get departureCityControl(){ return this.flightForm.get('departureCityControl'); }
+  get arrivalCityControl(){ return this.flightForm.get('arrivalCityControl'); }
+  get departureDateControl(){ return this.flightForm.get('departureDateControl'); }
+  get arrivalDateControl(){ return this.flightForm.get('arrivalDateControl'); }
+  get departureHoursControl(){ return this.flightForm.get('departureHoursControl'); }
+  get departureMinutesControl(){ return this.flightForm.get('departureMinutesControl'); }
+  get arrivalHoursControl(){ return this.flightForm.get('arrivalHoursControl'); }
+  get arrivalMinutesControl(){ return this.flightForm.get('arrivalMinutesControl'); }
+  get planeIdControl(){ return this.flightForm.get('planeIdControl'); }
 }
