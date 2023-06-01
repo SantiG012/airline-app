@@ -8,6 +8,7 @@ import { InvoiceGetService } from './gets/invoice-get.service';
 import { BookingPutService } from './puts/booking-put.service';
 import { BookingGetsService } from './gets/booking-gets.service';
 import { PlanePostsService } from './posts/plane-posts.service';
+import { FlightPostsService } from './posts/flight-posts.service';
 
 
 
@@ -24,7 +25,8 @@ import { PlanePostsService } from './posts/plane-posts.service';
     InvoiceGetService,
     BookingPutService,
     BookingGetsService,
-    PlanePostsService
+    PlanePostsService,
+    FlightPostsService
   ]
 })
 export class DataBasesServicesModule { }
