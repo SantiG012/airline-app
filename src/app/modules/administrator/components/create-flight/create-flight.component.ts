@@ -13,7 +13,9 @@ export class CreateFlightComponent {
   minDate!: Date;
   maxDate!: Date;
 
-  constructor() { }
+  constructor(
+    private dateValidationService: DateValidationService
+  ) { }
 
   ngOnInit(){
     this.calculateMinDate();
@@ -91,6 +93,12 @@ export class CreateFlightComponent {
     this.maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, currentDate.getDate());
   }
 
+  onClick(){
+    const vari = this.dateValidationService.isDepartureDateAfterArrivalDate(
+      this.departureDateControl!.value,
+      this.arrivalDateControl!.value
+    );
+  }
 
   get departureCityControl(){ return this.flightForm.get('departureCityControl'); }
   get arrivalCityControl(){ return this.flightForm.get('arrivalCityControl'); }
