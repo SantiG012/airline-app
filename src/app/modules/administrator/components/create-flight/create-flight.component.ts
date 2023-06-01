@@ -94,10 +94,7 @@ export class CreateFlightComponent {
   }
 
   onClick(){
-    const vari = this.dateValidationService.isDepartureDateAfterArrivalDate(
-      this.departureDateControl!.value,
-      this.arrivalDateControl!.value
-    );
+
   }
 
   get departureCityControl(){ return this.flightForm.get('departureCityControl'); }
