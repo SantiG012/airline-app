@@ -3,7 +3,7 @@ import { FormGroup,FormControl,Validators} from '@angular/forms';
 import { Booking } from 'src/app/interfaces/booking'; 
 import { BookingGetsService } from 'src/app/modules/data-bases-services/gets/booking-gets.service';
 import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights.service';
-import { Vuelo } from 'src/app/interfaces/vuelo';
+import { IVuelo } from 'src/app/interfaces/IVuelo';
 import { forkJoin } from 'rxjs';
 import { Observable,tap} from 'rxjs';
 
@@ -16,8 +16,8 @@ import { Observable,tap} from 'rxjs';
 export class MainComponent {
   searchForm!: FormGroup;
   bookings!: Booking[];
-  flights$!: Observable<Vuelo[]>;
-  flights: Vuelo[] = [];
+  flights$!: Observable<IVuelo[]>;
+  flights: IVuelo[] = [];
 
   constructor(
     private bookingGetsService: BookingGetsService,
@@ -50,8 +50,8 @@ export class MainComponent {
     );
   
     this.flights$ = forkJoin(flightRequests).pipe(
-      tap((flights: Vuelo[]) => {
-        this.flights = flights.sort((a:Vuelo, b:Vuelo) =>
+      tap((flights: IVuelo[]) => {
+        this.flights = flights.sort((a:IVuelo, b:IVuelo) =>
           a.vueloId.localeCompare(b.vueloId)
         );
       }

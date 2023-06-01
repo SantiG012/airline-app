@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights.service';
 import { ActivatedRoute } from '@angular/router';
-import { Vuelo } from 'src/app/interfaces/vuelo';
+import { IVuelo } from 'src/app/interfaces/IVuelo';
 
 @Component({
   selector: 'app-main',
@@ -11,7 +11,7 @@ import { Vuelo } from 'src/app/interfaces/vuelo';
 export class MainComponent {
   origin!:string;
   destiny!:string;
-  flights!:Vuelo[];
+  flights!:IVuelo[];
 
   constructor (private flightsService:FlightsService,
                private route: ActivatedRoute){}

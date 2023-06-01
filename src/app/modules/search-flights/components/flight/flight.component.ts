@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { DatePipe } from '@angular/common'; 
 import { Router } from '@angular/router';
-import { Vuelo } from 'src/app/interfaces/vuelo';
+import { IVuelo } from 'src/app/interfaces/IVuelo';
 
 
 
@@ -12,7 +12,7 @@ import { Vuelo } from 'src/app/interfaces/vuelo';
 })
 export class FlightComponent {
 
-  @Input()flightInput!: Vuelo;
+  @Input()flightInput!: IVuelo;
   @Input()bookingIdInput!: string;
 
   constructor (private datePipe: DatePipe,

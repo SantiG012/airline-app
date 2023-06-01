@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DatePipe } from '@angular/common'; 
-import { Vuelo } from 'src/app/interfaces/vuelo';
+import { IVuelo } from 'src/app/interfaces/IVuelo';
 import { Clipboard } from '@angular/cdk/clipboard';
 
 
@@ -11,7 +11,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 })
 export class FlightComponent {
 
-  @Input()flightInput!: Vuelo;
+  @Input()flightInput!: IVuelo;
   idCopied: boolean = false;
 
   constructor (private datePipe: DatePipe,

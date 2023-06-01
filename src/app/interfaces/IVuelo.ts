@@ -1,4 +1,4 @@
-export interface Vuelo {
+export interface IVuelo {
     vueloId: string;
     avionId: string;
     fechaHoraSalida: string;

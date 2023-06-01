@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders,HttpErrorResponse} from '@angular/common/http';
 import { Observable,of,catchError,tap,throwError} from 'rxjs';
-import { Vuelo } from 'src/app/interfaces/vuelo';
+import { IVuelo } from 'src/app/interfaces/IVuelo';
 
 @Injectable()
 export class FlightPostsService {
@@ -16,7 +16,7 @@ export class FlightPostsService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  postFlight(flight: Vuelo):Observable<any>{
+  postFlight(flight: IVuelo):Observable<any>{
     return this.http.post<any>(`${this.API_URL}/guardarVuelo`, flight).pipe(
        tap((_) => console.log(`added flight`)),
        catchError(this.handleError('postFlight'))

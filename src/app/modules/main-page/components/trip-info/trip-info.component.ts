@@ -5,7 +5,7 @@ import {
   debounceTime, distinct, distinctUntilChanged, map, switchMap
 } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { Vuelo } from 'src/app/interfaces/vuelo';
+import { IVuelo } from 'src/app/interfaces/IVuelo';
 import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights.service';
 import { FlightConfirmationService } from '../../services/flight-confirmation.service';
 
@@ -19,10 +19,10 @@ export class TripInfoComponent {
   cityForm!: FormGroup;
   flightsExist!: boolean;
 
-  filteredFlights$!: Observable<Vuelo[]>;
+  filteredFlights$!: Observable<IVuelo[]>;
   filteredOrigins$!: Observable<string[]>;
   filteredDestinations$!: Observable<string[]>;
-  filteredFlights!: Vuelo[];
+  filteredFlights!: IVuelo[];
   corroborationFlightsFlag!: boolean;
   private searchTerms = new Subject<string>();
 
@@ -57,23 +57,23 @@ export class TripInfoComponent {
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((term: string) => this.flightsService.getFlightsByOrigin(term)),
-      tap((flights: Vuelo[]) => this.filteredFlights = flights)
+      tap((flights: IVuelo[]) => this.filteredFlights = flights)
     );
 
 
     this.filteredOrigins$ = this.filteredFlights$.pipe(
-      switchMap((flights: Vuelo[]) => from(flights)
+      switchMap((flights: IVuelo[]) => from(flights)
       .pipe(
-              map((flight: Vuelo) => flight.origen),
+              map((flight: IVuelo) => flight.origen),
               distinct(),
               toArray()
            )),
     );
 
     this.filteredDestinations$ = this.filteredFlights$.pipe(
-      switchMap((flights: Vuelo[]) => from(flights)
+      switchMap((flights: IVuelo[]) => from(flights)
       .pipe(
-             map((flight: Vuelo) => flight.destino),
+             map((flight: IVuelo) => flight.destino),
               distinct(),
               toArray()
            ))

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Input } from '@angular/core';
-import { Vuelo } from 'src/app/interfaces/vuelo';
+import { IVuelo } from 'src/app/interfaces/IVuelo';
 import { DatePipe } from '@angular/common'; 
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./flight.component.css']
 })
 export class FlightComponent {
-  @Input() flightInput!: Vuelo;
+  @Input() flightInput!: IVuelo;
   SEATS!:string;
 
   constructor(private datePipe: DatePipe,

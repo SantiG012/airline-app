@@ -5,7 +5,7 @@ import {
   debounceTime, distinct, distinctUntilChanged, map, switchMap
 } from 'rxjs/operators';
 import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights.service';
-import { Vuelo } from 'src/app/interfaces/vuelo';
+import { IVuelo } from 'src/app/interfaces/IVuelo';
 
 @Component({
   selector: 'app-check-flights',
@@ -15,9 +15,9 @@ import { Vuelo } from 'src/app/interfaces/vuelo';
 export class CheckFlightsComponent {
   checkFlightsForm!: FormGroup;
   private searchTerms = new Subject<string>();
-  filteredFlights$!: Observable<Vuelo[]>;
-  filteredFlights!: Vuelo[];
-  flightsToDisplay!: Vuelo[];
+  filteredFlights$!: Observable<IVuelo[]>;
+  filteredFlights!: IVuelo[];
+  flightsToDisplay!: IVuelo[];
   departureCities$!: Observable<string[]>;
   arrivalCities$!: Observable<string[]>;
   atLeastOneFlight!: boolean;
@@ -48,13 +48,13 @@ export class CheckFlightsComponent {
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((term: string) => this.flightsService.getFlightsByOrigin(term)),
-      tap((flights: Vuelo[]) => this.filteredFlights = flights)
+      tap((flights: IVuelo[]) => this.filteredFlights = flights)
     );
 
     this.departureCities$ = this.filteredFlights$.pipe(
-      switchMap((flights: Vuelo[]) => from(flights)
+      switchMap((flights: IVuelo[]) => from(flights)
         .pipe(
-          map((flight: Vuelo) => flight.origen),
+          map((flight: IVuelo) => flight.origen),
           distinct(),
           toArray()
         )
@@ -62,9 +62,9 @@ export class CheckFlightsComponent {
     );
 
     this.arrivalCities$ = this.filteredFlights$.pipe(
-      switchMap((flights: Vuelo[]) => from(flights)
+      switchMap((flights: IVuelo[]) => from(flights)
         .pipe(
-          map((flight: Vuelo) => flight.destino),
+          map((flight: IVuelo) => flight.destino),
           distinct(),
           toArray()
         )

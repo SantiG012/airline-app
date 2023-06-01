@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { Vuelo } from 'src/app/interfaces/vuelo';
+import { IVuelo } from 'src/app/interfaces/IVuelo';
 import { catchError, tap} from 'rxjs/operators';
 import { Observable, of} from 'rxjs';
 
@@ -17,27 +17,27 @@ export class FlightsService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  getFlightsByOrigin(origin: string):Observable<Vuelo[]>{
-    return this.http.get<Vuelo[]>(`${this.API_URL}/obtenerVuelosPorOrigen/${origin}`)
+  getFlightsByOrigin(origin: string):Observable<IVuelo[]>{
+    return this.http.get<IVuelo[]>(`${this.API_URL}/obtenerVuelosPorOrigen/${origin}`)
     .pipe(
       tap(_ => console.log(`fetched flights by origin=${origin}`)),
-      catchError(this.handleError<Vuelo[]>(`getFlightsByOrigin origin=${origin}`, []))
+      catchError(this.handleError<IVuelo[]>(`getFlightsByOrigin origin=${origin}`, []))
     );
   }
 
-  getFlightsByOriginAndDestiny(origin: string, destiny: string):Observable<Vuelo[]>{
-    return this.http.get<Vuelo[]>(`${this.API_URL}/obtenerVuelosPorOrigenDestino/${origin}/${destiny}`)
+  getFlightsByOriginAndDestiny(origin: string, destiny: string):Observable<IVuelo[]>{
+    return this.http.get<IVuelo[]>(`${this.API_URL}/obtenerVuelosPorOrigenDestino/${origin}/${destiny}`)
     .pipe(
       tap(_ => console.log(`fetched flights by origin=${origin} and destiny=${destiny}`)),
-      catchError(this.handleError<Vuelo[]>(`getFlightsByOriginAndDestiny origin=${origin} and destiny=${destiny}`, []))
+      catchError(this.handleError<IVuelo[]>(`getFlightsByOriginAndDestiny origin=${origin} and destiny=${destiny}`, []))
       );
   }
 
-  getFlightById(id: string):Observable<Vuelo>{
-    return this.http.get<Vuelo>(`${this.API_URL}/obtenerVuelo/${id}`)
+  getFlightById(id: string):Observable<IVuelo>{
+    return this.http.get<IVuelo>(`${this.API_URL}/obtenerVuelo/${id}`)
     .pipe(
       tap(_ => console.log(`fetched flight by id=${id}`)),
-      catchError(this.handleError<Vuelo>(`getFlightById id=${id}`))
+      catchError(this.handleError<IVuelo>(`getFlightById id=${id}`))
     );
   }
 
