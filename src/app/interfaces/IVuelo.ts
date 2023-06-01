@@ -7,6 +7,4 @@ export interface IVuelo {
     destino: string;
     estado: string;
     trayeactoId: string;
-
-    validateSameDayFlight(): boolean;
 }

@@ -28,36 +28,9 @@ export class Vuelo implements IVuelo{
         this.estado = 'Activo';
         this.trayeactoId = this.generateUniqueID();
     }
-
-    validateSameDayFlight(): boolean {
-        const departureDate = this.stringToDate(this.fechaHoraSalida);
-        const arrivalDate = this.stringToDate(this.fechaHoraLlegada);
-        const departureHour = this.stringToHour(this.fechaHoraSalida);
-        const arrivalHour = this.stringToHour(this.fechaHoraLlegada);
-
-        if(!(departureDate && arrivalDate))return false;
-
-        if(!(departureHour && arrivalHour)) return false;
-
-        if(departureDate !== arrivalDate) return true;
-
-        if(arrivalHour > departureHour) return true;
-
-        return false;
-    }
     
     private generateUniqueID(): string {
         return uuidv4();
-    }
-
-    private stringToDate(date:string): string | null {
-        const datePipe = new DatePipe('en-US');
-        return datePipe.transform(date, 'dd/MM/yyyy');
-    }
-
-    private stringToHour(date:string): string | null {
-        const datePipe = new DatePipe('en-US');
-        return datePipe.transform(date, 'HH');
     }
 
 }
