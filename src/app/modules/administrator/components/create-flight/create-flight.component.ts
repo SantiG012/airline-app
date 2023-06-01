@@ -95,6 +95,60 @@ export class CreateFlightComponent {
 
   onClick(){
 
+    if(this.flightForm.invalid){
+      alert('Por favor, complete todo el formulario adecuadamente'); 
+      return;
+    }
+    
+    const departureDate = this.departureDateControl!.value;
+    const arrivalDate = this.arrivalDateControl!.value;
+
+    const isDepartureDateAfterArrivalDate = this.dateValidationService.isDepartureDateAfterArrivalDate(
+      departureDate,
+      arrivalDate
+    );
+
+    const isDepartureDateEqualsToArrivalDate = this.dateValidationService.isDepartureDateEqualsToArrivalDate(
+      departureDate,
+      arrivalDate
+    );
+
+    if(isDepartureDateAfterArrivalDate){
+      alert('La fecha de despegue no puede estar después de la fecha de aterrizaje');
+      return;
+    }
+
+    if(isDepartureDateEqualsToArrivalDate){
+      const departureHour = this.departureHoursControl!.value;
+      const arrivalHour = this.arrivalHoursControl!.value;
+      const departureMinutes = this.departureMinutesControl!.value;
+      const arrivalMinutes = this.arrivalMinutesControl!.value;
+
+      const isDepartureHourAfterArrivalHour = this.dateValidationService.isDepartureHourAfterArrivalHour(
+        departureHour,
+        arrivalHour
+      );
+
+      const isOneHourDifferenceBetweenDepartureAndArrivalHours = this.dateValidationService.isOneHourDifferenceBetweenDepartureAndArrivalHours(
+        departureHour,
+        arrivalHour,
+        departureMinutes,
+        arrivalMinutes
+      );
+
+
+      if(isDepartureHourAfterArrivalHour){
+        alert('La hora de despegue no puede estar después de la hora de aterrizaje en un mismo día');
+        return;
+      }
+
+
+      if(!isOneHourDifferenceBetweenDepartureAndArrivalHours){
+        alert('La diferencia entre la hora de despegue y la hora de aterrizaje debe ser de al menos una hora en un mismo día');
+        return;
+      }
+
+    }
   }
 
   get departureCityControl(){ return this.flightForm.get('departureCityControl'); }
