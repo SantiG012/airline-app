@@ -33,6 +33,8 @@
 
             <input matInput [matDatepicker]="departureDate"
             formControlName="departureDateControl"
+            [min]="minDate"
+            [max]="maxDate"
             >
 
             <mat-datepicker-toggle matIconSuffix [for]="departureDate"></mat-datepicker-toggle>
@@ -46,6 +48,8 @@
 
             <input matInput [matDatepicker]="arrivalDate"
             formControlName="arrivalDateControl"
+            [min]="minDate"
+            [max]="maxDate"
             >
 
             <mat-datepicker-toggle matIconSuffix [for]="arrivalDate"></mat-datepicker-toggle>

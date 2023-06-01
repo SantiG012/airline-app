@@ -1,17 +1,24 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DateValidationService } from '../../services/date-validation.service';
 
 @Component({
   selector: 'app-create-flight',
   templateUrl: './create-flight.component.html',
-  styleUrls: ['./create-flight.component.css']
+  styleUrls: ['./create-flight.component.css'],
+  providers: [DateValidationService]
 })
 export class CreateFlightComponent {  
   flightForm!: FormGroup;
+  minDate!: Date;
+  maxDate!: Date;
 
   constructor() { }
 
   ngOnInit(){
+    this.calculateMinDate();
+    this.calculateMaxDate();
+
     this.flightForm = new FormGroup({
       departureCityControl: new FormControl(
         null,[
@@ -73,6 +80,15 @@ export class CreateFlightComponent {
         ]
       )
     });
+  }
+
+  calculateMinDate(){
+    this.minDate = new Date();
+  }
+
+  calculateMaxDate(){
+    const currentDate = new Date();
+    this.maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, currentDate.getDate());
   }
 
 }
