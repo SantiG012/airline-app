@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateValidationService } from '../../services/date-validation.service';
 import { FlightPostsService } from 'src/app/modules/data-bases-services/posts/flight-posts.service';
+import {HttpErrorResponse} from '@angular/common/http';
 import { IVuelo } from 'src/app/interfaces/IVuelo';
 import { Vuelo } from 'src/app/Classes/Vuelo';
 
@@ -230,8 +231,12 @@ export class CreateFlightComponent {
       return;
     }
 
-    console.log(this.createFlightObject());
+    const flight:IVuelo = this.createFlightObject()
 
+    this.flightPostsService.postFlight(flight).subscribe({
+      error: (error:HttpErrorResponse)=>alert(error.message),
+      complete:()=>console.log("Creado con éxito")
+    })
   }
 
   get departureCityControl(){ return this.flightForm.get('departureCityControl'); }

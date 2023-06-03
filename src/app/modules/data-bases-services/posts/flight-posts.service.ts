@@ -27,7 +27,7 @@ export class FlightPostsService {
     return (error: HttpErrorResponse): Observable<HttpErrorResponse> => { 
       console.error(error); 
       console.log(`${operation} failed: ${error.message}`);
-      return throwError(error);
+      return throwError(()=> error);
     };
   }
 
