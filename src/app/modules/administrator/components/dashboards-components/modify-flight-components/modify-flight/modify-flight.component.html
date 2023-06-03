@@ -8,9 +8,9 @@
                 <mat-error *ngIf="flightIdControl!.errors?.['required']">Campo obligatorio</mat-error>
             </mat-error>
         </mat-form-field>
-    <button type="submit">Traer Vuelo</button>
-    <!--         <mat-hint *ngIf="adminLogInStatus$ | async">
-                {{requestStatusMessage}}
-            </mat-hint> -->
+    <button type="submit" (click)="onButtonFetchFlightClick()" >Traer Vuelo</button>
+            <mat-hint *ngIf="isFlightFetched">
+                ¡Vuelo traído con éxito!
+            </mat-hint>
     </form>
 </fieldset>
