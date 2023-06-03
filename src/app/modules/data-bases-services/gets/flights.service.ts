@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpHeaders,HttpErrorResponse} from '@angular/common/http';
 import { IVuelo } from 'src/app/interfaces/IVuelo';
-import { catchError, tap} from 'rxjs/operators';
-import { Observable, of} from 'rxjs';
+import { catchError, tap,} from 'rxjs/operators';
+import { Observable, throwError} from 'rxjs';
 
 @Injectable()
 export class FlightsService {
@@ -21,7 +21,7 @@ export class FlightsService {
     return this.http.get<IVuelo[]>(`${this.API_URL}/obtenerVuelosPorOrigen/${origin}`)
     .pipe(
       tap(_ => console.log(`fetched flights by origin=${origin}`)),
-      catchError(this.handleError<IVuelo[]>(`getFlightsByOrigin origin=${origin}`, []))
+      catchError(this.handleError(`getFlightsByOrigin origin=${origin}`))
     );
   }
 
@@ -29,7 +29,7 @@ export class FlightsService {
     return this.http.get<IVuelo[]>(`${this.API_URL}/obtenerVuelosPorOrigenDestino/${origin}/${destiny}`)
     .pipe(
       tap(_ => console.log(`fetched flights by origin=${origin} and destiny=${destiny}`)),
-      catchError(this.handleError<IVuelo[]>(`getFlightsByOriginAndDestiny origin=${origin} and destiny=${destiny}`, []))
+      catchError(this.handleError(`getFlightsByOriginAndDestiny origin=${origin} and destiny=${destiny}`))
       );
   }
 
@@ -37,15 +37,16 @@ export class FlightsService {
     return this.http.get<IVuelo>(`${this.API_URL}/obtenerVuelo/${id}`)
     .pipe(
       tap(_ => console.log(`fetched flight by id=${id}`)),
-      catchError(this.handleError<IVuelo>(`getFlightById id=${id}`))
+      catchError(this.handleError(`getFlightById id=${id}`))
     );
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => { 
-      console.error(error); 
+  private handleError(operation = 'operation') {
+    return (error: HttpErrorResponse): Observable<any> => {
+      console.error(error);
       console.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
+      return throwError(()=> error);
     };
+
   }
 }
