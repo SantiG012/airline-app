@@ -93,6 +93,86 @@ export class CreateFlightComponent {
     this.maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, currentDate.getDate());
   }
 
+  private isDepartureDateAfterArrivalDate(departureDate: string, arrivalDate: string): boolean{
+    const isDepartureDateAfterArrivalDate = this.dateValidationService.isDepartureDateAfterArrivalDate(
+      departureDate,
+      arrivalDate
+    );
+
+    return isDepartureDateAfterArrivalDate;
+  }
+
+  private isDepartureDateEqualsToArrivalDate(departureDate: string, arrivalDate: string): boolean{
+    const isDepartureDateEqualsToArrivalDate = this.dateValidationService.isDepartureDateEqualsToArrivalDate(
+      departureDate,
+      arrivalDate
+    );
+    return isDepartureDateEqualsToArrivalDate;
+  }
+
+  private isSameDateFlightValid(): boolean{
+    const departureHour = this.departureHoursControl!.value;
+    const arrivalHour = this.arrivalHoursControl!.value;
+    const departureMinutes = this.departureMinutesControl!.value;
+    const arrivalMinutes = this.arrivalMinutesControl!.value;
+
+    const isDepartureHourAfterArrivalHour = this.dateValidationService.isDepartureHourAfterArrivalHour(
+      departureHour,
+      arrivalHour
+    );
+
+    const isOneHourDifferenceBetweenDepartureAndArrivalHours = this.dateValidationService.isOneHourDifferenceBetweenDepartureAndArrivalHours(
+      departureHour,
+      arrivalHour,
+      departureMinutes,
+      arrivalMinutes
+    );
+
+
+    if(isDepartureHourAfterArrivalHour){
+      alert('La hora de despegue no puede estar después de la hora de aterrizaje en un mismo día');
+      return false;
+    }
+
+
+    if(!isOneHourDifferenceBetweenDepartureAndArrivalHours){
+      alert('La diferencia entre la hora de despegue y la hora de aterrizaje debe ser de al menos una hora en un mismo día');
+      return false;
+    }
+
+    return true;
+  }
+
+  private areDepartureAndArrivalDatesValid(): boolean{
+    const departureDate = this.departureDateControl!.value;
+    const arrivalDate = this.arrivalDateControl!.value;
+
+    const isDepartureDateAfterArrivalDate = this.isDepartureDateAfterArrivalDate(
+      departureDate,
+      arrivalDate
+    );
+
+    const isDepartureDateEqualsToArrivalDate = this.isDepartureDateEqualsToArrivalDate(
+      departureDate,
+      arrivalDate
+    );
+
+    if(isDepartureDateAfterArrivalDate){
+      alert('La fecha de despegue no puede estar después de la fecha de aterrizaje');
+      return false;
+    }
+
+    if(isDepartureDateEqualsToArrivalDate){
+      const isSameDateFlightValid = this.isSameDateFlightValid();
+      if(!isSameDateFlightValid){
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+
   onClick(){
 
     if(this.flightForm.invalid){
@@ -100,54 +180,10 @@ export class CreateFlightComponent {
       return;
     }
     
-    const departureDate = this.departureDateControl!.value;
-    const arrivalDate = this.arrivalDateControl!.value;
+    const areDepartureAndArrivalDatesValid = this.areDepartureAndArrivalDatesValid();
 
-    const isDepartureDateAfterArrivalDate = this.dateValidationService.isDepartureDateAfterArrivalDate(
-      departureDate,
-      arrivalDate
-    );
-
-    const isDepartureDateEqualsToArrivalDate = this.dateValidationService.isDepartureDateEqualsToArrivalDate(
-      departureDate,
-      arrivalDate
-    );
-
-    if(isDepartureDateAfterArrivalDate){
-      alert('La fecha de despegue no puede estar después de la fecha de aterrizaje');
+    if(!areDepartureAndArrivalDatesValid){
       return;
-    }
-
-    if(isDepartureDateEqualsToArrivalDate){
-      const departureHour = this.departureHoursControl!.value;
-      const arrivalHour = this.arrivalHoursControl!.value;
-      const departureMinutes = this.departureMinutesControl!.value;
-      const arrivalMinutes = this.arrivalMinutesControl!.value;
-
-      const isDepartureHourAfterArrivalHour = this.dateValidationService.isDepartureHourAfterArrivalHour(
-        departureHour,
-        arrivalHour
-      );
-
-      const isOneHourDifferenceBetweenDepartureAndArrivalHours = this.dateValidationService.isOneHourDifferenceBetweenDepartureAndArrivalHours(
-        departureHour,
-        arrivalHour,
-        departureMinutes,
-        arrivalMinutes
-      );
-
-
-      if(isDepartureHourAfterArrivalHour){
-        alert('La hora de despegue no puede estar después de la hora de aterrizaje en un mismo día');
-        return;
-      }
-
-
-      if(!isOneHourDifferenceBetweenDepartureAndArrivalHours){
-        alert('La diferencia entre la hora de despegue y la hora de aterrizaje debe ser de al menos una hora en un mismo día');
-        return;
-      }
-
     }
   }
 
