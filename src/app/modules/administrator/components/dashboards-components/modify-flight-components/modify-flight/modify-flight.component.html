@@ -1,1 +1,17 @@
-<p>modify-flight works!</p>
+<fieldset class="flex-column flex-center">
+    <legend>Traer Vuelo</legend>
+    <form class="flex-column">
+        <mat-form-field appearance="fill">
+            <mat-label>Ingrese el id del vuelo</mat-label>
+            <input matInput type="text" formControlName="">
+<!--             <mat-error *ngIf="idFlightControl!.invalid && (idFlightControl!.dirty || idFlightControl!.touched)">
+                <mat-error *ngIf="idFlightControl!.errors?.['required']">Campo obligatorio</mat-hint>
+                <mat-error *ngIf="idFlightControl!.errors?.['pattern']">Digite entre 1 y 10 digitos</mat-hint>
+            </mat-error> -->
+        </mat-form-field>
+    <button type="submit">Traer Vuelo</button>
+    <!--         <mat-hint *ngIf="adminLogInStatus$ | async">
+                {{requestStatusMessage}}
+            </mat-hint> -->
+    </form>
+</fieldset>
