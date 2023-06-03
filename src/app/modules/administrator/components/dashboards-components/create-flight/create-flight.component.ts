@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DateValidationService } from '../../services/date-validation.service';
+import { DateValidationService } from '../../../services/date-validation.service';
 import { FlightPostsService } from 'src/app/modules/data-bases-services/posts/flight-posts.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import { IVuelo } from 'src/app/interfaces/IVuelo';
