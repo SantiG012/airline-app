@@ -16,6 +16,7 @@ export class CreateFlightComponent {
   flightForm!: FormGroup;
   minDate!: Date;
   maxDate!: Date;
+  flightCreated!:boolean;
 
   constructor(
     private dateValidationService: DateValidationService,
@@ -235,7 +236,15 @@ export class CreateFlightComponent {
 
     this.flightPostsService.postFlight(flight).subscribe({
       error: (error:HttpErrorResponse)=>alert(error.message),
-      complete:()=>console.log("Creado con éxito")
+      complete:()=>{
+        this.flightCreated = true;
+        
+        setTimeout(
+          () =>{
+            this.flightCreated = false;
+          }
+        ,3000)
+      }
     })
   }
 
