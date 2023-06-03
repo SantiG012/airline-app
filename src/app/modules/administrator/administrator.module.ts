@@ -18,6 +18,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FlightComponent } from './components/dashboards-components/check-flights-components/flight/flight.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ModifyFlightComponent } from './components/dashboards-components/modify-flight-components/modify-flight/modify-flight.component';
+import { ModifyCitiesComponent } from './components/dashboards-components/modify-flight-components/modify-cities/modify-cities.component';
+import { ModifyDatesComponent } from './components/dashboards-components/modify-flight-components/modify-dates/modify-dates.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     ManageFlightsComponent,
     CreatePlaneComponent,
     CheckFlightsComponent,
-    FlightComponent
+    FlightComponent,
+    ModifyFlightComponent,
+    ModifyCitiesComponent,
+    ModifyDatesComponent
   ],
   imports: [
     CommonModule,
