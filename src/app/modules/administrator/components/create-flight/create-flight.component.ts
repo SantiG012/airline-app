@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateValidationService } from '../../services/date-validation.service';
+import { FlightPostsService } from 'src/app/modules/data-bases-services/posts/flight-posts.service';
+import { IVuelo } from 'src/app/interfaces/IVuelo';
+import { Vuelo } from 'src/app/Classes/Vuelo';
 
 @Component({
   selector: 'app-create-flight',
@@ -14,7 +17,8 @@ export class CreateFlightComponent {
   maxDate!: Date;
 
   constructor(
-    private dateValidationService: DateValidationService
+    private dateValidationService: DateValidationService,
+    private flightPostsService: FlightPostsService
   ) { }
 
   ngOnInit(){
@@ -144,8 +148,8 @@ export class CreateFlightComponent {
   }
 
   private areDepartureAndArrivalDatesValid(): boolean{
-    const departureDate = this.departureDateControl!.value;
-    const arrivalDate = this.arrivalDateControl!.value;
+    const departureDate = this.departureDateControl!.value.toString();
+    const arrivalDate = this.arrivalDateControl!.value.toString();
 
     const isDepartureDateAfterArrivalDate = this.isDepartureDateAfterArrivalDate(
       departureDate,
@@ -172,6 +176,46 @@ export class CreateFlightComponent {
     return true;
   }
 
+  private formatDate(date: string, hours:string, minutes:string): string{
+    const dateObject = new Date(date);
+
+    const year = dateObject.getFullYear();
+    const month = ('0' + (dateObject.getMonth() + 1)).slice(-2);
+    const day = ('0' + dateObject.getDate()).slice(-2);
+
+    const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:00`;
+
+    return formattedDate;
+  }
+
+
+
+  private createFlightObject(): IVuelo{
+    const departureCity = this.departureCityControl!.value.trim().toLowerCase();
+    const arrivalCity = this.arrivalCityControl!.value.trim().toLowerCase();
+    const departureDate = this.departureDateControl!.value.toString();
+    const arrivalDate = this.arrivalDateControl!.value.toString();
+    const departureHour = this.departureHoursControl!.value.trim();
+    const arrivalHour = this.arrivalHoursControl!.value.trim();
+    const departureMinutes = this.departureMinutesControl!.value.trim();
+    const arrivalMinutes = this.arrivalMinutesControl!.value.trim();
+    const planeId = this.planeIdControl!.value.trim();
+
+    const formattedDepartureDate = this.formatDate(departureDate, departureHour, departureMinutes);
+    const formattedArrivalDate = this.formatDate(arrivalDate, arrivalHour, arrivalMinutes);
+
+    const flightObject: IVuelo = new Vuelo(
+      planeId,
+      formattedDepartureDate,
+      formattedArrivalDate,
+      departureCity,
+      arrivalCity
+    );
+
+    return flightObject;
+  }
+
+
 
   onClick(){
 
@@ -185,6 +229,9 @@ export class CreateFlightComponent {
     if(!areDepartureAndArrivalDatesValid){
       return;
     }
+
+    console.log(this.createFlightObject());
+
   }
 
   get departureCityControl(){ return this.flightForm.get('departureCityControl'); }
