@@ -1,13 +1,12 @@
-<fieldset class="flex-column flex-center">
+<fieldset class="flex-column flex-center" [formGroup]="fetchFlightForm">
     <legend>Traer Vuelo</legend>
     <form class="flex-column">
         <mat-form-field appearance="fill">
             <mat-label>Ingrese el id del vuelo</mat-label>
-            <input matInput type="text" formControlName="">
-<!--             <mat-error *ngIf="idFlightControl!.invalid && (idFlightControl!.dirty || idFlightControl!.touched)">
-                <mat-error *ngIf="idFlightControl!.errors?.['required']">Campo obligatorio</mat-hint>
-                <mat-error *ngIf="idFlightControl!.errors?.['pattern']">Digite entre 1 y 10 digitos</mat-hint>
-            </mat-error> -->
+            <input matInput type="text" formControlName="flightIdControl">
+            <mat-error *ngIf="flightIdControl!.invalid && (flightIdControl!.dirty || flightIdControl!.touched)">
+                <mat-error *ngIf="flightIdControl!.errors?.['required']">Campo obligatorio</mat-error>
+            </mat-error>
         </mat-form-field>
     <button type="submit">Traer Vuelo</button>
     <!--         <mat-hint *ngIf="adminLogInStatus$ | async">

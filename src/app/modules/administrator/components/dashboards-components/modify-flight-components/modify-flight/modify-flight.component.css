@@ -1,6 +1,6 @@
 fieldset{
     width: 70%;
-    height: 12rem;
+    height: 15rem;
     max-width: 35rem;
     min-width: 20rem;
     margin: 1rem auto;
@@ -18,6 +18,9 @@ legend{
     margin-left: 1rem;
 }
 
+form{
+    gap: 1.5rem;
+}
 
 button{
     width: 20rem;
