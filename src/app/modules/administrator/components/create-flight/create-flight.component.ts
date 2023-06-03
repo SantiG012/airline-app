@@ -235,7 +235,15 @@ export class CreateFlightComponent {
     const flight:IVuelo = this.createFlightObject()
 
     this.flightPostsService.postFlight(flight).subscribe({
-      error: (error:HttpErrorResponse)=>alert(error.message),
+      error: (error:HttpErrorResponse)=>{
+        
+        if (error.status === 0){
+          alert("Intente más tarde. No hay conexión")
+          return;
+        }
+
+        alert(error.message)
+      },
       complete:()=>{
         this.flightCreated = true;
         
