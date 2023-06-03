@@ -1,1 +1,35 @@
-<p>modify-cities works!</p>
+<fieldset class="flex-column flex-center">
+    <legend>Modificar localidades</legend>
+    <form class="flex-column flex-center">
+        <div class="flex-row flex-center">
+            <mat-form-field appearance="fill">
+                <mat-label>
+                    Origen
+                </mat-label>
+
+                <input matInput type="text" formControlName="departureCityControl">
+
+                <mat-icon matSuffix>flight_takeoff</mat-icon>
+
+<!--                 <mat-error *ngIf="departureCityControl!.invalid && (departureCityControl!.dirty || departureCityControl!.touched)">
+                    <mat-error *ngIf="departureCityControl!.errors?.['required']">Campo obligatorio</mat-error>
+                    <mat-error *ngIf="departureCityControl!.errors?.['pattern']">El nombre de la ciudad solo debe contener letras</mat-error>
+                </mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Destino</mat-label>
+
+                <input matInput type="text" formControlName="arrivalCityControl">
+
+                <mat-icon matSuffix>flight_land</mat-icon>
+
+<!--                 <mat-error *ngIf="arrivalCityControl!.invalid && (arrivalCityControl!.dirty || arrivalCityControl!.touched)">
+                    <mat-error *ngIf="arrivalCityControl!.errors?.['required']">Campo obligatorio</mat-error>
+                    <mat-error *ngIf="arrivalCityControl!.errors?.['pattern']">El nombre de la ciudad solo debe contener letras</mat-error>
+                </mat-error> -->
+            </mat-form-field>
+        </div>
+        <button type="submit">Guardar</button>
+    </form>
+</fieldset>
