@@ -1,4 +1,4 @@
-<fieldset class="flex-column flex-center">
+<fieldset class="flex-column flex-center" [formGroup]="datesForm" *ngIf="fetchedFlight">
     <legend>Modificar Fechas</legend>
     <form class="flex-column flex-center gap-1">
         <div class="flex-row flex-center gap-2">
@@ -97,7 +97,7 @@
                     </mat-label>
     
                     <input matInput type="text" placeholder="Ej:15"
-                    
+                    formControlName="arrivalHoursControl"
                     >
     
 <!--                     <mat-error *ngIf="arrivalHoursControl!.invalid && (arrivalHoursControl!.dirty || arrivalHoursControl!.touched)">
@@ -114,7 +114,7 @@
                     </mat-label>
     
                     <input matInput type="text" placeholder="Ej:50"
-                    
+                    formControlName="arrivalMinutesControl"
                     >
     
 <!--                     <mat-error *ngIf="arrivalMinutesControl!.invalid && (arrivalMinutesControl!.dirty || arrivalMinutesControl!.touched)">
