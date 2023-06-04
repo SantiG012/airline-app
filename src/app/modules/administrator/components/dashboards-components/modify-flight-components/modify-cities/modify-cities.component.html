@@ -31,5 +31,9 @@
             </mat-form-field>
         </div>
         <button type="submit">Guardar</button>
+        <mat-hint *ngIf="isFlightModified">
+            <mat-icon>check_circle_outline</mat-icon>
+            <span>¡Localidades modificadas!</span>
+        </mat-hint>
     </form>
 </fieldset>
