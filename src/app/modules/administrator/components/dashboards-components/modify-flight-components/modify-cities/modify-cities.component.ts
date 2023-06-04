@@ -21,24 +21,27 @@ export class ModifyCitiesComponent {
   ) { }
 
   ngOnInit(){
+    this.initializeForm();
     this.flightTransferService.getLastFlight().subscribe({
       next: (flight:IVuelo) => {
         this.fetchedFlight = flight;
-        this.initializeForm(flight);
+
+        this.departureCityControl?.setValue(flight.origen);
+        this.arrivalCityControl?.setValue(flight.destino);
       }
     });
   }
 
-  private initializeForm({origen,destino}:IVuelo){
+  private initializeForm(){
     this.CitiesForm = new FormGroup({
       departureCityControl: new FormControl(
-        origen,[
+        null,[
           Validators.required,
           Validators.pattern("^[A-zÀ-ú ]+$")
         ]
       ),
       arrivalCityControl: new FormControl(
-        destino,[
+        null,[
           Validators.required,
           Validators.pattern("^[A-zÀ-ú ]+$")
         ]
