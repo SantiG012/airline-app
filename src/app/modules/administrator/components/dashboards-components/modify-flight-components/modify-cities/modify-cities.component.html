@@ -30,7 +30,7 @@
                 </mat-error>
             </mat-form-field>
         </div>
-        <button type="submit">Guardar</button>
+        <button type="submit" (click)="onSaveButtonClicked()" >Guardar</button>
         <mat-hint *ngIf="isFlightModified">
             <mat-icon>check_circle_outline</mat-icon>
             <span>¡Localidades modificadas!</span>

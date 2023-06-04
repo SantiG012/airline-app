@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IVuelo } from 'src/app/interfaces/IVuelo';
 import { FlightPutsService } from 'src/app/modules/data-bases-services/puts/flight-puts.service';
 import {HttpErrorResponse} from '@angular/common/http';
+import { FlightTransferService } from 'src/app/modules/administrator/services/flight-transfer.service';
 
 @Component({
   selector: 'app-modify-cities',
@@ -11,23 +12,33 @@ import {HttpErrorResponse} from '@angular/common/http';
 })
 export class ModifyCitiesComponent {
   CitiesForm!:FormGroup;
-  @Input() flightInput!:IVuelo;
   isFlightModified!:boolean;
+  fetchedFlight!:IVuelo;
 
   constructor(
-    private flightPutsService: FlightPutsService
+    private flightPutsService: FlightPutsService,
+    private flightTransferService: FlightTransferService
   ) { }
 
   ngOnInit(){
+    this.flightTransferService.getLastFlight().subscribe({
+      next: (flight:IVuelo) => {
+        this.fetchedFlight = flight;
+        this.initializeForm(flight);
+      }
+    });
+  }
+
+  private initializeForm({origen,destino}:IVuelo){
     this.CitiesForm = new FormGroup({
       departureCityControl: new FormControl(
-        this.flightInput.origen,[
+        origen,[
           Validators.required,
           Validators.pattern("^[A-zÀ-ú ]+$")
         ]
       ),
       arrivalCityControl: new FormControl(
-        this.flightInput.destino,[
+        destino,[
           Validators.required,
           Validators.pattern("^[A-zÀ-ú ]+$")
         ]
@@ -53,10 +64,10 @@ export class ModifyCitiesComponent {
 
     if(!this.areFormsValid())return;
 
-    this.flightInput.origen = this.CitiesForm.value.departureCityControl;
-    this.flightInput.destino = this.CitiesForm.value.arrivalCityControl;
+    this.fetchedFlight.origen = this.CitiesForm.value.departureCityControl;
+    this.fetchedFlight.destino = this.CitiesForm.value.arrivalCityControl;
 
-    this.flightPutsService.modifyDepartureAndArrivalCities(this.flightInput).subscribe({
+    this.flightPutsService.modifyDepartureAndArrivalCities(this.fetchedFlight).subscribe({
       error: (error: HttpErrorResponse) => {
         if(error.status === 0){
           alert("Intente más tarde. No hay conexión")

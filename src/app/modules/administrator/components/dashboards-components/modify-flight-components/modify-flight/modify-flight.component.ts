@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {IVuelo} from 'src/app/interfaces/IVuelo';
 import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights.service';
+import { FlightTransferService } from 'src/app/modules/administrator/services/flight-transfer.service';
 
 @Component({
   selector: 'app-modify-flight',
@@ -12,10 +13,10 @@ import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights
 export class ModifyFlightComponent {
   fetchFlightForm!:FormGroup;
   isFlightFetched:boolean = false;
-  fetchedFlight!:IVuelo;
 
   constructor(
-    private flightsService: FlightsService
+    private flightsService: FlightsService,
+    private flightTransferService: FlightTransferService
   ) { }
 
   ngOnInit(){
@@ -33,7 +34,7 @@ export class ModifyFlightComponent {
   onButtonFetchFlightClick(){
     this.flightsService.getFlightById(this.flightIdControl?.value.trim()).subscribe({
       next: (flight:IVuelo) => {
-        this.fetchedFlight = flight;
+        this.flightTransferService.addNextFlight(flight);
       },
       error: (error:HttpErrorResponse) => {
         if(error.status == 0){
