@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,Input} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IVuelo } from 'src/app/interfaces/IVuelo';
 
 @Component({
   selector: 'app-modify-cities',
@@ -8,19 +9,20 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ModifyCitiesComponent {
   CitiesForm!:FormGroup;
+  @Input() flightInput!:IVuelo;
 
   constructor() { }
 
   ngOnInit(){
     this.CitiesForm = new FormGroup({
       departureCityControl: new FormControl(
-        null,[
+        this.flightInput.origen,[
           Validators.required,
           Validators.pattern("^[A-zÀ-ú ]+$")
         ]
       ),
       arrivalCityControl: new FormControl(
-        null,[
+        this.flightInput.destino,[
           Validators.required,
           Validators.pattern("^[A-zÀ-ú ]+$")
         ]
