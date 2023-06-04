@@ -12,6 +12,7 @@ export class ModifyDatesComponent {
   datesForm!: FormGroup;
   minDate!: Date;
   maxDate!: Date;
+  fetchedFlight!: IVuelo;
 
   constructor(
     private flightTransferService: FlightTransferService
@@ -23,16 +24,27 @@ export class ModifyDatesComponent {
     this.createDatesForm();
 
     this.flightTransferService.getLastFlight().subscribe(
-      (lastFlight: IVuelo) => {}
+      (lastFlight: IVuelo) => {
+        this.fetchedFlight = lastFlight;
+
+        const departureDate = lastFlight.fechaHoraSalida.split(' ')[0];
+        const arrivalDate = lastFlight.fechaHoraLlegada.split(' ')[0];
+        const departureHours = lastFlight.fechaHoraSalida.split(' ')[1].split(':')[0];
+        const arrivalHours = lastFlight.fechaHoraLlegada.split(' ')[1].split(':')[0];
+        const departureMinutes = lastFlight.fechaHoraSalida.split(' ')[1].split(':')[1];
+        const arrivalMinutes = lastFlight.fechaHoraLlegada.split(' ')[1].split(':')[1];
+
+        this.departureDateControl?.setValue(departureDate);
+        this.arrivalDateControl?.setValue(arrivalDate);
+        this.departureHoursControl?.setValue(departureHours);
+        this.arrivalHoursControl?.setValue(arrivalHours);
+        this.departureMinutesControl?.setValue(departureMinutes);
+        this.arrivalMinutesControl?.setValue(arrivalMinutes);
+      }
     );
 
 
   }
-
-  private setDefaultValues(lastFlight: IVuelo){
-
-  }
-
 
   private createDatesForm(){
     this.datesForm = new FormGroup({
