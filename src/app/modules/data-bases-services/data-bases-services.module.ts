@@ -9,6 +9,7 @@ import { BookingPutService } from './puts/booking-put.service';
 import { BookingGetsService } from './gets/booking-gets.service';
 import { PlanePostsService } from './posts/plane-posts.service';
 import { FlightPostsService } from './posts/flight-posts.service';
+import { FlightPutsService } from './puts/flight-puts.service';
 
 
 
@@ -26,7 +27,8 @@ import { FlightPostsService } from './posts/flight-posts.service';
     BookingPutService,
     BookingGetsService,
     PlanePostsService,
-    FlightPostsService
+    FlightPostsService,
+    FlightPutsService
   ]
 })
 export class DataBasesServicesModule { }
