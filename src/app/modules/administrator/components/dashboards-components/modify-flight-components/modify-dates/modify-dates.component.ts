@@ -27,6 +27,7 @@ export class ModifyDatesComponent {
       (lastFlight: IVuelo) => {
         this.fetchedFlight = lastFlight;
 
+        //Date format is 'yyyy-mm-dd HH:MM:SS'  ('2023-06-13 14:00:00')
         const departureDate = lastFlight.fechaHoraSalida.split(' ')[0];
         const arrivalDate = lastFlight.fechaHoraLlegada.split(' ')[0];
         const departureHours = lastFlight.fechaHoraSalida.split(' ')[1].split(':')[0];
@@ -34,8 +35,8 @@ export class ModifyDatesComponent {
         const departureMinutes = lastFlight.fechaHoraSalida.split(' ')[1].split(':')[1];
         const arrivalMinutes = lastFlight.fechaHoraLlegada.split(' ')[1].split(':')[1];
 
-        this.departureDateControl?.setValue(departureDate);
-        this.arrivalDateControl?.setValue(arrivalDate);
+        this.departureDateControl?.setValue(new Date(departureDate.replace(/-/g, '/')));
+        this.arrivalDateControl?.setValue(new Date(arrivalDate.replace(/-/g, '/')));
         this.departureHoursControl?.setValue(departureHours);
         this.arrivalHoursControl?.setValue(arrivalHours);
         this.departureMinutesControl?.setValue(departureMinutes);
