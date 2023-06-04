@@ -21,6 +21,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ModifyFlightComponent } from './components/dashboards-components/modify-flight-components/modify-flight/modify-flight.component';
 import { ModifyCitiesComponent } from './components/dashboards-components/modify-flight-components/modify-cities/modify-cities.component';
 import { ModifyDatesComponent } from './components/dashboards-components/modify-flight-components/modify-dates/modify-dates.component';
+import { FlightTransferService } from './services/flight-transfer.service';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { ModifyDatesComponent } from './components/dashboards-components/modify-
     MatNativeDateModule
   ],
   providers: [
-    DatePipe
+    DatePipe,
+    FlightTransferService
   ]
 })
 export class AdministratorModule { }
