@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {IVuelo} from 'src/app/interfaces/IVuelo';
 import { FlightsService } from 'src/app/modules/data-bases-services/gets/flights.service';
-import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-modify-flight',
@@ -16,8 +15,7 @@ export class ModifyFlightComponent {
   fetchedFlight!:IVuelo;
 
   constructor(
-    private flightsService: FlightsService,
-    private clipboard: Clipboard
+    private flightsService: FlightsService
   ) { }
 
   ngOnInit(){
