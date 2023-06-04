@@ -22,6 +22,7 @@ import { ModifyFlightComponent } from './components/dashboards-components/modify
 import { ModifyCitiesComponent } from './components/dashboards-components/modify-flight-components/modify-cities/modify-cities.component';
 import { ModifyDatesComponent } from './components/dashboards-components/modify-flight-components/modify-dates/modify-dates.component';
 import { FlightTransferService } from './services/flight-transfer.service';
+import { DateValidationService } from './services/date-validation.service';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { FlightTransferService } from './services/flight-transfer.service';
   ],
   providers: [
     DatePipe,
-    FlightTransferService
+    FlightTransferService,
+    DateValidationService
   ]
 })
 export class AdministratorModule { }

@@ -9,8 +9,7 @@ import { Vuelo } from 'src/app/Classes/Vuelo';
 @Component({
   selector: 'app-create-flight',
   templateUrl: './create-flight.component.html',
-  styleUrls: ['./create-flight.component.css'],
-  providers: [DateValidationService]
+  styleUrls: ['./create-flight.component.css']
 })
 export class CreateFlightComponent {  
   flightForm!: FormGroup;
