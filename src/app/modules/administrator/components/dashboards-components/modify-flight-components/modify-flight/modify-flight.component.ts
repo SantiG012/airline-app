@@ -13,6 +13,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 export class ModifyFlightComponent {
   fetchFlightForm!:FormGroup;
   isFlightFetched:boolean = false;
+  fetchedFlight!:IVuelo;
 
   constructor(
     private flightsService: FlightsService,
@@ -33,6 +34,9 @@ export class ModifyFlightComponent {
 
   onButtonFetchFlightClick(){
     this.flightsService.getFlightById(this.flightIdControl?.value.trim()).subscribe({
+      next: (flight:IVuelo) => {
+        this.fetchedFlight = flight;
+      },
       error: (error:HttpErrorResponse) => {
         if(error.status == 0){
           alert("No hay conexión con el servidor. Intente más tarde.");
