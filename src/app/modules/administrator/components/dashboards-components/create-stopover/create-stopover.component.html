@@ -1,16 +1,32 @@
-<fieldset class="flex-column flex-center">
+<fieldset class="flex-column flex-center" [formGroup]="stopoverForm">
     <legend>Crear Escala</legend>
 
-    <form class="flex-column flex-center">
+    <form class="flex-column flex-center gap-2">
         <div class="flex-row flex-center gap-2">
             <mat-form-field appearance="fill">
                 <mat-label>Trayecto ID</mat-label>
-                <input matInput type="text" required>
+                <input matInput type="text" required
+                formControlName="journeyIdControl"
+                >
+
+                <mat-error *ngIf="journeyIdControl!.invalid && (journeyIdControl!.dirty || journeyIdControl!.touched)">  
+                    <mat-error *ngIf="journeyIdControl!.errors?.['required']" >Campo obligatorio</mat-error>
+                </mat-error>
+
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Ciudad/Aeropuerto</mat-label>
-                <input matInput type="text" required>
+                <input matInput type="text" required
+                formControlName="cityAirportControl"
+                >
+
+                <mat-error *ngIf="cityAirportControl!.invalid && (cityAirportControl!.dirty || cityAirportControl!.touched)">  
+                    <mat-error *ngIf="cityAirportControl!.errors?.['required']" >Campo obligatorio</mat-error>
+                    <mat-error *ngIf="cityAirportControl!.errors?.['pattern']" >Solo digite letras</mat-error>
+                </mat-error>
+
+
             </mat-form-field>
 
         </div>
