@@ -33,7 +33,7 @@ export class DateValidationService {
   }
 
   private isHourDifferenceGreaterThanOneHour(departureHour: string, arrivalHour: string): boolean {
-    if (parseInt(arrivalHour) - parseInt(departureHour) > 1)return true;
+    if (parseInt(arrivalHour) - parseInt(departureHour) >= 1)return true;
     return false;
   }
 
