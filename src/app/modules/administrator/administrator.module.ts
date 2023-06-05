@@ -23,6 +23,7 @@ import { ModifyCitiesComponent } from './components/dashboards-components/modify
 import { ModifyDatesComponent } from './components/dashboards-components/modify-flight-components/modify-dates/modify-dates.component';
 import { FlightTransferService } from './services/flight-transfer.service';
 import { DateValidationService } from './services/date-validation.service';
+import { CreateStopoverComponent } from './components/dashboards-components/create-stopover/create-stopover.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { DateValidationService } from './services/date-validation.service';
     FlightComponent,
     ModifyFlightComponent,
     ModifyCitiesComponent,
-    ModifyDatesComponent
+    ModifyDatesComponent,
+    CreateStopoverComponent
   ],
   imports: [
     CommonModule,
