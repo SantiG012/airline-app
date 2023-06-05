@@ -9,18 +9,18 @@
     
                 <input matInput [matDatepicker]="departureDate"
                 formControlName="departureDateControl"
-                [min]=""
-                [max]=""
+                [min]="minDate"
+                [max]="maxDate"
                 >
                 
                 <mat-datepicker-toggle matIconSuffix [for]="departureDate"></mat-datepicker-toggle>
                 <mat-datepicker #departureDate></mat-datepicker>
     
-<!--                 <mat-error *ngIf="departureDateControl!.invalid && (departureDateControl!.dirty || departureDateControl!.touched)">
+                <mat-error *ngIf="departureDateControl!.invalid && (departureDateControl!.dirty || departureDateControl!.touched)">
                     <mat-error *ngIf="departureDateControl!.errors?.['matDatepickerMin']">La fecha debe ser mayor a {{minDate | date}}</mat-error>
                     <mat-error *ngIf="departureDateControl!.errors?.['matDatepickerMax']">La fecha debe ser menor a {{maxDate | date}}</mat-error>
                     <mat-error *ngIf="departureDateControl!.errors?.['required']">Campo obligatorio</mat-error>
-                </mat-error> -->
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -30,18 +30,18 @@
     
                 <input matInput [matDatepicker]="arrivalDate"
                 formControlName="arrivalDateControl"
-                [min]=""
-                [max]=""
+                [min]="minDate"
+                [max]="maxDate"
                 >
     
                 <mat-datepicker-toggle matIconSuffix [for]="arrivalDate"></mat-datepicker-toggle>
                 <mat-datepicker #arrivalDate></mat-datepicker>
     
-<!--                 <mat-error *ngIf="arrivalDateControl!.errors && (arrivalDateControl?.dirty || arrivalDateControl?.touched)">
+                <mat-error *ngIf="arrivalDateControl!.errors && (arrivalDateControl?.dirty || arrivalDateControl?.touched)">
                     <mat-error *ngIf="arrivalDateControl!.errors?.['matDatepickerMin']">La fecha debe ser mayor a {{minDate | date}}</mat-error>
                     <mat-error *ngIf="arrivalDateControl!.errors?.['matDatepickerMax']">La fecha debe ser menor a {{maxDate | date}}</mat-error>
                     <mat-error *ngIf="arrivalDateControl!.errors?.['required']">Campo obligatorio</mat-error>
-                </mat-error> -->
+                </mat-error>
             </mat-form-field>
         </div>
 
@@ -59,12 +59,12 @@
                     formControlName="departureHoursControl"
                     >
     
-<!--                     <mat-error *ngIf="departureHoursControl!.invalid && (departureHoursControl!.dirty || departureHoursControl!.touched)">
+                    <mat-error *ngIf="departureHoursControl!.invalid && (departureHoursControl!.dirty || departureHoursControl!.touched)">
                         <mat-error *ngIf="departureHoursControl!.errors?.['required']">Campo obligatorio</mat-error>
                         <mat-error *ngIf="departureHoursControl!.errors?.['pattern']">El campo solo debe contener numeros</mat-error>
                         <mat-error *ngIf="departureHoursControl!.errors?.['min']">La hora mínima es 00</mat-error>
                         <mat-error *ngIf="departureHoursControl!.errors?.['max']">La hora máxima es 23</mat-error>	
-                    </mat-error> -->
+                    </mat-error>
                 </mat-form-field>
     
                 <mat-form-field appearance="fill">
@@ -76,12 +76,12 @@
                     formControlName="departureMinutesControl"
                     >
     
-<!--                     <mat-error *ngIf="departureMinutesControl!.invalid && (departureMinutesControl!.dirty || departureMinutesControl!.touched)">
+                    <mat-error *ngIf="departureMinutesControl!.invalid && (departureMinutesControl!.dirty || departureMinutesControl!.touched)">
                         <mat-error *ngIf="departureMinutesControl!.errors?.['required']">Campo obligatorio</mat-error>
                         <mat-error *ngIf="departureMinutesControl!.errors?.['pattern']">El campo solo debe contener numeros</mat-error>
                         <mat-error *ngIf="departureMinutesControl!.errors?.['min']">Los minutos mínimos son 00</mat-error>
                         <mat-error *ngIf="departureMinutesControl!.errors?.['max']">Los minutos máximos son 59</mat-error>
-                    </mat-error> -->
+                    </mat-error>
                 </mat-form-field>
             </div>
         </div>
@@ -100,12 +100,12 @@
                     formControlName="arrivalHoursControl"
                     >
     
-<!--                     <mat-error *ngIf="arrivalHoursControl!.invalid && (arrivalHoursControl!.dirty || arrivalHoursControl!.touched)">
+                    <mat-error *ngIf="arrivalHoursControl!.invalid && (arrivalHoursControl!.dirty || arrivalHoursControl!.touched)">
                         <mat-error *ngIf="arrivalHoursControl!.errors?.['required']">Campo obligatorio</mat-error>
                         <mat-error *ngIf="arrivalHoursControl!.errors?.['pattern']">El campo solo debe contener numeros</mat-error>
                         <mat-error *ngIf="arrivalHoursControl!.errors?.['min']">La hora mínima es 00</mat-error>
                         <mat-error *ngIf="arrivalHoursControl!.errors?.['max']">La hora máxima es 23</mat-error>
-                    </mat-error> -->
+                    </mat-error>
                 </mat-form-field>
     
                 <mat-form-field appearance="fill">
@@ -117,12 +117,12 @@
                     formControlName="arrivalMinutesControl"
                     >
     
-<!--                     <mat-error *ngIf="arrivalMinutesControl!.invalid && (arrivalMinutesControl!.dirty || arrivalMinutesControl!.touched)">
+                    <mat-error *ngIf="arrivalMinutesControl!.invalid && (arrivalMinutesControl!.dirty || arrivalMinutesControl!.touched)">
                         <mat-error *ngIf="arrivalMinutesControl!.errors?.['required']">Campo obligatorio</mat-error>
                         <mat-error *ngIf="arrivalMinutesControl!.errors?.['pattern']">El campo solo debe contener numeros</mat-error>
                         <mat-error *ngIf="arrivalMinutesControl!.errors?.['min']">Los minutos mínimos son 00</mat-error>
                         <mat-error *ngIf="arrivalMinutesControl!.errors?.['max']">Los minutos máximos son 59</mat-error>
-                    </mat-error> -->
+                    </mat-error>
                 </mat-form-field>
             </div>
         </div>
