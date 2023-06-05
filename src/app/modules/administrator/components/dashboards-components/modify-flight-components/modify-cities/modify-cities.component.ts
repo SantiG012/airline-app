@@ -67,8 +67,8 @@ export class ModifyCitiesComponent {
 
     if(!this.areFormsValid())return;
 
-    this.fetchedFlight.origen = this.CitiesForm.value.departureCityControl;
-    this.fetchedFlight.destino = this.CitiesForm.value.arrivalCityControl;
+    this.fetchedFlight.origen = this.CitiesForm.value.departureCityControl.trim();
+    this.fetchedFlight.destino = this.CitiesForm.value.arrivalCityControl.trim();
 
     this.flightPutsService.modifyDepartureAndArrivalCities(this.fetchedFlight).subscribe({
       error: (error: HttpErrorResponse) => {
