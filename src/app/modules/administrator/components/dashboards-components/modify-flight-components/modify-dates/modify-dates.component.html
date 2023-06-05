@@ -129,5 +129,8 @@
         <button (click)="onSaveButtonClicked()" type="submit">
             Modificar
         </button>
+        <mat-hint *ngIf="isFlightModified">
+            ¡Fechas modificadas con éxito!
+        </mat-hint>
     </form>
 </fieldset>
