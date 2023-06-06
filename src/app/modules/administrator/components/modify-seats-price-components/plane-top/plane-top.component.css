@@ -1,0 +1,6 @@
+.plane-top{
+    border: .2rem solid #e2e2e2;
+    border-bottom: none;
+    min-height: 25rem;
+    border-radius: 50% 50% 0 0;
+}
