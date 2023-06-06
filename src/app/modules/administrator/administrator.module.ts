@@ -27,6 +27,7 @@ import { PlaneTopComponent } from './components/modify-seats-price-components/pl
 import { GridComponent } from './components/modify-seats-price-components/grid/grid.component';
 import { SelectedSeatComponent } from './components/modify-seats-price-components/selected-seat/selected-seat.component';
 import { SelectSeatsModule } from '../select-seats/select-seats.module';
+import { FlightIdTransferService } from './services/flight-id-transfer.service';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { SelectSeatsModule } from '../select-seats/select-seats.module';
   providers: [
     DatePipe,
     FlightTransferService,
-    DateValidationService
+    DateValidationService,
+    FlightIdTransferService
   ]
 })
 export class AdministratorModule { }
