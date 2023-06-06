@@ -23,7 +23,7 @@ export class ModifySeatFormComponent {
       seatPriceControl: new FormControl(
         null,[
           Validators.required,
-          Validators.pattern('^[0-9,]*$'),
+          Validators.pattern('^[0-9]*$'),
           Validators.min(25000),
           Validators.max(100000)
         ]
