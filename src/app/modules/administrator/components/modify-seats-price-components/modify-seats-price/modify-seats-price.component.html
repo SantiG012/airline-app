@@ -1,1 +1,16 @@
-<p>modify-seats-price works!</p>
+<fieldset class="flex-column flex-center" [formGroup]="fetchFlightForm">
+    <legend>Traer Asientos Vuelo</legend>
+    <form class="flex-column flex-center">
+        <mat-form-field appearance="fill">
+            <mat-label>Ingrese el id del vuelo</mat-label>
+            <input matInput type="text" formControlName="flightIdControl">
+            <mat-error *ngIf="flightIdControl!.invalid && (flightIdControl!.dirty || flightIdControl!.touched)">
+                <mat-error *ngIf="flightIdControl!.errors?.['required']">Campo obligatorio</mat-error>
+            </mat-error>
+        </mat-form-field>
+    <button type="submit" >Traer Asientos</button>
+        <mat-hint *ngIf="areSeatsFetched">
+            ¡Asientos traídos con éxito!
+        </mat-hint>
+    </form>
+</fieldset>
