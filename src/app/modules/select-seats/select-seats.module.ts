@@ -39,7 +39,7 @@ import { SeatInfoComponent } from './components/seat-info/seat-info.component';
     SeatStatusService
   ],
   exports:[
-    SeatComponent
+    SeatDefaultImageDirective
   ]
 })
 export class SelectSeatsModule { }
