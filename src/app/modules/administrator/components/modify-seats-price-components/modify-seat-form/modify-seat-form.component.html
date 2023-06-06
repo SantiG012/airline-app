@@ -1,4 +1,7 @@
 <fieldset>
     <legend>Modificar Precio</legend>
-    <app-form></app-form>
+    <app-form 
+    *ngFor="let seat of seats$ | async"
+    [seatInput]="seat"
+    ></app-form>
 </fieldset>
