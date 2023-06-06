@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { SeatsService } from 'src/app/modules/data-bases-services/gets/seats.service';
-import { DetalleAsiento } from 'src/app/interfaces/DetalleAsiento';
+import { FlightIdTransferService } from '../../../services/flight-id-transfer.service';
 
 @Component({
   selector: 'app-modify-seats-price',
@@ -11,10 +10,9 @@ import { DetalleAsiento } from 'src/app/interfaces/DetalleAsiento';
 })
 export class ModifySeatsPriceComponent {
   fetchFlightForm!:FormGroup;
-  areSeatsFetched:boolean = false;
 
   constructor(
-    private seatsService: SeatsService
+    private flightIdTransferService:FlightIdTransferService
   ) { }
 
   ngOnInit(){
@@ -32,23 +30,13 @@ export class ModifySeatsPriceComponent {
   }
 
   onFetchSeatsClick(){
-    this.seatsService.getSeatsByFlightId(this.flightIdControl!.value.trim()).subscribe({
-      error: (error:HttpErrorResponse) => {
-        if(error.status === 0){
-          alert('Error de conexión con el servidor. Intente más tarde.');
-        }
+    if (this.fetchFlightForm.invalid) {
+      alert('Formulario inválido. Revise los campos en rojo.');
+      return;
+    }
 
-        alert('Error al obtener los asientos: '+error.message);
-      },
-      complete: () => {
-        this.areSeatsFetched = true;
+    this.flightIdTransferService.addNextFlightId(this.flightIdControl!.value.trim());
 
-        setTimeout(() => {
-          this.areSeatsFetched = false;
-        }
-        , 4000);
-      }
-    });
   }
 
 
