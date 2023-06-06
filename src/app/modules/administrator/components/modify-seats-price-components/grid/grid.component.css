@@ -1,0 +1,25 @@
+.plane{
+    border: .2rem solid #e2e2e2;
+    height: 90rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1.5rem;
+    padding: 1rem 1.5rem;
+}
+
+.plane__left-seats-column,.plane__right-seats-column{
+    display: grid;
+    grid-template-columns: repeat(2, 4rem);
+    grid-template-rows: repeat(16, 4rem);
+    grid-gap: 1.5rem;
+}
+
+.plane__column-indicator{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
