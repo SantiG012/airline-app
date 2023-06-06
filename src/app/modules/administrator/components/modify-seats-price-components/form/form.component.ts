@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DetalleAsiento } from 'src/app/interfaces/DetalleAsiento';
 
 @Component({
   selector: 'app-form',
@@ -8,9 +9,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class FormComponent {
   seatForm!: FormGroup;
+  @Input('seatInput') seat!: DetalleAsiento;
 
   ngOnInit(){
     this.createForm();
+    this.seatPriceControl?.setValue(this.seat.precio);
   }
 
   private createForm(){
