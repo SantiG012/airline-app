@@ -79,9 +79,19 @@
     gap: 1rem;
   }
 
-mat-hint{
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 6rem;
-}
+  mat-hint{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 6.5rem;
+  }
+  
+  mat-hint>span:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
