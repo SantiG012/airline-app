@@ -28,6 +28,7 @@ import { ModifySeatsPriceComponent } from './components/modify-seats-price-compo
 import { PlaneTopComponent } from './components/modify-seats-price-components/plane-top/plane-top.component';
 import { GridComponent } from './components/modify-seats-price-components/grid/grid.component';
 import { SelectedSeatComponent } from './components/modify-seats-price-components/selected-seat/selected-seat.component';
+import { SelectSeatsModule } from '../select-seats/select-seats.module';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { SelectedSeatComponent } from './components/modify-seats-price-component
     DataBasesServicesModule,
     MatAutocompleteModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    SelectSeatsModule
   ],
   providers: [
     DatePipe,
