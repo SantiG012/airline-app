@@ -9,8 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboards-components/dashboard/dashboard.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CreateFlightComponent } from './components/dashboards-components/create-flight/create-flight.component';
-import { ManageSeatsComponent } from './components/manage-seats/manage-seats.component';
-import { ManageFlightsComponent } from './components/manage-flights/manage-flights.component';
 import { CreatePlaneComponent } from './components/dashboards-components/create-plane/create-plane.component';
 import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
 import { CheckFlightsComponent } from './components/dashboards-components/check-flights-components/check-flights/check-flights.component';
@@ -36,8 +34,6 @@ import { SelectSeatsModule } from '../select-seats/select-seats.module';
     LoginComponent,
     DashboardComponent,
     CreateFlightComponent,
-    ManageSeatsComponent,
-    ManageFlightsComponent,
     CreatePlaneComponent,
     CheckFlightsComponent,
     FlightComponent,
