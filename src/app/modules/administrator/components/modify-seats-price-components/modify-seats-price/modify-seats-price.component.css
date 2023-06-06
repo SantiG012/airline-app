@@ -82,8 +82,8 @@ button:disabled{
     min-width: 30rem;
 }
 
-app-passengers-seats{
+app-modify-seat-form{
     position: fixed;
-    top: 5.5rem;
+    top: 25rem;
     right: 0.5rem;
 }
