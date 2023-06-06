@@ -24,6 +24,10 @@ import { ModifyDatesComponent } from './components/dashboards-components/modify-
 import { FlightTransferService } from './services/flight-transfer.service';
 import { DateValidationService } from './services/date-validation.service';
 import { CreateStopoverComponent } from './components/dashboards-components/create-stopover/create-stopover.component';
+import { ModifySeatsPriceComponent } from './components/modify-seats-price-components/modify-seats-price/modify-seats-price.component';
+import { PlaneTopComponent } from './components/modify-seats-price-components/plane-top/plane-top.component';
+import { GridComponent } from './components/modify-seats-price-components/grid/grid.component';
+import { SelectedSeatComponent } from './components/modify-seats-price-components/selected-seat/selected-seat.component';
 
 
 @NgModule({
@@ -39,7 +43,11 @@ import { CreateStopoverComponent } from './components/dashboards-components/crea
     ModifyFlightComponent,
     ModifyCitiesComponent,
     ModifyDatesComponent,
-    CreateStopoverComponent
+    CreateStopoverComponent,
+    ModifySeatsPriceComponent,
+    PlaneTopComponent,
+    GridComponent,
+    SelectedSeatComponent
   ],
   imports: [
     CommonModule,

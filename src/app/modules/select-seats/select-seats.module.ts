@@ -36,7 +36,8 @@ import { SeatInfoComponent } from './components/seat-info/seat-info.component';
     MatIconModule
   ],
   providers:[
-    SeatStatusService
+    SeatStatusService,
+    SeatComponent
   ]
 })
 export class SelectSeatsModule { }
