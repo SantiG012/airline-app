@@ -10,7 +10,7 @@ export class Vuelo implements IVuelo{
     origen: string;
     destino: string;
     estado: string;
-    trayeactoId: string;
+    trayectoId: string;
 
     constructor(
         avionId: string,
@@ -26,7 +26,7 @@ export class Vuelo implements IVuelo{
         this.origen = origen;
         this.destino = destino;
         this.estado = 'Activo';
-        this.trayeactoId = this.generateUniqueID();
+        this.trayectoId = this.generateUniqueID();
     }
     
     private generateUniqueID(): string {

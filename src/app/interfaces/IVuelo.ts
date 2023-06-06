@@ -6,5 +6,5 @@ export interface IVuelo {
     origen: string;
     destino: string;
     estado: string;
-    trayeactoId: string;
+    trayectoId: string;
 }

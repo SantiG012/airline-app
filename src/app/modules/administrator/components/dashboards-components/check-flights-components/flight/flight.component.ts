@@ -31,6 +31,6 @@ export class FlightComponent {
   }
 
   onCopyJourneyIdClick() {
-    this.clipboard.copy(this.flightInput.trayeactoId);
+    this.clipboard.copy(this.flightInput.trayectoId);
   }
 }
