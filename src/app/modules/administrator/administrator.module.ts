@@ -25,7 +25,6 @@ import { CreateStopoverComponent } from './components/dashboards-components/crea
 import { ModifySeatsPriceComponent } from './components/modify-seats-price-components/modify-seats-price/modify-seats-price.component';
 import { PlaneTopComponent } from './components/modify-seats-price-components/plane-top/plane-top.component';
 import { GridComponent } from './components/modify-seats-price-components/grid/grid.component';
-import { SelectedSeatComponent } from './components/modify-seats-price-components/selected-seat/selected-seat.component';
 import { SelectSeatsModule } from '../select-seats/select-seats.module';
 import { FlightIdTransferService } from './services/flight-id-transfer.service';
 import { SeatComponent } from './components/modify-seats-price-components/seat/seat.component';
@@ -49,7 +48,6 @@ import { SelectedSeatImageDirective } from './directives/selected-seat-image.dir
     ModifySeatsPriceComponent,
     PlaneTopComponent,
     GridComponent,
-    SelectedSeatComponent,
     SeatComponent,
     SeatHoverImageDirective,
     SelectedSeatImageDirective
