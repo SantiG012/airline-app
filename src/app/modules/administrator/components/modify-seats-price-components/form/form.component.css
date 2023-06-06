@@ -1,0 +1,50 @@
+form{
+    width: 18rem;
+    gap: 1.1rem;
+}
+
+mat-error{
+    white-space: nowrap;
+}
+
+
+button{
+    width: 10rem;
+    height: 2.5rem;
+    margin: .5rem 0;
+    border: solid 1.5px #e8114b;
+    border-radius: .5rem;
+    background-color: #fff;
+    color: #e8114b;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    transition: all .08s ease-in-out;
+}
+
+button:hover{
+    background-color: #e95879;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:active{
+    background-color: #b20f3a;
+    color: #fff;
+}
+
+button:disabled{
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center{
+    justify-content: center;
+    align-items: center;
+}
