@@ -12,7 +12,6 @@ import { Clipboard } from '@angular/cdk/clipboard';
 export class FlightComponent {
 
   @Input()flightInput!: IVuelo;
-  idCopied: boolean = false;
 
   constructor (private datePipe: DatePipe,
               private clipboard: Clipboard
@@ -27,12 +26,11 @@ export class FlightComponent {
     return this.datePipe.transform(date, 'dd/MM/yyyy') || '';
   }
 
-  onClick() {
+  onCopyFlightIdClick() {
     this.clipboard.copy(this.flightInput.vueloId);
-    this.idCopied = true;
-    setTimeout(() => {
-      this.idCopied = false;
-    } 
-    , 3000);
+  }
+
+  onCopyJourneyIdClick() {
+    this.clipboard.copy(this.flightInput.trayeactoId);
   }
 }

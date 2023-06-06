@@ -1,4 +1,4 @@
-<a class="flight-container" *ngIf="flightInput" (click)="onClick()">
+<a class="flight-container" *ngIf="flightInput">
     <div class="hour-city-container">
         <div class="hour-container">
             <span class="hour">{{getFormattedHour(flightInput.fechaHoraSalida)}}</span>
@@ -25,8 +25,9 @@
             <span class="city">{{flightInput.destino}}</span>
         </div>
     </div>
-    <mat-hint *ngIf="idCopied">
-        Id: {{flightInput.vueloId}} copiado al portapapeles 
+    <mat-hint>
+        <span (click)="onCopyFlightIdClick()">Copiar vuelo ID</span>
+        <span (click)=" onCopyJourneyIdClick()">Copiar trayecto ID</span>
     </mat-hint>
 </a>
 
