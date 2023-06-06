@@ -1,12 +1,19 @@
-<fieldset>
+<fieldset [formGroup]="seatForm">
     <legend>Modificar Precio</legend>
     <form class="flex-column flex-center">
         <mat-form-field appearance="fill">
             <mat-label>Precio</mat-label>
-            <input matInput type="text" formControlName="">
-<!--             <mat-error *ngIf="flightIdControl!.invalid && (flightIdControl!.dirty || flightIdControl!.touched)">
-                <mat-error *ngIf="flightIdControl!.errors?.['required']">Campo obligatorio</mat-error>
-            </mat-error> -->
+
+            <input matInput type="text"
+            formControlName="seatPriceControl"
+            >
+
+            <mat-error *ngIf="seatPriceControl!.invalid && (seatPriceControl!.dirty || seatPriceControl!.touched)">
+                <mat-error *ngIf="seatPriceControl!.errors?.['required']">Campo obligatorio</mat-error>
+                <mat-error *ngIf="seatPriceControl!.errors?.['min']">El precio debe ser mayor a 25,000</mat-error>
+                <mat-error *ngIf="seatPriceControl!.errors?.['max']">El precio debe ser menor a 100,000</mat-error>
+                <mat-error *ngIf="seatPriceControl!.errors?.['pattern']">El precio debe ser un número</mat-error>
+            </mat-error>
         </mat-form-field>
         <button type="submit">Guardar Cambios</button>
     </form>

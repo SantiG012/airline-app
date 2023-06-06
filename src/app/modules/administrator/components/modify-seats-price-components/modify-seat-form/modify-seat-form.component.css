@@ -9,7 +9,11 @@ fieldset{
 
 form{
     width: 18rem;
-    gap: 1rem;
+    gap: 1.1rem;
+}
+
+mat-error{
+    white-space: nowrap;
 }
 
 legend{
