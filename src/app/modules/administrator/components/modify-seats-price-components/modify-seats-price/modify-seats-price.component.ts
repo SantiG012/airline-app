@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
 import { FlightIdTransferService } from '../../../services/flight-id-transfer.service';
 
 @Component({
