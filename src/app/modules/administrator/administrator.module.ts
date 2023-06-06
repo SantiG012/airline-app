@@ -28,6 +28,7 @@ import { GridComponent } from './components/modify-seats-price-components/grid/g
 import { SelectedSeatComponent } from './components/modify-seats-price-components/selected-seat/selected-seat.component';
 import { SelectSeatsModule } from '../select-seats/select-seats.module';
 import { FlightIdTransferService } from './services/flight-id-transfer.service';
+import { SeatComponent } from './components/modify-seats-price-components/seat/seat.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { FlightIdTransferService } from './services/flight-id-transfer.service';
     ModifySeatsPriceComponent,
     PlaneTopComponent,
     GridComponent,
-    SelectedSeatComponent
+    SelectedSeatComponent,
+    SeatComponent
   ],
   imports: [
     CommonModule,
