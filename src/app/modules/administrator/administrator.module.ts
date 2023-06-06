@@ -29,6 +29,7 @@ import { SelectedSeatComponent } from './components/modify-seats-price-component
 import { SelectSeatsModule } from '../select-seats/select-seats.module';
 import { FlightIdTransferService } from './services/flight-id-transfer.service';
 import { SeatComponent } from './components/modify-seats-price-components/seat/seat.component';
+import { ClickedSeatsTransferService } from './services/clicked-seats-transfer.service';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { SeatComponent } from './components/modify-seats-price-components/seat/s
     DatePipe,
     FlightTransferService,
     DateValidationService,
-    FlightIdTransferService
+    FlightIdTransferService,
+    ClickedSeatsTransferService
   ]
 })
 export class AdministratorModule { }
