@@ -1,1 +1,13 @@
-<p>modify-seat-form works!</p>
+<fieldset>
+    <legend>Modificar Precio</legend>
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Ingrese el precio del vuelo</mat-label>
+            <input matInput type="text" formControlName="">
+<!--             <mat-error *ngIf="flightIdControl!.invalid && (flightIdControl!.dirty || flightIdControl!.touched)">
+                <mat-error *ngIf="flightIdControl!.errors?.['required']">Campo obligatorio</mat-error>
+            </mat-error> -->
+        </mat-form-field>
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</fieldset>
