@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpHeaders,HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap} from 'rxjs/operators';
-import { Observable, of} from 'rxjs';
+import { Observable,throwError} from 'rxjs';
 import { DetalleAsiento } from 'src/app/interfaces/DetalleAsiento';
 
 @Injectable()
@@ -21,15 +21,15 @@ export class SeatsService {
     return this.http.get<DetalleAsiento[]>(`${this.API_URL}/asientosVuelo/${id}`)
     .pipe(
       tap(_ => console.log(`fetched seats by flight id=${id}`)),
-      catchError(this.handleError<any>(`getSeatsByFlightId id=${id}`))
+      catchError(this.handleError(`getSeatsByFlightId id=${id}`))
     );
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => { 
-      console.error(error); 
+  private handleError(operation = 'operation') {
+    return (error: HttpErrorResponse): Observable<never> => {
+      console.error(error);
       console.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
+      return throwError(() => error);
     };
   }
 }
