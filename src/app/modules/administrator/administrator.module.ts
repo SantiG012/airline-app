@@ -31,6 +31,7 @@ import { FlightIdTransferService } from './services/flight-id-transfer.service';
 import { SeatComponent } from './components/modify-seats-price-components/seat/seat.component';
 import { ClickedSeatsTransferService } from './services/clicked-seats-transfer.service';
 import { SeatHoverImageDirective } from './directives/seat-hover-image.directive';
+import { SelectedSeatImageDirective } from './directives/selected-seat-image.directive';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { SeatHoverImageDirective } from './directives/seat-hover-image.directive
     GridComponent,
     SelectedSeatComponent,
     SeatComponent,
-    SeatHoverImageDirective
+    SeatHoverImageDirective,
+    SelectedSeatImageDirective
   ],
   imports: [
     CommonModule,
