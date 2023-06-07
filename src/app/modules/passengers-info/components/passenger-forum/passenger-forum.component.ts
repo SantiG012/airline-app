@@ -4,6 +4,7 @@ import{ FormsStateTransferService } from '../../services/forms-state-transfer.se
 import { IdPassengerTransferService } from '../../services/id-passenger-transfer.service';
 import { UserPostService } from 'src/app/modules/data-bases-services/posts/user-post.service';
 import { FormToUserService } from '../../services/form-to-user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-passenger-forum',
@@ -72,16 +73,31 @@ export class PassengerForumComponent {
     , 5000);
   }
 
+  private makePostUserRequest() {
+    const user = this.formToUserService.createUserFromForm(this.passengerForm);
+
+    this.userPostService.postUser(user).subscribe({
+      error:(error:HttpErrorResponse)=>{
+        if (error.status === 0){
+          alert('Error de conexión con el servidor');
+        }
+
+        alert('Error al guardar el usuario: '+error.message);
+      },
+      complete:()=>{
+        this.disableForm();
+        this.formsStateTransferService.setFormState(this.index, true);
+        this.idPassengerTransferService.setPassengerId(this.index, this.idControl!.value);
+      }
+    });
+  }
+
   onSubmit() {
     this.checkFormsCompletion();
     
     if (!this.formCompleted){this.displayWrongForm(); return;};
 
-    this.disableForm();
-    this.formsStateTransferService.setFormState(this.index, true);
-    this.idPassengerTransferService.setPassengerId(this.index, this.idControl!.value);
-    this.userPostService.postUser(this.formToUserService.createUserFromForm(this.passengerForm)).
-    subscribe();
+    this.makePostUserRequest();
   }
 
   get namesControl() { return this.passengerForm.get('namesControl'); }
