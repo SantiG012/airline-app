@@ -1,6 +1,7 @@
 import { Component,Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DetalleAsiento } from 'src/app/interfaces/DetalleAsiento';
+import { ClickedSeatsTransferService } from '../../../services/clicked-seats-transfer.service';
 
 @Component({
   selector: 'app-form',
@@ -10,6 +11,10 @@ import { DetalleAsiento } from 'src/app/interfaces/DetalleAsiento';
 export class FormComponent {
   seatForm!: FormGroup;
   @Input('seatInput') seat!: DetalleAsiento;
+
+  constructor(
+    private clickedSeatsTransferService: ClickedSeatsTransferService
+  ) { }
 
   ngOnInit(){
     this.createForm();
@@ -27,6 +32,10 @@ export class FormComponent {
         ]
       )
     });
+  }
+
+  onCloseButtonClicked(){
+    this.clickedSeatsTransferService.removeSeat(this.seat.idDetalleAsiento);
   }
 
   get seatPriceControl() { return this.seatForm.get('seatPriceControl'); }
