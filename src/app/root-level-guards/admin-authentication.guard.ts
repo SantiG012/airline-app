@@ -22,6 +22,8 @@ export class AdminAuthenticationGuard  {
       this.router.navigate(['administrador/login'])
     };
 
+    this.authorizationService.setAdminLogInStatus(true, 'You are logged in');
+
     return this.authorizationService.isLogIn();
   }
   

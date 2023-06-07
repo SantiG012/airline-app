@@ -4,10 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/main-component/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminStatusDirective } from './directives/admin-status.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdminStatusDirective
   ],
   imports: [
     BrowserModule,
