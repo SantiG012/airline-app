@@ -65,6 +65,11 @@ export class FormComponent {
   }
 
   onSaveChangesButtonClicked(){
+    if (this.seatPriceControl?.invalid){
+      alert('El precio del asiento debe ser un número entre 25000 y 100000.');
+      return;
+    }
+
     this.seat.precio = this.seatPriceControl?.value;
     this.updateSeatPrice();
   }
