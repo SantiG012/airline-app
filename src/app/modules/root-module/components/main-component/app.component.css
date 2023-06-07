@@ -4,10 +4,10 @@
     padding: 0;
     box-sizing: border-box;
     --logo-color:#f8f4f9;
+    --header-color: #110050;
 }
 
 header{
-    --header-color: #110050;
     background-color: var(--header-color);
     width: 100%;
     height: 5rem;
@@ -39,11 +39,17 @@ nav > a:nth-child(3){
     font-weight: 600;
     padding: 1rem;
     border-radius: 1rem;
+    border: 1px solid var(--header-color);
     transition: background-color ease-in-out .1s;
 }
 
 nav :nth-child(2):hover, nav :nth-child(3):hover{
     background-color: #3f3371;
+    border: 1px solid var(--logo-color);
+}
+
+nav :nth-last-child(-n+2):active{
+    background-color: var(--header-color);
 }
 
 nav{
