@@ -1,7 +1,8 @@
 fieldset{
     width: 18rem;
-    height: 30rem;
+    height: 33rem;
     padding: 1rem 0;
+    gap:1rem;
     margin: 1rem auto;
     border: none;
     background-color: #fff;
@@ -16,5 +17,15 @@ legend{
     font-weight: 300;
     color: #1b0088;
     margin-left: 1rem;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center{
+    justify-content: center;
+    align-items: center;
 }
 
