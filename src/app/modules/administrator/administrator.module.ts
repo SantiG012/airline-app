@@ -34,6 +34,7 @@ import { SelectedSeatImageDirective } from './directives/selected-seat-image.dir
 import { ModifySeatFormComponent } from './components/modify-seats-price-components/modify-seat-form/modify-seat-form.component';
 import { FormComponent } from './components/modify-seats-price-components/form/form.component';
 import { EnableSeatDirective } from './directives/enable-seat.directive';
+import { SearchPlanesComponent } from './components/dashboards-components/airplane-components/search-planes/search-planes.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { EnableSeatDirective } from './directives/enable-seat.directive';
     SelectedSeatImageDirective,
     ModifySeatFormComponent,
     FormComponent,
-    EnableSeatDirective
+    EnableSeatDirective,
+    SearchPlanesComponent
   ],
   imports: [
     CommonModule,
