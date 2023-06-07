@@ -9,10 +9,15 @@ mat-error{
 }
 
 button.close-button{
+    background:none;
+    border:none;
     position: absolute;
+    top: 0;
+    right: -2rem;
+    cursor: pointer;
 }
 
-button{
+button.save-button{
     width: 10rem;
     height: 2.5rem;
     margin: .5rem 0;
@@ -26,18 +31,18 @@ button{
     transition: all .08s ease-in-out;
 }
 
-button:hover{
+button.save-button:hover{
     background-color: #e95879;
     color: #fff;
     cursor: pointer;
 }
 
-button:active{
+button.save-button:active{
     background-color: #b20f3a;
     color: #fff;
 }
 
-button:disabled{
+button.save-button:disabled{
     pointer-events: none;
     opacity: 0.5;
 }
