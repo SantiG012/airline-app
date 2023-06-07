@@ -55,11 +55,6 @@ export class PassengerForumComponent {
     this.wrongForm = false;
   }
 
-  private checkFormsCompletion() {
-    if (!this.passengerForm.valid){this.formCompleted = false; return;};
-    this.formCompleted = true;
-  }
-
   private disableForm() {
     this.passengerForm.disable();
   }
@@ -80,6 +75,7 @@ export class PassengerForumComponent {
       error:(error:HttpErrorResponse)=>{
         if (error.status === 0){
           alert('Error de conexión con el servidor');
+          return;
         }
 
         alert('Error al guardar el usuario: '+error.message);
@@ -88,14 +84,14 @@ export class PassengerForumComponent {
         this.disableForm();
         this.formsStateTransferService.setFormState(this.index, true);
         this.idPassengerTransferService.setPassengerId(this.index, this.idControl!.value);
+        this.formCompleted = true;
       }
     });
   }
 
   onSubmit() {
-    this.checkFormsCompletion();
-    
-    if (!this.formCompleted){this.displayWrongForm(); return;};
+
+    if (this.passengerForm.invalid){this.displayWrongForm(); return;};
 
     this.makePostUserRequest();
   }
