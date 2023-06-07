@@ -12,7 +12,11 @@
             <mat-error *ngIf="seatPriceControl!.errors?.['max']">El precio debe ser menor a 100,000</mat-error>
             <mat-error *ngIf="seatPriceControl!.errors?.['pattern']">El precio debe ser un número</mat-error>
         </mat-error>
+
+        <mat-hint *ngIf="isSeatModified" > ¡Precio Modificado con exito!  </mat-hint>
+        
     </mat-form-field>
+
     <button class="save-button"type="submit">Guardar Cambios</button>
     <button class="close-button" (click)="onCloseButtonClicked()">
         <mat-icon>close</mat-icon>

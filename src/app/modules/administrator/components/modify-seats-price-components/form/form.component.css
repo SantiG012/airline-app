@@ -8,6 +8,15 @@ mat-error{
     white-space: nowrap;
 }
 
+mat-form-field{
+    position: relative;
+}
+
+mat-hint{
+    position: absolute;
+    top: 1rem;
+}
+
 button.close-button{
     background:none;
     border:none;
