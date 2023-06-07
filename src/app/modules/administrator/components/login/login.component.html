@@ -20,8 +20,8 @@
             </mat-hint>
         </mat-form-field>
         <button type="submit" class="btn btn-primary" (click)="onSubmit()" >Login</button>
-        <mat-hint *ngIf="adminLogInStatus$ | async">
-           {{requestStatusMessage}}
+        <mat-hint *ngIf="adminLogInStatus">
+           El usuario o la contraseña son incorrectos
         </mat-hint>
     </form>
 </fieldset>

@@ -4,6 +4,7 @@ import { Admin } from 'src/app/interfaces/Admin';
 import { AuthorizationService } from 'src/app/root-level-services/authorization.service';
 import { AdminLogInStatusDTO } from 'src/app/DTOs/adminDTOs/adminLogInStatusDTO';
 import { Observable,tap} from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +13,11 @@ import { Observable,tap} from 'rxjs';
 })
 export class LoginComponent {
   adminForm!: FormGroup;
-  adminLogInStatus$!: Observable<AdminLogInStatusDTO>;
-  requestStatusMessage!: string;
+  adminLogInStatus!: boolean;
 
   constructor(
-    private authorizationService: AuthorizationService
+    private authorizationService: AuthorizationService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -42,15 +43,15 @@ export class LoginComponent {
       pass: this.passwordControl?.value
     };
 
-    this.authorizationService.login(admin).subscribe();
+    this.authorizationService.login(admin).subscribe({
+      complete: () => {
+        this.router.navigate(['/administrador/dashboard']);
+      },
+      error: (err) => {
+        this.adminLogInStatus = true;
+      }
+    });
 
-    this.adminLogInStatus$ = this.authorizationService.getAdminLogInStatus().pipe(
-      tap((adminLogInStatusDTO: AdminLogInStatusDTO) => {
-        adminLogInStatusDTO.status ? 
-        this.requestStatusMessage = 'Log In Successful' 
-        : this.requestStatusMessage = adminLogInStatusDTO.statusMessage;
-      })
-    );
   }
 
   get identificationControl() { return this.adminForm.get('identificationControl'); }
