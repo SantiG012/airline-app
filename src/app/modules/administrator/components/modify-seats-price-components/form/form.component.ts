@@ -2,6 +2,9 @@ import { Component,Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DetalleAsiento } from 'src/app/interfaces/DetalleAsiento';
 import { ClickedSeatsTransferService } from '../../../services/clicked-seats-transfer.service';
+import { SeatPutsService } from 'src/app/modules/data-bases-services/puts/seat-puts.service';
+import { HttpErrorResponse} from '@angular/common/http'; 
+
 
 @Component({
   selector: 'app-form',
@@ -11,9 +14,11 @@ import { ClickedSeatsTransferService } from '../../../services/clicked-seats-tra
 export class FormComponent {
   seatForm!: FormGroup;
   @Input('seatInput') seat!: DetalleAsiento;
+  isSeatModified: boolean = false;
 
   constructor(
-    private clickedSeatsTransferService: ClickedSeatsTransferService
+    private clickedSeatsTransferService: ClickedSeatsTransferService,
+    private seatPutsService: SeatPutsService
   ) { }
 
   ngOnInit(){
@@ -34,8 +39,34 @@ export class FormComponent {
     });
   }
 
+  private updateSeatPrice(){
+    this.seatPutsService.modifySeat(this.seat).subscribe({
+      complete: () => {
+        this.isSeatModified = true;
+        
+        setTimeout(() => {
+          this.isSeatModified = false;
+          this.clickedSeatsTransferService.removeSeat(this.seat.idDetalleAsiento);
+        }
+        , 3000);
+      },
+      error: (error:HttpErrorResponse) => {
+        if (error.status === 0){
+          alert('Error de conexión con el servidor. Intente más tarde.');
+        }
+
+        alert('Error al modificar el precio del asiento: ' + error.message);
+      }
+    });
+  }
+
   onCloseButtonClicked(){
     this.clickedSeatsTransferService.removeSeat(this.seat.idDetalleAsiento);
+  }
+
+  onSaveChangesButtonClicked(){
+    this.seat.precio = this.seatPriceControl?.value;
+    this.updateSeatPrice();
   }
 
   get seatPriceControl() { return this.seatForm.get('seatPriceControl'); }
