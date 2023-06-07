@@ -9,8 +9,7 @@
     <ul class="flex-column flex-center">
         <li class="flex-column flex-center"
             *ngFor="let plane of planes">
-        >
-            <h3>Modelo: </h3>
+            <h3>Modelo:{{plane.modelo}} </h3>
             <span (click)="onCopyIdClick(plane.avionId)" >Copiar ID</span>
         </li> 
     </ul>
