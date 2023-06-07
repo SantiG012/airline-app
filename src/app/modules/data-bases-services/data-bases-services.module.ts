@@ -12,7 +12,7 @@ import { FlightPostsService } from './posts/flight-posts.service';
 import { FlightPutsService } from './puts/flight-puts.service';
 import { StopoverPostsService } from './posts/stopover-posts.service';
 import { SeatPutsService } from './puts/seat-puts.service';
-
+import { PlaneGetsService } from './gets/plane-gets.service';
 
 @NgModule({
   declarations: [],
@@ -31,7 +31,8 @@ import { SeatPutsService } from './puts/seat-puts.service';
     FlightPostsService,
     FlightPutsService,
     StopoverPostsService,
-    SeatPutsService
+    SeatPutsService,
+    PlaneGetsService
   ]
 })
 export class DataBasesServicesModule { }
