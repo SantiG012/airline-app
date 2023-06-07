@@ -22,7 +22,7 @@ export class EnableSeatDirective {
     return this.elementRef.nativeElement.getAttribute('data-tipo-asiento');
   }
 
-  private isSeatNotAvailable():boolean{
+  private isSeatNotClicked():boolean{
     return this.seats.findIndex((seat:DetalleAsiento)=>seat.idDetalleAsiento===this.getSeatId())!==-1;
   }
 
@@ -35,11 +35,21 @@ export class EnableSeatDirective {
     this.elementRef.nativeElement.style.pointerEvents = 'auto';
   }
 
+  private isSeatOccupied():boolean{
+    const bookingId = this.elementRef.nativeElement.getAttribute('data-reserva-id');
+    
+    if ((bookingId !== null) && (bookingId !=='')) return true;
+    return false;
+  }
+
+
+
+
   private checkClickedSeats():void{
     this.clickedSeatsTransferService.getClickedSeats().subscribe(
       (seats:DetalleAsiento[])=>{
         this.seats=seats;
-        if(this.isSeatNotAvailable())return;
+        if(this.isSeatNotClicked() || this.isSeatOccupied())return;
         this.activateSeat();
         this.setDefaultSeatImage();
       }
