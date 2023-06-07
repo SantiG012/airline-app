@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboards-components/dashboard/dashboard.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CreateFlightComponent } from './components/dashboards-components/create-flight/create-flight.component';
-import { CreatePlaneComponent } from './components/dashboards-components/create-plane/create-plane.component';
+import { CreatePlaneComponent } from './components/dashboards-components/airplane-components/create-plane/create-plane.component';
 import { DataBasesServicesModule } from '../data-bases-services/data-bases-services.module';
 import { CheckFlightsComponent } from './components/dashboards-components/check-flights-components/check-flights/check-flights.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
