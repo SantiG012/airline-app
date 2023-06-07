@@ -32,6 +32,7 @@ export class MainComponent {
         //Handles the error
         catchError((error:HttpErrorResponse)=>{
           const defaultInvoice:Invoice = this.createDefaultInvoice();
+          this.invoicePrice = defaultInvoice.precio;
           return this.handleException<Invoice>(error,'fetch invoice',defaultInvoice);
         })
     )
