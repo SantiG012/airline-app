@@ -1,22 +1,31 @@
 <mat-tab-group animationDuration="0ms">
-    <mat-tab label="First">
-        <ng-template matTabContent>
-            <app-modify-seats-price></app-modify-seats-price>
-        </ng-template>
-    </mat-tab>
-    <mat-tab label="Second">
+    <mat-tab label="Aviones">
         <ng-template matTabContent>
             <app-create-plane></app-create-plane>
+            <app-search-planes></app-search-planes>
         </ng-template>
     </mat-tab>
-    <mat-tab label="Third">
+    <mat-tab label="Crear Vuelos">
+        <app-create-flight></app-create-flight>
+    </mat-tab>
+    <mat-tab label="Obtener Vuelos">
         <ng-template matTabContent>
             <app-check-flights></app-check-flights>
         </ng-template>
     </mat-tab>
-    <mat-tab label="Other">   
+    <mat-tab label="Modificar Vuelos">   
         <ng-template matTabContent>
-            <app-create-flight></app-create-flight>
+            <app-modify-flight></app-modify-flight>
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="Modificar Precios">   
+        <ng-template matTabContent>
+            <app-modify-seats-price></app-modify-seats-price>
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="Escalas">   
+        <ng-template matTabContent>
+            <app-create-stopover></app-create-stopover>
         </ng-template>
     </mat-tab>
 </mat-tab-group>
