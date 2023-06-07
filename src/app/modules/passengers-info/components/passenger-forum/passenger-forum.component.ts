@@ -78,7 +78,7 @@ export class PassengerForumComponent {
           return;
         }
 
-        alert('Error al guardar el usuario: '+error.message);
+        alert('Error al guardar el usuario: '+error.error.mensaje);
       },
       complete:()=>{
         this.disableForm();

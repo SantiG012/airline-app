@@ -27,7 +27,7 @@ export class UserPostService {
   private handleError(operation = 'operation') {
     return (error: HttpErrorResponse): Observable<never> => { 
       console.error(error); 
-      console.log(`${operation} failed: ${error.message}`);
+      console.log(`${operation} failed: ${error.error.mensaje}`);
       return throwError(()=> error);
     };
   }
