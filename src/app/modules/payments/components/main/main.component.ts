@@ -3,7 +3,8 @@ import { InvoiceGetService } from 'src/app/modules/data-bases-services/gets/invo
 import { BookingPutService } from 'src/app/modules/data-bases-services/puts/booking-put.service';
 import { Invoice } from 'src/app/interfaces/invoice';
 import { ActivatedRoute,Router} from '@angular/router';
-import { Observable,tap} from 'rxjs';
+import { NEVER, Observable,catchError,of,tap} from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-main',
@@ -27,8 +28,33 @@ export class MainComponent {
        //Logs the fact that the invoice has been fetched
         tap(invoice => {
           this.invoicePrice = invoice.precio;
+        }),
+        //Handles the error
+        catchError((error:HttpErrorResponse)=>{
+          const defaultInvoice:Invoice = this.createDefaultInvoice();
+          return this.handleException<Invoice>(error,'fetch invoice',defaultInvoice);
         })
     )
+  }
+
+  private createDefaultInvoice():Invoice{
+    return {
+      facturaId: '',
+      usuarioId: '',
+      estado: '',
+      reserva: '',
+      precio: 'No diponible'
+    }
+  }
+
+  private handleException<T>(error: HttpErrorResponse, operation:string,result?:T):Observable<T> {
+    if (error.status === 0){
+      alert('Error de conexión con el servidor');
+      return of(result as T);
+    }
+
+    alert('Error a la hora de ' + operation + ': '+error.error.mensaje);
+    return of(result as T);
   }
 
   onClick(){
