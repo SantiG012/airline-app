@@ -17,7 +17,10 @@ export class AdminAuthenticationGuard  {
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    if (!this.authorizationService.isLogIn()) this.router.navigate(['administrador/login']);
+    if (!this.authorizationService.isLogIn()) {
+      this.authorizationService.setAdminLogInStatus(false, 'You must log in to access this page');
+      this.router.navigate(['administrador/login'])
+    };
 
     return this.authorizationService.isLogIn();
   }

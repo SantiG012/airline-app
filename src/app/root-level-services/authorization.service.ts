@@ -46,12 +46,7 @@ export class AuthorizationService {
     return (error: any): Observable<T> => { 
       const message = error.error.mensaje;
 
-      const adminLogInStatusDTO: AdminLogInStatusDTO = {
-        status: false,
-        statusMessage: message
-      };
-
-      this.adminLogInStatusSubject.next(adminLogInStatusDTO);
+      this.setAdminLogInStatus(false, message);
 
       return EMPTY;
     };
@@ -75,6 +70,21 @@ export class AuthorizationService {
     }
   
     return false;
+  }
+
+  logOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('expirationTime');
+  }
+
+  setAdminLogInStatus(status:boolean,message:string):void {
+
+    const adminLogInStatusDTO: AdminLogInStatusDTO = {
+      status: status,
+      statusMessage: message
+    };
+
+    this.adminLogInStatusSubject.next(adminLogInStatusDTO);
   }
   
 }
