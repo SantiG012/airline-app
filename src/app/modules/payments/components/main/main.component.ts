@@ -60,8 +60,11 @@ export class MainComponent {
 
   onClick(){
 
-    this.bookingPutService.payBooking(this.bookingId).subscribe(
-      () => {
+    this.bookingPutService.payBooking(this.bookingId).subscribe({
+      error: (error:HttpErrorResponse)=>{
+        this.handleException(error,'pay booking');
+      },
+      complete: () => {
         this.redirect = true;
 
         setTimeout(() => {
@@ -69,7 +72,7 @@ export class MainComponent {
         }
         , 5000);
       }
-    );
+    });
   }
 
 }
