@@ -1,10 +1,16 @@
 <header>
     <nav>
-        <a class="company-name">
+        <a class="company-name"
+        [routerLink]="['']" 
+        >
             Blue <span>Horizon</span> 
         </a>
-        <a>Consultar vuelos</a>
-        <a>Administrador</a>
+        <a
+        [routerLink]="['/consultarReservas']"
+        >Consultar vuelos</a>
+        <a
+        [routerLink]="['/administrador']"
+        >Administrador</a>
     </nav>
 </header>
 <router-outlet></router-outlet>

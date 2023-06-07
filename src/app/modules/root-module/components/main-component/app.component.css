@@ -19,6 +19,7 @@ header{
 a{
     cursor: pointer;
     line-height: 0;
+    text-decoration: none;
 }
 
 .company-name{
@@ -40,7 +41,7 @@ nav > a:nth-child(3){
     padding: 1rem;
     border-radius: 1rem;
     border: 1px solid var(--header-color);
-    transition: background-color ease-in-out .1s;
+    transition: all ease-in-out .1s;
 }
 
 nav :nth-child(2):hover, nav :nth-child(3):hover{
