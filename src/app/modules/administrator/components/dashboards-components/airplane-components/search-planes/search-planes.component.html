@@ -1,15 +1,17 @@
 <fieldset class="flex-column flex-center">
     <legend>Consultar Aviones</legend>
     <form>
-        <button>Traer Aviones</button>
+        <button (click)="onSearchPlanesButtonClick()" >Traer Aviones</button>
     </form>
 </fieldset>
 
 <div>
     <ul class="flex-column flex-center">
-        <li class="flex-column flex-center">
+        <li class="flex-column flex-center"
+            *ngFor="let plane of planes">
+        >
             <h3>Modelo: </h3>
-            <span>Copiar ID</span>
+            <span (click)="onCopyIdClick(plane.avionId)" >Copiar ID</span>
         </li> 
     </ul>
 </div>
