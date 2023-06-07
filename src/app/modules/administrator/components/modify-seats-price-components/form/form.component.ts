@@ -53,6 +53,7 @@ export class FormComponent {
       error: (error:HttpErrorResponse) => {
         if (error.status === 0){
           alert('Error de conexión con el servidor. Intente más tarde.');
+          return;
         }
 
         alert('Error al modificar el precio del asiento: ' + error.message);
