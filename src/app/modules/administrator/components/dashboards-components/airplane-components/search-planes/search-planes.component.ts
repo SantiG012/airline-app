@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IPlane } from 'src/app/interfaces/IPlane';
 import { PlaneGetsService } from 'src/app/modules/data-bases-services/gets/plane-gets.service';
-import { Observable, tap } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Clipboard } from '@angular/cdk/clipboard';
 
