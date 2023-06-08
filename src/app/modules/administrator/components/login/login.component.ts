@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Admin } from 'src/app/interfaces/Admin';
 import { AuthorizationService } from 'src/app/root-level-services/authorization.service';
-import { AdminLogInStatusDTO } from 'src/app/DTOs/adminDTOs/adminLogInStatusDTO';
-import { Observable,tap} from 'rxjs';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +13,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   adminForm!: FormGroup;
   adminLogInStatus!: boolean;
+  failedLogInMessage!: string;
 
   constructor(
     private authorizationService: AuthorizationService,
@@ -36,6 +36,14 @@ export class LoginComponent {
     });
   }
 
+  private displayLogInStatus(): void {
+    this.adminLogInStatus = true;
+
+    setTimeout(() => {
+      this.adminLogInStatus = false;
+    }, 4000);
+  }
+
   onSubmit() {
     if (this.adminForm.invalid) return;
     const admin: Admin = {
@@ -47,8 +55,15 @@ export class LoginComponent {
       complete: () => {
         this.router.navigate(['/administrador/dashboard']);
       },
-      error: (err) => {
-        this.adminLogInStatus = true;
+      error: (error:HttpErrorResponse): void => {
+        if(error.status === 0){
+          alert("Error de conexión con el servidor");
+          return;
+        }
+
+        this.failedLogInMessage = error.error.mensaje;
+
+        this.displayLogInStatus();
       }
     });
 
