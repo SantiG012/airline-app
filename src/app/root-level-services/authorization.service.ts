@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders,HttpErrorResponse } from '@angular/common/http';
 import { Admin } from '../interfaces/Admin';
 import { Token } from '../interfaces/Token';
-import { Observable, Subject,tap,catchError,EMPTY} from 'rxjs';
+import { Observable, Subject,tap,catchError,EMPTY, throwError} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,17 +29,20 @@ export class AuthorizationService {
         this.setAdminLogInStatus(true);
         this.setLocalStorage(token);
       }),
-      catchError(this.handleError<Token>())
+      catchError(this.handleError())
     );
   }
 
-  private handleError<T>(operation = 'Log In') {
-    return (error: any): Observable<T> => { 
-      const message = error.error.mensaje;
+  private handleError(operation = 'Log In') {
+    return (error: HttpErrorResponse):Observable<never> => { 
+
+      console.log('Error al intentar ' + operation + ' el administrador: ' + error.error.mensaje);
+      console.error(error);
+
 
       this.setAdminLogInStatus(false);
 
-      return EMPTY;
+      return throwError(()=> error);
     };
   }
 
