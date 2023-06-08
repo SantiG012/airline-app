@@ -1,6 +1,5 @@
 import { AuthorizationService } from 'src/app/root-level-services/authorization.service';
 import { Directive, ElementRef, HostListener} from '@angular/core';
-import { AdminLogInStatusDTO } from 'src/app/DTOs/adminDTOs/adminLogInStatusDTO';
 import { Router } from '@angular/router';
 
 @Directive({
@@ -27,9 +26,8 @@ export class AdminStatusDirective {
 
   ngOnInit() {
     this.authorizationService.getAdminLogInStatus().subscribe(
-      (adminLogInStatus:AdminLogInStatusDTO) => {
-        console.log(adminLogInStatus);
-        this.isAdminLogIn = adminLogInStatus.status;
+      (adminLogInStatus:boolean) => {
+        this.isAdminLogIn = adminLogInStatus;
         this.changeAnchorText();
       }
     );
@@ -38,7 +36,7 @@ export class AdminStatusDirective {
   private changeAnchorLink(): void {
     if (this.isAdminLogIn) {
       this.authorizationService.logOut();
-      this.authorizationService.setAdminLogInStatus(false, 'You are logged out');
+      this.authorizationService.setAdminLogInStatus(false);
       this.router.navigate(['']);
       return;
     }

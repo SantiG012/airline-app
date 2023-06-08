@@ -18,11 +18,11 @@ export class AdminAuthenticationGuard  {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if (!this.authorizationService.isLogIn()) {
-      this.authorizationService.setAdminLogInStatus(false, 'You must log in to access this page');
+      this.authorizationService.setAdminLogInStatus(false);
       this.router.navigate(['administrador/login'])
     };
 
-    this.authorizationService.setAdminLogInStatus(true, 'You are logged in');
+    this.authorizationService.setAdminLogInStatus(true);
 
     return this.authorizationService.isLogIn();
   }

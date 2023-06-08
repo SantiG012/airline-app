@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Admin } from '../interfaces/Admin';
 import { Token } from '../interfaces/Token';
-import { AdminLogInStatusDTO } from '../DTOs/adminDTOs/adminLogInStatusDTO';
 import { Observable, Subject,tap,catchError,EMPTY} from 'rxjs';
 
 @Injectable({
@@ -10,7 +9,7 @@ import { Observable, Subject,tap,catchError,EMPTY} from 'rxjs';
 })
 export class AuthorizationService {
 
-  private adminLogInStatusSubject = new Subject<AdminLogInStatusDTO>();
+  private adminLogInStatusSubject = new Subject<boolean>();
   adminLogInStatus$ = this.adminLogInStatusSubject.asObservable();
 
   readonly API_URL = 'http://localhost:8080/admin';
@@ -26,17 +25,9 @@ export class AuthorizationService {
   login(admin: Admin) {
     return this.http.post<Token>(this.API_URL + '/verificarCredenciales', admin, this.httpOptions)
     .pipe(
-      tap((_) => {
-        const adminLogInStatusDTO: AdminLogInStatusDTO = {
-          status: true,
-          statusMessage: 'Log In Successful'
-        };
-        this.adminLogInStatusSubject.next(adminLogInStatusDTO);
-
-        const expirationTime = new Date().getTime() + (60 * 1000); 
-
-        localStorage.setItem('token', _.token);
-        localStorage.setItem('expirationTime', expirationTime.toString());
+      tap((token:Token) => {
+        this.setAdminLogInStatus(true);
+        this.setLocalStorage(token);
       }),
       catchError(this.handleError<Token>())
     );
@@ -46,13 +37,13 @@ export class AuthorizationService {
     return (error: any): Observable<T> => { 
       const message = error.error.mensaje;
 
-      this.setAdminLogInStatus(false, message);
+      this.setAdminLogInStatus(false);
 
       return EMPTY;
     };
   }
 
-  getAdminLogInStatus(): Observable<AdminLogInStatusDTO> {
+  getAdminLogInStatus(): Observable<boolean> {
     return this.adminLogInStatus$;
   }
 
@@ -77,14 +68,16 @@ export class AuthorizationService {
     localStorage.removeItem('expirationTime');
   }
 
-  setAdminLogInStatus(status:boolean,message:string):void {
+  setAdminLogInStatus(status:boolean):void {
 
-    const adminLogInStatusDTO: AdminLogInStatusDTO = {
-      status: status,
-      statusMessage: message
-    };
+    this.adminLogInStatusSubject.next(status);
+  }
 
-    this.adminLogInStatusSubject.next(adminLogInStatusDTO);
+  private setLocalStorage(token: Token): void {
+    const expirationTime = new Date().getTime() + (60 * 1000); 
+
+    localStorage.setItem('token', token.token);
+    localStorage.setItem('expirationTime', expirationTime.toString());
   }
   
 }
