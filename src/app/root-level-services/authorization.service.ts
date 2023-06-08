@@ -77,7 +77,7 @@ export class AuthorizationService {
   }
 
   private setLocalStorage(token: Token): void {
-    const expirationTime = new Date().getTime() + (60 * 1000); 
+    const expirationTime = new Date().getTime() + (30 * 60 * 1000);
 
     localStorage.setItem('token', token.token);
     localStorage.setItem('expirationTime', expirationTime.toString());
