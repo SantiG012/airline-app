@@ -73,8 +73,8 @@ app-flight{
 }
 
 .flex-center{
-    flex-direction: row;
     justify-content: center;
+    align-items: center;
 }
 
 .flex-column-center-horizontally{
